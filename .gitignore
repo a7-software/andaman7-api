@@ -1,27 +1,44 @@
-# Numerous always-ignore extensions
-*.diff
-*.err
-*.orig
-*.log
-*.rej
-*.swo
-*.swp
-*.zip
-*.vi
-*~
+# .gitignore for Yeoman-Jekyll projects
 
-# OS folders
-.DS_Store
-._*
+# Ignore hidden folders #
+# This takes care of .tmp, .sass-cache, and many others #
+.*/
+
+# Ignore OS generated files #
+.DS_Store*
+ehthumbs.db
+Icon?
 Thumbs.db
 
-# Folders to ignore
-.hg
-.svn
-.CVS
-.idea
+# Always-ignore files and folders #
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swn
+*.swo
+*.swp
+._*
+*~
 
-node_modules
+# Ignore packages #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Ignore for Yeoman-Jekyll projects #
+app/_bower_components
 dist
+node_modules
 .tmp
-app/bower_components
+
+# Ignore for RVM users #
+.ruby-version
+.ruby-gemset
+.rvmrc
