@@ -1,0 +1,50 @@
+# Template:
+# ---------
+#
+# - text: ...
+#   url: ...
+#   fa-icon: [fa icon name without fa- prefix] (optional)
+#   subitems: (optional)
+#     - text: ...
+#       url: ...
+#       subitems: (optional)
+#         - ...
+
+- text: Overview
+  url: /overview.html
+  fa-icon: newspaper-o
+- text: User guide
+  url: \#
+  fa-icon: book
+  subitems:
+    - text: Concepts
+      url: /concepts.html
+      fa-icon: university
+    - text: Security
+      url: /security.html
+      fa-icon: lock
+    - text: Errors
+      url: /errors.html
+      fa-icon: exclamation-circle
+- text: API Endpoints
+  url: \#
+  fa-icon: cubes
+  subitems-page: _navbar_resources.html
+- text: Swagger console
+  url: https://prod-server.andaman7.com/swagger/index.html
+  fa-icon: flask
+- text: Code samples
+  url: /code-samples.html
+  fa-icon: code
+- text: GitHub
+  url: https://github.com/a7-software
+  fa-icon: github
+- text: Twitter
+  url: https://twitter.com/andaman7
+  fa-icon: twitter
+- text: Facebook
+  url: https://www.facebook.com/Andaman7App
+  fa-icon: facebook
+- text: LinkedIn
+  url: https://www.linkedin.com/company/andaman7
+  fa-icon: linkedin

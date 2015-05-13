@@ -1,0 +1,39 @@
+{% assign endpoint = page.endpoint %}
+
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="{{ ASSET_PATH }}andaman7/resources/jiko/jiko.js" type="text/javascript"></script>
+
+    <script>
+        var template = jiko.loadFile("{{ ASSET_PATH }}andaman7/resources/swagger-bootstrap/swagger-like-template.html");
+        var test = [];
+
+        function getRequest(url) {
+            return $.ajax({
+                type: "GET",
+                url: url,
+                contentType: "text/json"
+            });
+        }
+
+        $(document).ready(function () {
+            var resourcesRequest = getRequest("{{ site.data.swagger.baseUrl }}{{ endpoint.resourcePath }}");
+
+            resourcesRequest.done(function (api) {
+
+                var placeholder = $('<div />').css({'margin-bottom': '1em'}).appendTo($("#endpoint"));
+                _.extend(api, {"name": "{{ endpoint.name }}"})
+                test.push(api);
+                api.order = "{{ endpoint.name }}";
+                console.log(api);
+                placeholder.append(template.apiAccordion(api));
+            });
+        });
+    </script>
+
+    <div id="endpoint">
+        <h1>{% if endpoint.fa-icon %}<i class="fa fa-{{ page.resource.fa-icon }}"></i> {% endif %}{{ page.title | capitalize }}</h1>
+        <hr/>
+        <p class="well">{{ endpoint.description }}</p>
+    </div>
+</div>

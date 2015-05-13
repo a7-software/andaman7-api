@@ -1,0 +1,27 @@
+{% assign navurl = page.url | remove: 'index.html' %}
+<ul class="nav" id="side-menu">
+    {% for item in include.nav %}
+    <li>
+        <a href="{{ item.url }}">
+            {% if item.fa-icon %}<i class="fa fa-{{ item.fa-icon }} fa-fw"></i> {% endif %}
+            {% if item.url == navurl %}
+            <b>{{ item.text }}</b>
+            {% else %}
+            {{ item.text }}
+            {% endif %}
+            {% if item.subitems or item.subitems-page %}
+            <span class="fa arrow"></span>
+            {% endif %}
+        </a>
+        {% if item.subitems or item.subitems-page %}
+        <ul class="nav nav-second-level collapse">
+            {% if item.subitems-page %}
+            {% include {{item.subitems-page}} %}
+            {% else %}
+            {% include _navbar_subitems.html nav=item.subitems %}
+            {% endif %}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,20 @@
+{% for item in include.nav %}
+<li>
+    <a href="{{ item.url }}">
+        {% if item.fa-icon %}<i class="fa fa-{{ item.fa-icon }} fa-fw"></i> {% endif %}
+        {% if item.url == navurl %}
+        <b>{{ item.text }}</b>
+        {% else %}
+        {{ item.text }}
+        {% endif %}
+        {% if item.subitems or item.subitems-page %}
+        <span class="fa arrow"></span>
+        {% endif %}
+    </a>
+    {% if item.subitems %}
+    <ul class="nav nav-third-level collapse">
+        {% include _navbar_subitems.html nav=item.subitems %}
+    </ul>
+    {% endif %}
+</li>
+{% endfor %}

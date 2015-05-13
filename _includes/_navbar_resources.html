@@ -1,0 +1,18 @@
+{% assign navurl = page.url | remove: 'index.html' %}
+
+{% for endpoint in site.data.swagger.endpoints %}
+{% assign name=endpoint.name %}
+{% assign fa-icon=endpoint.fa-icon %}
+{% assign page=endpoint.page %}
+{% assign url='/endpoints/' | append:page %}
+<li>
+    <a href="{{ url }}">
+        {% if fa-icon %}<i class="fa fa-{{ fa-icon }} fa-fw"></i> {% endif %}
+        {% if url == navurl %}
+        <b>{{ name }}</b>
+        {% else %}
+        {{ name }}
+        {% endif %}
+    </a>
+</li>
+{% endfor %}
