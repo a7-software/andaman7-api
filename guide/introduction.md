@@ -1,5 +1,5 @@
 ---
 layout: page
-title: User Guide
+title: Introduction
 ---
 {% include JB/setup %}

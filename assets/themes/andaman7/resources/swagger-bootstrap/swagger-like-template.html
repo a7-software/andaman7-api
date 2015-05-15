@@ -118,7 +118,7 @@ function notUndefinedNullOrZeroLength(obj) {
 {% function name="apiAccordion" %}
 
     % var accordionId = _.uniqueId('accordion');
-    <div class="panel-group swagger-operations" id="${ accordionId }">
+    <!--<div class="panel-group swagger-operations" id="${ accordionId }">-->
         <%
         currentData = a;
         a.apis.forEach(function(api) {
@@ -132,7 +132,7 @@ function notUndefinedNullOrZeroLength(obj) {
         %     });
         % });
 
-    </div>
+    <!--</div>-->
 </div>
 
 {% end %}
@@ -141,20 +141,20 @@ function notUndefinedNullOrZeroLength(obj) {
 
 <div class="panel panel-${ getVerbClass(a.method ) } swagger-operation">
     <div class="panel-heading">
-        <div class="panel-title clearfix">
-            <div class="col-md-2 col-xs-3">
+        <div class="clearfix">
+            <div class="col-md-1 col-xs-3">
                 <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel" class="verb">
                     <span class="label label-${ getVerbClass(a.method ) } verb">${ a.method }</span>
                 </a>
             </div>
             <div class="col-md-4 col-xs-9">
-                <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel">
+                <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel" class="panel-title">
                     <strong>${ a.path }</strong>
                 </a>
             </div>
-            <div class="col-md-6 hidden-sm hidden-xs">
-                <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel" class="pull-right">
-                    <strong>${ a.summary }</strong>
+            <div class="col-md-7 hidden-sm hidden-xs">
+                <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel" class="pull-right panel-title">
+                    ${ a.summary }
                 </a>
             </div>
         </div>

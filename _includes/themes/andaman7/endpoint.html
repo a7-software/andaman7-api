@@ -29,9 +29,27 @@
                 placeholder.append(template.apiAccordion(api));
             });
         });
+
+        function doActionOnPanels(action) {
+            $('.swagger-operation .collapse').each(function (index) {
+                $(this).collapse(action)
+            });
+        }
+
+        function collapseAll() {
+            doActionOnPanels('hide');
+        }
+
+        function expandAll() {
+            doActionOnPanels('show');
+        }
     </script>
 
     <div id="endpoint">
+        <span class="pull-right">
+            <button class="btn btn-default" onclick="collapseAll()">Collapse all</button>
+            <button class="btn btn-default" onclick="expandAll()">Expand all</button>
+        </span>
         <h1>{% if endpoint.fa-icon %}<i class="fa fa-{{ page.resource.fa-icon }}"></i> {% endif %}{{ page.title | capitalize }}</h1>
         <hr/>
         <p class="well">{{ endpoint.description }}</p>

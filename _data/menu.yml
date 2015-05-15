@@ -10,26 +10,29 @@
 #       subitems: (optional)
 #         - ...
 
-- text: Overview
-  url: /overview.html
-  fa-icon: newspaper-o
-- text: User guide
+- text: Getting started
+  url: /getting-started.html
+  fa-icon: play-circle
+- text: Developer guide
   url: \#
   fa-icon: book
   subitems:
-    - text: Concepts
-      url: /concepts.html
+    - text: Introduction
+      url: /guide/introduction.html
       fa-icon: university
+    - text: Synchronization
+      url: /guide/synchronization.html
+      fa-icon: refresh
     - text: Security
-      url: /security.html
+      url: /guide/security.html
       fa-icon: lock
     - text: Errors
-      url: /errors.html
+      url: /guide/errors.html
       fa-icon: exclamation-circle
 - text: API Endpoints
   url: \#
   fa-icon: cubes
-  subitems-page: _navbar_resources.html
+  subitems-page: _navbar_endpoints.html
 - text: Swagger console
   url: https://prod-server.andaman7.com/swagger/index.html
   fa-icon: flask

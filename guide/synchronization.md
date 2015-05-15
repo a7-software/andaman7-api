@@ -1,5 +1,5 @@
 ---
 layout: page
-title: Overview
+title: Synchronization
 ---
 {% include JB/setup %}

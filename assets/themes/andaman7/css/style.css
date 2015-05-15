@@ -135,7 +135,8 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 .label.verb {
-    padding: .4em .8em;
+    padding: .4em .4em;
+    font-size: 8pt;
 }
 
 .page-header {
@@ -156,8 +157,8 @@ only screen and (                min-resolution: 2dppx) {
 @media (max-width: 767px) {
 
     #page-wrapper .row {
-        margin-left: 50px;
-        margin-right: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
         padding-top: 20px;
         padding-bottom: 20px;
     }

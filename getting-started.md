@@ -1,5 +1,5 @@
 ---
 layout: page
-title: Concepts
+title: Getting started
 ---
 {% include JB/setup %}
