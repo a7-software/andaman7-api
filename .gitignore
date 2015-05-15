@@ -1,27 +1,14 @@
-# Numerous always-ignore extensions
-*.diff
-*.err
-*.orig
-*.log
-*.rej
-*.swo
-*.swp
-*.zip
-*.vi
-*~
+_site/*
+_theme_packages/*
 
-# OS folders
-.DS_Store
-._*
 Thumbs.db
+.DS_Store
 
-# Folders to ignore
-.hg
-.svn
-.CVS
-.idea
+!.gitkeep
 
-node_modules
-dist
-.tmp
-app/bower_components
+.rbenv-version
+.rvmrc
+
+
+.jekyll-metadata
+.idea/
