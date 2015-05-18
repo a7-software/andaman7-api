@@ -1,27 +1,28 @@
-baseUrl: https://prod-server.andaman7.com/public/v1/api-docs
-endpointsPath: /endpoints/
-endpoints:
-  - name: Users
-    uri: /users
-    page: users.html
-    fa-icon: users
-  - name: Authenticated user
-    uri: /users/me
-    page: users-me.html
-    fa-icon: user
-  - name: Languages
-    uri: /languages
-    page: languages.html
-    fa-icon: language
-#  - name: Messages
-#    uri: /messages
-#    page: messages.html
-#    fa-icon: comment
-  - name: Community members
-    uri: /users/me/community-members
-    page: community-members.html
-    fa-icon: users
-  - name: Devices
-    uri: /users/me/devices
-    page: devices.html
-    fa-icon: tablet
+#baseUrl : https://prod-server.andaman7.com/public/v1/api-docs
+baseUrl : http://localhost:8080/public/v1/api-docs
+endpointsPath : /endpoints/
+endpoints :
+  - name : Users
+    uri : /users
+    page : users
+    fa-icon : users
+  - name : Authenticated user
+    uri : /users/me
+    page : users-me
+    fa-icon : user
+  - name : Devices
+    uri : /users/me/devices
+    page : devices
+    fa-icon : tablet
+  - name : Community members
+    uri : /users/me/community-members
+    page : community-members
+    fa-icon : users
+  - name : Languages
+    uri : /languages
+    page : languages
+    fa-icon : language
+  - name : Messages
+    uri : /messages
+    page : messages
+    fa-icon : comment

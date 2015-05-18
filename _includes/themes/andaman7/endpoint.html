@@ -1,9 +1,5 @@
 {% assign endpoint = page.endpoint %}
 
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-    <script src="{{ ASSET_PATH }}andaman7/resources/jiko/jiko.js" type="text/javascript"></script>
-
     <script>
         var template = jiko.loadFile("{{ ASSET_PATH }}andaman7/resources/swagger-bootstrap/swagger-like-template.html");
         var test = [];
@@ -17,17 +13,14 @@
         }
 
         $(document).ready(function () {
-            var resourcesRequest = getRequest("{{ site.data.swagger.baseUrl }}{{ endpoint.resourcePath }}");
 
-            resourcesRequest.done(function (api) {
-
-                var placeholder = $('<div />').css({'margin-bottom': '1em'}).appendTo($("#endpoint"));
-                _.extend(api, {"name": "{{ endpoint.name }}"})
-                test.push(api);
-                api.order = "{{ endpoint.name }}";
-                console.log(api);
-                placeholder.append(template.apiAccordion(api));
-            });
+            var api = JSON.parse('{{ endpoint.json }}');
+            var placeholder = $('<div />').css({'margin-bottom': '1em'}).appendTo($("#endpoint"));
+            _.extend(api, {"name": "{{ endpoint.name }}"})
+            test.push(api);
+            api.order = "{{ endpoint.name }}";
+            console.log(api);
+            placeholder.append(template.apiAccordion(api));
         });
 
         function doActionOnPanels(action) {

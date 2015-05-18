@@ -162,6 +162,12 @@ function notUndefinedNullOrZeroLength(obj) {
 
     <div id="${ a.nickname }Panel" class="panel-collapse collapse">
         <div class="panel-body">
+
+            <div class="hidden-lg hidden-md">
+                <h3>Description</h3>
+                ${ a.summary }
+            </div>
+
             % if (a.notes !== undefined && a.notes !== null && a.notes !== "") {
                 <h3>Implementation Notes</h3>
                 <p>${ a.notes }</p>

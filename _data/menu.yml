@@ -13,7 +13,7 @@
 - text: Getting started
   url: /getting-started.html
   fa-icon: play-circle
-- text: Developer guide
+- text: Developer's guide
   url: \#
   fa-icon: book
   subitems:
@@ -36,18 +36,23 @@
 - text: Swagger console
   url: https://prod-server.andaman7.com/swagger/index.html
   fa-icon: flask
+  external: true
 - text: Code samples
   url: /code-samples.html
   fa-icon: code
 - text: GitHub
   url: https://github.com/a7-software
   fa-icon: github
+  external: true
 - text: Twitter
   url: https://twitter.com/andaman7
   fa-icon: twitter
+  external: true
 - text: Facebook
   url: https://www.facebook.com/Andaman7App
   fa-icon: facebook
+  external: true
 - text: LinkedIn
   url: https://www.linkedin.com/company/andaman7
   fa-icon: linkedin
+  external: true

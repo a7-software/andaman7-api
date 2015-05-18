@@ -1,0 +1,38 @@
+.swagger-operations {
+    padding-top: 30px;
+}
+
+.swagger-operation .description {
+    float: right;
+}
+
+.panel-group .panel.swagger-operation {
+    margin-bottom: 15px;
+}
+
+.swagger-operation #myTabContent {
+    padding-top: 20px;
+}
+
+.label.verb {
+    padding: .4em .4em;
+    font-size: 8pt;
+}
+
+/* Syntax highlighting */
+
+.string {
+    color: green;
+}
+.number {
+    color: darkorange;
+}
+.boolean {
+    color: blue;
+}
+.null {
+    color: magenta;
+}
+.key {
+    color: red;
+}

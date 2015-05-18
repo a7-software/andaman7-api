@@ -2,6 +2,7 @@ require 'json'
 require 'open-uri'
 require 'uri'
 require 'openssl'
+require 'fileutils'
 
 module OpenSSL
   module SSL
@@ -32,24 +33,26 @@ module Jekyll
 
     def generate(site)
       dir = 'endpoints'
-      site.data['swagger']['models'] = Array.new
+      swaggerBasePath = site.data['swagger']['baseUrl']
 
       descriptions = Hash.new
-      swagger = JSON open(site.data['swagger']['baseUrl']) { |io| io.read }
+      swagger = JSON open(swaggerBasePath) { |io| io.read }
+
       swagger['apis'].each do |api|
         descriptions[api['path']] = api['description']
       end
 
       site.data['swagger']['endpoints'].each do |api|
-        endpoint = JSON open(site.data['swagger']['baseUrl'] + api['uri']) { |io| io.read }
+        endpoint = JSON open(swaggerBasePath + api['uri']) { |io| io.read }
+
         endpoint['name'] = api['name']
-        endpoint['fa-icon'] = api['fa-icon']
-        endpoint['page'] = api['page']
+        endpoint['page'] = api['page'] + '.html'
         endpoint['description'] = descriptions[api['uri']]
+        endpoint['fa-icon'] = api['fa-icon']
+        endpoint['json'] = endpoint.to_json
+
         site.pages << EndpointPage.new(site, site.source, dir, endpoint)
       end
-
-      puts site.data['swagger']['models']
     end
   end
 end

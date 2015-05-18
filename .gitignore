@@ -10,4 +10,5 @@ Thumbs.db
 
 
 .jekyll-metadata
-.idea/*
+_site/
+.idea/
