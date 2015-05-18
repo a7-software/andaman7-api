@@ -1,5 +1,5 @@
 ---
 layout: page
-title: Synchronization
+title: A7 Protocol
 ---
 {% include JB/setup %}

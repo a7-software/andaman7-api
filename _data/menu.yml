@@ -17,12 +17,12 @@
   url: \#
   fa-icon: book
   subitems:
-    - text: Introduction
-      url: /guide/introduction.html
-      fa-icon: university
-    - text: Synchronization
-      url: /guide/synchronization.html
-      fa-icon: refresh
+    - text: Overview
+      url: /guide/overview.html
+      fa-icon: newspaper-o
+    - text: A7 Protocol
+      url: /guide/a7-protocol.html
+      fa-icon: stethoscope
     - text: Security
       url: /guide/security.html
       fa-icon: lock
