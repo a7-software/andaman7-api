@@ -21,6 +21,11 @@
             api.order = "{{ endpoint.name }}";
             console.log(api);
             placeholder.append(template.apiAccordion(api));
+
+            var url = document.location.toString();
+            if ( url.match('#') ) {
+                $('#'+url.split('#')[1]).addClass('in');
+            }
         });
 
         function doActionOnPanels(action) {
