@@ -30,7 +30,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://a7-software.github.io/andaman7-api
+production_url : /andaman7-api
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
