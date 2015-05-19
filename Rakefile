@@ -320,9 +320,10 @@ namespace :site do
   desc "Generate blog files"
   task :generate do
     Jekyll::Site.new(Jekyll.configuration({
-      "source"      => ".",
-      "destination" => "_site",
-      "config"      => "_prod_config.yml"
+      "source"        => ".",
+      "destination"   => "_site",
+      "config"        => "_prod_config.yml",
+      "full-rebuild"  => "true"
     })).process
   end
 

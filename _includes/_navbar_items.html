@@ -2,7 +2,7 @@
 <ul class="nav" id="side-menu">
     {% for item in include.nav %}
     <li>
-        <a href="{% unless item.external %}{{ BASE_PATH }}{% endunless %}{{ item.url }}">
+        <a href="{% if item.url %}{% unless item.external %}{{ BASE_PATH }}{% endunless %}{{ item.url }}{% else %}#{% endif %}">
             {% if item.fa-icon %}<i class="fa fa-{{ item.fa-icon }} fa-fw"></i> {% endif %}
             {{ item.text }}
             {% if item.subitems or item.subitems-page %}

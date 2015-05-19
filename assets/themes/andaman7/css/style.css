@@ -2,6 +2,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
 }
 
+a,
+a:hover,
+a:active,
+a:focus {
+    color: #009C30;
+}
+
 li {
     margin: 0;
     padding: 0;
@@ -21,12 +28,19 @@ li {
     border-radius: 4px;
 }
 
-.well code {
-    background-color: inherit;
+.well .code code {
+
 }
 
-code {
+.code {
+    color: #c7254e;
+    font-size: 90%;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
     word-wrap: break-word;
+}
+
+pre {
+    padding: 19px;
 }
 
 .tabulation {
@@ -49,17 +63,17 @@ code {
         margin-left: 150px;
         margin-right: 150px;
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 80px;
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1499px) {
 
     #page-wrapper .row {
         margin-left: 20px;
         margin-right: 20px;
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 50px;
     }
 }
 

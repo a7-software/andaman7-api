@@ -1,5 +1,5 @@
 ---
 layout: page
-title: A7 Protocol
+title: Translations
 ---
 {% include JB/setup %}

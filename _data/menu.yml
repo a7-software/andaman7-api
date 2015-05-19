@@ -2,35 +2,47 @@
 # ---------
 #
 # - text: ...
-#   url: ...
-#   fa-icon: [fa icon name without fa- prefix] (optional)
+#   url: ... (optional if subitems is specified)
+#   fa-icon: [fa icon name without 'fa-' prefix] (optional)
 #   subitems: (optional)
 #     - text: ...
 #       url: ...
 #       subitems: (optional)
 #         - ...
-
+- text: A7 Protocol
+  url: /a7-protocol.html
+  fa-icon: cogs
 - text: Getting started
   url: /getting-started.html
   fa-icon: play-circle
 - text: Developer's guide
-  url: \#
   fa-icon: book
   subitems:
     - text: Overview
       url: /guide/overview.html
       fa-icon: newspaper-o
-    - text: A7 Protocol
-      url: /guide/a7-protocol.html
+    - text: Users
+      url: /guide/users.html
+      fa-icon: users
+    - text: Medical data
       fa-icon: stethoscope
-    - text: Security
-      url: /guide/security.html
-      fa-icon: lock
+      subitems:
+        - text: Types
+          url: /guide/medical-data/types.html
+          fa-icon: file-code-o
+        - text: Synchronization
+          url: /guide/medical-data/synchronization.html
+          fa-icon: refresh
+        - text: Security
+          url: /guide/medical-data/security.html
+          fa-icon: lock
+    - text: Translations
+      url: /guide/translations.html
+      fa-icon: comment
     - text: Errors
       url: /guide/errors.html
       fa-icon: exclamation-circle
 - text: API Endpoints
-  url: \#
   fa-icon: cubes
   subitems-page: _navbar_endpoints.html
 - text: Swagger console

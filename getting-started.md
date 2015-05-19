@@ -46,23 +46,19 @@ For more information about the authentication, check out [this part]({{ BASE_PAT
 
 #### HTTP request
 
-<div class="well">
-    <code>
-        GET {{ me_url }} <br/>
-        api-key: <span class="apiKey"></span> <br/>
-        Authorization: Basic <span class="base64"></span>
-    </code>
+<div class="well code">
+    GET {{ me_url }} <br/>
+    api-key: <span class="apiKey"></span> <br/>
+    Authorization: Basic <span class="base64"></span>
 </div>
 
 
 #### Curl command
 
-<div class="well">
-    <code>
-        curl {{ me_url }} \<br/>
-        <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span> \<br/>
-        <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>
-    </code>
+<div class="well code">
+    curl {{ me_url }} \<br/>
+    <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span> \<br/>
+    <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>
 </div>
 
 #### Example of HTTP response body
@@ -119,39 +115,33 @@ specifying the UUID of the new device and the device name in the body of the req
 
 #### HTTP request
 
-<div class="well">
-    <code>
-        POST {{ devices_url }}<br/>
-        api-key: <span class="apiKey"></span><br/>
-        Authorization: Basic <span class="base64"></span><br/>
-        Content-Type: application/json<br/>
-        <br/>
-        { "id": "<span id="deviceId" class="uuid"></span>", "name": "<span class="deviceName"></span>" }
-    </code>
+<div class="well code">
+    POST {{ devices_url }}<br/>
+    api-key: <span class="apiKey"></span><br/>
+    Authorization: Basic <span class="base64"></span><br/>
+    Content-Type: application/json<br/>
+    <br/>
+    { "id": "<span id="deviceId" class="uuid"></span>", "name": "<span class="deviceName"></span>" }
 </div>
 
 #### Curl command
 
-<div class="well">
-    <code>
-        curl {{ devices_url }} \<br/>
-        <span class="tabulation"></span>-X POST \<br/>
-        <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
-        <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>' \<br/>
-        <span class="tabulation"></span>-H 'Content-Type: application/json' \<br/>
-        <span class="tabulation"></span>-d '{ "id": "<span id="deviceId" class="uuid"></span>", "name": "<span class="deviceName"></span>" }'
-    </code>
+<div class="well code">
+    curl {{ devices_url }} \<br/>
+    <span class="tabulation"></span>-X POST \<br/>
+    <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
+    <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>' \<br/>
+    <span class="tabulation"></span>-H 'Content-Type: application/json' \<br/>
+    <span class="tabulation"></span>-d '{ "id": "<span id="deviceId" class="uuid"></span>", "name": "<span class="deviceName"></span>" }'
 </div>
 
 #### Example of HTTP response body
 
-<div class="well">
-    <code>
-        {<br/>
-        <span class="tabulation"></span>"id": "<span class="deviceId"></span>",<br/>
-        <span class="tabulation"></span>"name": "<span class="deviceName"></span>"<br/>
-        }
-    </code>
+<div class="well code">
+    {<br/>
+    <span class="tabulation"></span>"id": "<span class="deviceId"></span>",<br/>
+    <span class="tabulation"></span>"name": "<span class="deviceName"></span>"<br/>
+    }
 </div>
 <br/>
 
@@ -171,22 +161,18 @@ For more information on query filter parameters, see [this section]({{ BASE_PATH
 
 #### HTTP request
 
-<div class="well">
-    <code>
-        GET {{ users_url }}?_page=1&_perPage=10<br/>
-        api-key: <span class="apiKey"></span><br/>
-        Authorization: Basic <span class="base64"></span>
-    </code>
+<div class="well code">
+    GET {{ users_url }}?_page=1&_perPage=10<br/>
+    api-key: <span class="apiKey"></span><br/>
+    Authorization: Basic <span class="base64"></span>
 </div>
 
 #### Curl command
 
-<div class="well">
-    <code>
-        curl {{ users_url }}?_page=1&_perPage=10 \<br/>
-        <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
-        <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>'
-    </code>
+<div class="well code">
+    curl {{ users_url }}?_page=1&_perPage=10 \<br/>
+    <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
+    <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>'
 </div>
 
 ### Send an invitation
@@ -205,28 +191,24 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
 
 #### HTTP request
 
-<div class="well">
-    <code>
-        POST {{ community_members_url }}<br/>
-        api-key: <span class="apiKey"></span><br/>
-        Authorization: Basic <span class="base64"></span><br/>
-        Content-Type: application/json<br/>
-        <br/>
-        { "senderDeviceId": "<span id="deviceId" class="uuid"></span>", "memberId": "<span class="memberId"></span>" }
-    </code>
+<div class="well code">
+    POST {{ community_members_url }}<br/>
+    api-key: <span class="apiKey"></span><br/>
+    Authorization: Basic <span class="base64"></span><br/>
+    Content-Type: application/json<br/>
+    <br/>
+    { "senderDeviceId": "<span id="deviceId" class="uuid"></span>", "memberId": "<span class="memberId"></span>" }
 </div>
 
 #### Curl command
 
-<div class="well">
-    <code>
-        curl {{ community_members_url }} \<br/>
-        <span class="tabulation"></span>-X PUT \<br/>
-        <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
-        <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>' \<br/>
-        <span class="tabulation"></span>-H 'Content-Type: application/json' \<br/>
-        <span class="tabulation"></span>-d '{ "senderDeviceId": "<span class="deviceId"></span>" "memberId": "<span class="memberId"></span>" }'
-    </code>
+<div class="well code">
+    curl {{ community_members_url }} \<br/>
+    <span class="tabulation"></span>-X PUT \<br/>
+    <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
+    <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>' \<br/>
+    <span class="tabulation"></span>-H 'Content-Type: application/json' \<br/>
+    <span class="tabulation"></span>-d '{ "senderDeviceId": "<span class="deviceId"></span>" "memberId": "<span class="memberId"></span>" }'
 </div>
 <br/>
 
@@ -268,11 +250,6 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
     ]
 }
 ```
-
-## Step 5 : Share some data
-***
-
-TODO
 
 
 <script type="text/javascript">

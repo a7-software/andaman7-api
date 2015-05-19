@@ -140,25 +140,27 @@ function notUndefinedNullOrZeroLength(obj) {
 {% function name="apiAccordionPanel" %}
 
 <div class="panel panel-${ getVerbClass(a.method ) } swagger-operation">
-    <div class="panel-heading">
-        <div class="clearfix">
-            <div class="col-md-1 col-xs-3">
-                <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel" class="verb">
-                    <span class="label label-${ getVerbClass(a.method ) } verb">${ a.method }</span>
-                </a>
-            </div>
-            <div class="col-md-4 col-xs-9">
-                <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel" class="panel-title">
-                    <strong>${ a.path }</strong>
-                </a>
-            </div>
-            <div class="col-md-7 hidden-sm hidden-xs">
-                <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel" class="pull-right panel-title">
-                    ${ a.summary }
-                </a>
+    <a data-toggle="collapse" data-parent="#${ a.accordionId }" href="#${ a.nickname }Panel">
+        <div class="panel-heading">
+            <div class="clearfix">
+                <div class="col-md-1 col-xs-3">
+                    <div class="verb">
+                        <span class="label label-${ getVerbClass(a.method ) } verb">${ a.method }</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-9">
+                    <div class="panel-title">
+                        <strong>${ a.path }</strong>
+                    </div>
+                </div>
+                <div class="col-md-7 hidden-sm hidden-xs">
+                    <div class="pull-right panel-title">
+                        ${ a.summary }
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 
     <div id="${ a.nickname }Panel" class="panel-collapse collapse">
         <div class="panel-body">
@@ -179,16 +181,14 @@ function notUndefinedNullOrZeroLength(obj) {
             % }
                 
             % var requestClassType = _.findWhere(a.parameters, { paramType: 'body' });
-            % console.log(requestClassType);
-            % console.log(currentData.models);
             % if (requestClassType !== undefined && requestClassType.type !== undefined) {
             %   var requestClassModel = currentData.models[requestClassType.type];
                 <h3>Request Class</h3>
                 %{ classDescription({ nickname: a.nickname, models: getModelChain(requestClassModel) }) }
             % }
 
-            
-            % var responseClassModel = currentData.models[a.type];
+
+            % var responseClassModel = (currentData.models !== undefined) ? currentData.models[a.type] : undefined;
             % if (responseClassModel !== undefined) {
                 <h3>Response Class</h3>
                 %{ classDescription({ nickname: a.nickname, models: getModelChain(responseClassModel) }) }

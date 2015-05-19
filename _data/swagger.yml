@@ -18,11 +18,15 @@ endpoints :
     uri : /users/me/community-members
     page : community-members
     fa-icon : users
+  - name : Dictionaries
+    uri : /dictionaries
+    page : dictionaries
+    fa-icon : book
   - name : Languages
     uri : /languages
     page : languages
     fa-icon : language
-  - name : Messages
-    uri : /messages
-    page : messages
+  - name : Translations
+    uri : /translations
+    page : translations
     fa-icon : comment
