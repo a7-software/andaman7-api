@@ -6,9 +6,11 @@ exclude: [".rvmrc", ".rbenv-version", "LICENSE", "README.md", "Rakefile", "chang
 highlighter: pygments
 
 # https://help.github.com/articles/migrating-your-pages-site-from-maruku
-markdown: redcarpet
-redcarpet:
-    extensions: [with_toc_data]
+#markdown: redcarpet
+#redcarpet:
+#    extensions: [with_toc_data]
+
+markdown: KramdownPygments
 
 andaman7_endpoint_url : https://prod-server.andaman7.com/public/v1
 

@@ -9,7 +9,7 @@ title: Medical data synchronization
 
 ## Envelope
 
-```json
+~~~json
 {
     "sourceDeviceId": "e38a010f-b78b-4941-9b37-ef3e535e8954",
     "sourceRegistrarId": "1657430e-5c53-4660-89f4-993af0c67880",
@@ -19,7 +19,7 @@ title: Medical data synchronization
         ...
     }
 }
-```
+~~~
 
 ## A7 Item
 

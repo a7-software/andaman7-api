@@ -63,7 +63,7 @@ For more information about the authentication, check out [this part]({{ BASE_PAT
 
 #### Example of HTTP response body
 
-```json
+~~~json
 {
 	"meta": { },
 	"authenticatedUser": {
@@ -93,7 +93,7 @@ For more information about the authentication, check out [this part]({{ BASE_PAT
 		}
 	]
 }
-```
+~~~
 
 <br/>
 
@@ -210,11 +210,10 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
     <span class="tabulation"></span>-H 'Content-Type: application/json' \<br/>
     <span class="tabulation"></span>-d '{ "senderDeviceId": "<span class="deviceId"></span>" "memberId": "<span class="memberId"></span>" }'
 </div>
-<br/>
 
 #### Example of HTTP response body
 
-```json
+~~~json
 {
     "meta": {
         "page": 1,
@@ -249,7 +248,9 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
         }
     ]
 }
-```
+~~~
+
+You are now reaching the end of this tutorial. To go further, we invite you to read the [developer's guide]({{ BASE_PATH }}/guide/overview.html).
 
 
 <script type="text/javascript">
@@ -288,6 +289,14 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
     
     function buildBasicAuth() {
     
+        var base64 = getBasicAuthCredentials();
+    
+        $(".base64").each(function() {
+            $(this).text(base64);
+        });
+    }
+    
+    function getBasicAuthCredentials() {
         var email = $("#emailInput").val();
         var password = $("#passwordInput").val()
     
@@ -298,10 +307,8 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
     
         input = email + ':' + CryptoJS.SHA256(password);
         base64 = base64Encode(input);
-    
-        $(".base64").each(function() {
-            $(this).text(base64);
-        });
+        
+        return base64;
     }
     
 </script>
