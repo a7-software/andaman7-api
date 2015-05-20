@@ -12,7 +12,8 @@ highlighter: pygments
 
 markdown: KramdownPygments
 
-andaman7_endpoint_url : https://prod-server.andaman7.com/public/v1
+
+andaman7_endpoint_url : https://api.andaman7.com/public/v1
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
@@ -109,9 +110,9 @@ JB :
   analytics :
     provider : google
     google :
-        tracking_id : 'UA-***'
+        tracking_id : 'UA-55631137-2'
     googleUA :
-        tracking_id : 'UA-***'
+        tracking_id : 'UA-55631137-2'
         property_name : 'PROPERTY NAME'
     getclicky :
       site_id : 

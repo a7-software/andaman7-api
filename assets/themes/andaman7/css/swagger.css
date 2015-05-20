@@ -20,7 +20,7 @@
     border-color: #faebcc;
 }
 
-.panel-danger>.panel-heading {
+.panel-danger .panel-heading {
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
