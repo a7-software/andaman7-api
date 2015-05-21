@@ -146,10 +146,10 @@ specifying the UUID of the new device and the device name in the body of the req
 <br/>
 
 
-## Step 4 : Invite a user to your community
+## Step 4 : Invite a user to your circle of trust
 ***
 
-To add a user to your community, you first need to get the ID of this user.
+To add a user to your circle of trust, you first need to get the ID of this user.
 You can get user ID's by searching the users.
 
 ### Search among existing users
@@ -177,7 +177,7 @@ For more information on query filter parameters, see [this section]({{ BASE_PATH
 
 ### Send an invitation
 
-Once you have found the ID of the user you want to add to your community, you can send him or her an invitation.
+Once you have found the ID of the user you want to add to your circle of trust, you can send him or her an invitation.
 
 This can be done using a PUT HTTP request on `{{ community_members_url }}` with a JSON body specifying your device ID and the ID of the user you want to invite.
 
