@@ -14,10 +14,14 @@ endpoints :
     uri : /users/me/devices
     page : devices
     fa-icon : tablet
-  - name : Community members
-    uri : /users/me/community-members
-    page : community-members
+  - name : Trusted users
+    uri : /users/me/trusted-users
+    page : trusted-users
     fa-icon : users
+  - name : EHRs
+    uri : /users/%7BuserId%7D/ehrs
+    page : ehrs
+    fa-icon : medkit
   - name : Dictionaries
     uri : /dictionaries
     page : dictionaries

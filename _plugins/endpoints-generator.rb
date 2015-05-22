@@ -1,6 +1,6 @@
 require 'json'
-require 'open-uri'
 require 'uri'
+require 'open-uri'
 require 'openssl'
 require 'fileutils'
 
@@ -39,7 +39,7 @@ module Jekyll
       swagger = JSON open(swaggerBasePath) { |io| io.read }
 
       swagger['apis'].each do |api|
-        descriptions[api['path']] = api['description']
+        descriptions[URI.escape(api['path'])] = api['description']
       end
 
       site.data['swagger']['endpoints'].each do |api|
