@@ -7,7 +7,7 @@ title: Getting started
 {% capture me_url %}{{ site.andaman7_endpoint_url }}/users/me{% endcapture %}
 {% capture devices_url %}{{ site.andaman7_endpoint_url }}/users/me/devices{% endcapture %}
 {% capture users_url %}{{ site.andaman7_endpoint_url }}/users{% endcapture %}
-{% capture community_members_url %}{{ site.andaman7_endpoint_url }}/users/me/community-members{% endcapture %}
+{% capture trusted_users_url %}{{ site.andaman7_endpoint_url }}/users/me/trusted-users{% endcapture %}
 
 <div id="toc"></div>
 
@@ -24,7 +24,7 @@ If you don't already have them, please make a request by hitting the button belo
 ## Step 2 : Your first request
 ***
 
-Yout first API call will consist in getting your personal information.
+Your first API call will consist in getting your personal information.
 
 To do this, you simply need to perform a `GET` HTTP request, mentioning your *API key* and your *credentials*, to the following URL : `{{ me_url }}`
 
@@ -65,33 +65,16 @@ For more information about the authentication, check out [this part]({{ BASE_PAT
 
 ~~~json
 {
-	"meta": { },
-	"authenticatedUser": {
-		"id": "08ac1180-fd21-11e4-b939-0800200c9a66",
-		"administrative": {
-			"firstName": "Phil",
-			"lastName": "Miller",
-			"address": {
-				"street": "The cul-de-sac",
-				"town": "Tucson, Arizona",
-				"country": "United States"
-			}
-		}
-	},
-	"links": [
-		{
-			"rel": "self",
-			"href": "{{ me_url }}"
-		},
-		{
-			"rel": "users",
-			"href": "{{ users_url }}"
-		},
-		{
-			"rel": "devices",
-			"href": "{{ devices_url }}"
-		}
-	]
+    "id": "08ac1180-fd21-11e4-b939-0800200c9a66",
+    "administrative": {
+        "firstName": "Phil",
+        "lastName": "Miller",
+        "address": {
+            "street": "The cul-de-sac",
+            "town": "Tucson, Arizona",
+            "country": "United States"
+        }
+    }
 }
 ~~~
 
@@ -101,13 +84,21 @@ For more information about the authentication, check out [this part]({{ BASE_PAT
 ***
 
 In this step, you will create a device. This is a requirement in order to share data with other users.
+In the Andaman7 application, devices are smartphones and tablets. But, in other contexts they might be anything else.
+For example, in hospitals, devices can be MRI machines or PET scanners.
+More generally, a device is something that can produce information to be sent to Andaman7.
 
 Adding a device is pretty simple, you need to perform a POST HTTP request to `{{ devices_url }}`
-specifying the UUID of the new device and the device name in the body of the request.
+specifying the identifier ([UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) version 4) of the new device and the device name in the body of the request.
+
+Example of UUID v4 : `25340a74-14b3-4008-a6a3-fe60a2847c34`.
 
 #### Form
 
 <form class="form-inline">
+    <div class="form-group">
+        <input id="deviceIdInput" type="text" placeholder="Device ID" class="form-control" />
+    </div>
     <div class="form-group">
         <input id="deviceNameInput" type="text" placeholder="Device name" class="form-control" />
     </div>
@@ -121,7 +112,7 @@ specifying the UUID of the new device and the device name in the body of the req
     Authorization: Basic <span class="base64"></span><br/>
     Content-Type: application/json<br/>
     <br/>
-    { "id": "<span id="deviceId" class="uuid"></span>", "name": "<span class="deviceName"></span>" }
+    { "id": "<span class="deviceId"></span>", "name": "<span class="deviceName"></span>" }
 </div>
 
 #### Curl command
@@ -132,7 +123,7 @@ specifying the UUID of the new device and the device name in the body of the req
     <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
     <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>' \<br/>
     <span class="tabulation"></span>-H 'Content-Type: application/json' \<br/>
-    <span class="tabulation"></span>-d '{ "id": "<span id="deviceId" class="uuid"></span>", "name": "<span class="deviceName"></span>" }'
+    <span class="tabulation"></span>-d '{ "id": "<span class="deviceId"></span>", "name": "<span class="deviceName"></span>" }'
 </div>
 
 #### Example of HTTP response body
@@ -179,7 +170,7 @@ For more information on query filter parameters, see [this section]({{ BASE_PATH
 
 Once you have found the ID of the user you want to add to your circle of trust, you can send him or her an invitation.
 
-This can be done using a PUT HTTP request on `{{ community_members_url }}` with a JSON body specifying your device ID and the ID of the user you want to invite.
+This can be done using a PUT HTTP request on `{{ trusted_users_url }}` with a JSON body specifying your device ID and the ID of the user you want to invite.
 
 #### Form
 
@@ -192,7 +183,7 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
 #### HTTP request
 
 <div class="well code">
-    POST {{ community_members_url }}<br/>
+    POST {{ trusted_users_url }}<br/>
     api-key: <span class="apiKey"></span><br/>
     Authorization: Basic <span class="base64"></span><br/>
     Content-Type: application/json<br/>
@@ -203,7 +194,7 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
 #### Curl command
 
 <div class="well code">
-    curl {{ community_members_url }} \<br/>
+    curl {{ trusted_users_url }} \<br/>
     <span class="tabulation"></span>-X PUT \<br/>
     <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
     <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>' \<br/>
@@ -214,40 +205,24 @@ This can be done using a PUT HTTP request on `{{ community_members_url }}` with 
 #### Example of HTTP response body
 
 ~~~json
-{
-    "meta": {
-        "page": 1,
-        "perPage": 2,
-        "totalPages": 1,
-        "count": 2,
-        "totalItems": 2,
-        "hasMore": false
+[
+    {
+        "self": "{{ users_url }}/f12503f3-3e5d-453f-ae3b-ae9c1c8aff6f",
+        "id": "f12503f3-3e5d-453f-ae3b-ae9c1c8aff6f",
+        "administrative": {
+            "firstName": "Rosanna",
+            "lastName": "Bryant"
+        }
     },
-    "users": [
-        {
-            "self": "{{ users_url }}/f12503f3-3e5d-453f-ae3b-ae9c1c8aff6f",
-            "id": "f12503f3-3e5d-453f-ae3b-ae9c1c8aff6f",
-            "administrative": {
-                "firstName": "Rosanna",
-                "lastName": "Bryant"
-            }
-        },
-        {
-            "self": "{{ users_url }}/97e9da54-5481-454d-ac61-0fe1dd5464d5",
-            "id": "97e9da54-5481-454d-ac61-0fe1dd5464d5",
-            "administrative": {
-                "firstName": "Kirkland",
-                "lastName": "Malone"
-            }
+    {
+        "self": "{{ users_url }}/97e9da54-5481-454d-ac61-0fe1dd5464d5",
+        "id": "97e9da54-5481-454d-ac61-0fe1dd5464d5",
+        "administrative": {
+            "firstName": "Kirkland",
+            "lastName": "Malone"
         }
-    ],
-    "links": [
-        {
-            "rel": "self",
-            "href": "{{ users_url }}"
-        }
-    ]
-}
+    }
+]
 ~~~
 
 You are now reaching the end of this tutorial. To go further, we invite you to read the [developer's guide]({{ BASE_PATH }}/guide/overview.html).
@@ -265,18 +240,21 @@ You are now reaching the end of this tutorial. To go further, we invite you to r
     
         initBase64Placeholders();
         bind('#apiKeyInput', '.apiKey', '<YOUR_API_KEY>');
+        bind('#deviceIdInput', '.deviceId', '<YOUR_DEVICE_ID>');
         bind('#deviceNameInput', '.deviceName', '<YOUR_DEVICE_NAME>');
         bind('#memberIdInput', '.memberId', '<MEMBER_ID>');
     
         $("#emailInput").bind("keyup", buildBasicAuth);
         $("#passwordInput").bind("keyup", buildBasicAuth);
+        
+        $('#deviceIdInput').val(generateUUID());
     
         $('.uuid').each(function() {
             $(this).text(generateUUID());
         });
         
         $('.deviceId').each(function() {
-            $(this).text($('#deviceId').text());
+            $(this).text($('#deviceIdInput').val());
         });
     });
     
