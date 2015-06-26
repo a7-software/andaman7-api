@@ -1,55 +1,57 @@
 {% assign endpoint = page.endpoint %}
 
-    <script>
-        var template = jiko.loadFile("{{ ASSET_PATH }}andaman7/resources/swagger-bootstrap/swagger-like-template.html");
-        var test = [];
+<script>
+    var template = jiko.loadFile("{{ ASSET_PATH }}andaman7/resources/swagger-bootstrap/swagger-like-template.html");
+    var test = [];
 
-        function getRequest(url) {
-            return $.ajax({
-                type: "GET",
-                url: url,
-                contentType: "text/json"
-            });
-        }
-
-        $(document).ready(function () {
-
-            var api = JSON.parse('{{ endpoint.json }}');
-            var placeholder = $('<div />').css({'margin-bottom': '1em'}).appendTo($("#endpoint"));
-            _.extend(api, {"name": "{{ endpoint.name }}"})
-            test.push(api);
-            api.order = "{{ endpoint.name }}";
-            console.log(api);
-            placeholder.append(template.apiAccordion(api));
-
-            var url = document.location.toString();
-            if ( url.match('#') ) {
-                $('#'+url.split('#')[1]).addClass('in');
-            }
+    function getRequest(url) {
+        return $.ajax({
+            type: "GET",
+            url: url,
+            contentType: "text/json"
         });
+    }
 
-        function doActionOnPanels(action) {
-            $('.swagger-operation .collapse').each(function (index) {
-                $(this).collapse(action)
-            });
+    $(document).ready(function () {
+
+        var api = JSON.parse('{{ endpoint.json }}');
+        var placeholder = $('<div />').css({'margin-bottom': '1em'}).appendTo($("#endpoint"));
+        _.extend(api, {"name": "{{ endpoint.name }}"})
+        test.push(api);
+        api.order = "{{ endpoint.name }}";
+        console.log(api);
+        placeholder.append(template.apiAccordion(api));
+
+        var url = document.location.toString();
+        if ( url.match('#') ) {
+            $('#'+url.split('#')[1]).addClass('in');
         }
+    });
 
-        function collapseAll() {
-            doActionOnPanels('hide');
-        }
+    function doActionOnPanels(action) {
+        $('.swagger-operation .collapse').each(function (index) {
+            $(this).collapse(action)
+        });
+    }
 
-        function expandAll() {
-            doActionOnPanels('show');
-        }
-    </script>
+    function collapseAll() {
+        doActionOnPanels('hide');
+    }
 
-    <div id="endpoint">
-        <span class="pull-right">
-            <button class="btn btn-default" onclick="collapseAll()">Collapse all</button>
-            <button class="btn btn-default" onclick="expandAll()">Expand all</button>
-        </span>
-        <h1>{% if endpoint.fa-icon %}<i class="fa fa-{{ page.resource.fa-icon }}"></i> {% endif %}{{ page.title | capitalize }}</h1>
-        <hr/>
-        <p class="well">{{ endpoint.description }}</p>
-    </div>
+    function expandAll() {
+        doActionOnPanels('show');
+    }
+</script>
+
+<div id="endpoint">
+    <span class="pull-right">
+        <button class="btn btn-default" onclick="collapseAll()">Collapse all</button>
+        <button class="btn btn-default" onclick="expandAll()">Expand all</button>
+    </span>
+    <h1>{% if endpoint.fa-icon %}<i class="fa fa-{{ page.resource.fa-icon }}"></i> {% endif %}{{ page.title | capitalize }}</h1>
+    <hr/>
+    <p class="well">{{ endpoint.description }}</p>
 </div>
+
+<hr/>
+{% include JB/comments %}

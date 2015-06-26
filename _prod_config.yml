@@ -12,13 +12,13 @@ highlighter: pygments
 
 markdown: KramdownPygments
 
-andaman7_endpoint_url : https://prod-server.andaman7.com/public/v1
+andaman7_endpoint_url : https://api.andaman7.com/public/v1
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : Andaman7 API
-tagline: Andaman7 API developers portal
+title : Andaman7 Developer Portal
+tagline: Andaman7 API developer portal
 author :
   name : Pierre-Yves Derbaix
   email : pierre-yves.derbaix@a7-software.com
@@ -91,7 +91,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : andaman7-dev
     livefyre :
       site_id : 123
     intensedebate :

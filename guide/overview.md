@@ -6,7 +6,7 @@ title: Overview
 
 In this section, you will find all the basic concepts related to the API and the messages format.
 
-The API is currently in version 1 and can be accessed over HTTPS using the following URL : `api.andaman7.com/public/v1/`.
+The API is currently in version 1 and can be accessed over HTTPS using the following URL : `https://api.andaman7.com/public/v1/`.
 
 It is a REST API and all messages are in JSON format.
 

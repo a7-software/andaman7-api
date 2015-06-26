@@ -187,8 +187,14 @@ function notUndefinedNullOrZeroLength(obj) {
                 %{ classDescription({ nickname: a.nickname, models: getModelChain(requestClassModel) }) }
             % }
 
-
-            % var responseClassModel = (currentData.models !== undefined) ? currentData.models[a.type] : undefined;
+            % var type;
+            %
+            % if (a.type === 'array') {
+            %   type = a.items.$ref;
+            % } else {
+            %   type = a.type;
+            % }
+            % var responseClassModel = (currentData.models !== undefined) ? currentData.models[type] : undefined;
             % if (responseClassModel !== undefined) {
                 <h3>Response Class</h3>
                 %{ classDescription({ nickname: a.nickname, models: getModelChain(responseClassModel) }) }
@@ -242,7 +248,7 @@ function notUndefinedNullOrZeroLength(obj) {
                 <td><code>${ param.name !== undefined && param.name !== null ? param.name : param.dataType }</code></td>
                 <td>${ param.paramType }</td>
                 <td>${ param.name === undefined || param.name === null ? '' : param.type }</td>
-                <td>${ param.required ? '*' : '' }</td>
+                <td>${ param.required ? 'yes' : '' }</td>
                 <td>${ param.defaultValue === undefined ? '' : param.defaultValue }</td>
                 <td>${ param.description }</td>
             </tr>
@@ -293,7 +299,7 @@ function notUndefinedNullOrZeroLength(obj) {
 
 
 {% function name="modelTable" %}
-    <span><strong>${ a.description || a.id }</strong></span>
+    <span><strong>${ a.id }</strong> (<i>${ a.description }</i>)</span>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
