@@ -63,7 +63,7 @@ Our objective being to be very simple and efficient, we currently only have 3 ma
 An AMI - Atomic Medical Item is the most basic piece of information. 
 It's "atomic" meaning it can't be broken down to a simpler concept.
 
-Examples are the weight of a person, an allergy or a blood red cell.  But we are a bit extreme too and like genericity. 
+Examples are the weight of a person, an allergy or a blood red cell count.  But we are a bit extreme too and like genericity. 
 So the last name is also an AMI, as well as the phone number, any image that is part of the medical file, an URL to medical information online.
 
 An AMI is basically a key-value pair augmented with :
@@ -77,7 +77,7 @@ AMIs can never be modified.  There is no need to modify an AMI.
 If you want to enter a new value for weight, you just create an new AMI (a new combination of key, value, source and timestamp). 
 The only "modification" to an AMI is the capability to "invalidate" it. 
 This is necessary if, after some time, one realises that the previously created AMI was a mistake somehow
-(if the medical condition is not valid anymore, we have other mechanisms for that (based on start date and end date qualifiers)).  
+(if the medical condition is not valid anymore, we have other mechanisms for that, based on start date and end date qualifiers).  
 
 These constraints make AMIs very easy to manage in a distributed world.  They can be created anywhere, by anyone, with no risk of "data conflict" whatsoever.
 AMIs have a reference to their "parent", e.g. a given EHR.
@@ -101,8 +101,8 @@ AMIs usually need to be grouped together. For this we use the notion of AMISet, 
 
 Examples are:
 
-* an EHR is an AMISet
-* a consultation / visit is an AMISet
+* an EHR is an AMISet - because it groups all AMIs of a given patient
+* a consultation / visit is an AMISet - because it groups AMIs (weight, temperature, complaints...) created during the same event
 * a "lab result", done on a given date, by a specific lab for a specific blood sample and containing several results is also an AMISet (the individual results are AMIs)
 
 Like Qualifiers, AMISets are also a combination of key, value, source and timestamp.
@@ -132,6 +132,20 @@ An example:
 * date = `2015-04-14T18:54:07Z`
 * identifier = `123e4567-e89b-12d3-a456-426655440000` (often a UUID)
 * parent = `43722d40-e381-11e4-9612-0002a5d5c51b` (the UUID of the parent A7 Item)
+
+### Implementation concepts
+
+Implementation concepts are left to you.
+You can implement the domain/interface concepts as you want, taking into account other objectives like performance, storage efficiency, etc.
+
+
+## What are some examples of calls to the API?
+
+TODO
+
+Check [this page]({{ BASE_PATH }}/endpoints/ehrs.html) for more information about the API calls related to medical data synchronization inside EHRs.
+
+Continue by reading the [Getting Started]({{ BASE_PATH }}/getting-started.html) section.
 
 
 <script type="text/javascript">
