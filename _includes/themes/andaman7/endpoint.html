@@ -48,7 +48,7 @@
         <button class="btn btn-default" onclick="collapseAll()">Collapse all</button>
         <button class="btn btn-default" onclick="expandAll()">Expand all</button>
     </span>
-    <h1>{% if endpoint.fa-icon %}<i class="fa fa-{{ page.resource.fa-icon }}"></i> {% endif %}{{ page.title | capitalize }}</h1>
+    <h1>{% if endpoint.fa-icon %}<i class="fa fa-{{ page.resource.fa-icon }}"></i> {% endif %}{{ page.title }}</h1>
     <hr/>
     <p class="well">{{ endpoint.description }}</p>
 </div>

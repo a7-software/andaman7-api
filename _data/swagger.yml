@@ -1,5 +1,6 @@
 #baseUrl : https://prod-server.andaman7.com/public/v1/api-docs
 baseUrl : http://localhost:8080/public/v1/api-docs
+fallbackBaseUrl: https://prod-server.andaman7.com/public/v1/api-docs
 endpointsPath : /endpoints/
 endpoints :
   - name : Users
@@ -18,9 +19,9 @@ endpoints :
     uri : /users/me/trusted-users
     page : trusted-users
     fa-icon : users
-  - name : EHRs
-    uri : /users/%7BuserId%7D/ehrs
-    page : ehrs
+  - name : A7 Items
+    uri : /users/%7BuserId%7D/a7-items
+    page : a7-items
     fa-icon : medkit
   - name : Dictionaries
     uri : /dictionaries
