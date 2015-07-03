@@ -139,11 +139,49 @@ Implementation concepts are left to you.
 You can implement the domain/interface concepts as you want, taking into account other objectives like performance, storage efficiency, etc.
 
 
-## What are some examples of calls to the API?
+## What are some examples of calls to the API ?
 
-TODO
+First, we will send an AMI in order to update the weight of a user.
+It can be done by sending a `POST` request to  `{{ site.andaman7_endpoint_url }}/users/{userId}/a7-items`.
+The `{userId}` path parameter must be replaced by the identifier of the Andaman7 user to whom you want to send the A7 items.
 
-Check [this page]({{ BASE_PATH }}/endpoints/ehrs.html) for more information about the API calls related to medical data synchronization inside EHRs.
+Here is the structure of the A7 item of the AMI :
+
+~~~json
+{  
+    "id": "8ef93cb2-d4f0-4067-8957-c0b2d72d62de",
+    "creationDate": "2015-06-24T14:06:48.206+0000",
+    "creatorDeviceId": "e8015cdc-a05f-487c-9ae3-6f89093cc7a3",
+    "invalidationDate": null,
+    "invalidatorDeviceId": null,
+    "creatorUserId": "908e8b39-5aae-44df-95e2-79a8bfe9e376",
+    "type": "AMI",
+    "key": "ami.weight",
+    "value": "75",
+    "version": 8,
+    "uuidMulti": null,
+    "parentId": "fd13fa08-43d2-494b-8890-ad8907cc2fe4"
+}
+~~~
+
+The body of the HTTP request contains the following JSON object.
+The `a7Items` field contains the list of all A7 items to be sent, like the previous one.
+This list must be encoded into a string because this field is encrypted in the secure version.
+
+~~~json
+{  
+    "id": "ea9d723c-d316-4845-ae53-987e033305e2",
+    "sourceDeviceId": "d5736213-9e26-4c9d-a1ea-8b0873aa1282",
+    "sourceUserId": "7e698f06-f58a-446e-9488-f9824050c2e7",
+    "a7Items": "<A7_ITEMS_LIST>"
+}
+~~~
+
+The receiver can now retrieve those A7 items by sending a `GET` request to `{{ site.andaman7_endpoint_url }}/users/{userId}/a7-items?_deviceId={deviceId}`.
+The `{deviceId}` query parameter must be replaced by the identifier of the device which fetches the A7 items.
+
+
+Check [this page]({{ BASE_PATH }}/endpoints/a7-items.html) for more information about the API calls related to A7 items.
 
 Continue by reading the [Getting Started]({{ BASE_PATH }}/getting-started.html) section.
 
