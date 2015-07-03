@@ -4,12 +4,16 @@ title: Developer forum
 ---
 {% include JB/setup %}
 
-<iframe
-        id="forum_embed"
-        style="background: white;  border: 1px solid #7bb32e;"
-        src="https://groups.google.com/a/andaman7.com/forum/embed/?place=forum/support&amp;showsearch=true&amp;showpopout=true&amp;showtabs=false&amp;parenturl=http%3A%2F%2Fwww.andaman7.com%2Fen%2Fforum"
+<iframe id="forum_embed"
+        src="javascript:void(0)"
         scrolling="no"
         frameborder="0"
-        width="100%"
+        width="900"
         height="700">
 </iframe>
+<script type="text/javascript">
+        document.getElementById('forum_embed').src =
+                'https://groups.google.com/a/andaman7.com/forum/embed/?place=forum/api'
+                + '&showsearch=true&showpopout=true&showtabs=false'
+                + '&parenturl=' + encodeURIComponent(window.location.href);
+</script>
