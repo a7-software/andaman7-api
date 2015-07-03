@@ -29,13 +29,15 @@ CRUD operation | HTTP verb | Description
 Create         | `POST`    | Creates a new resource.
 Read           | `GET`     | Retrieves a single resource or a collection of resources.
 Update         | `PUT`     | Updates an existing resource.
-Delete         | `DELETE`  | Delete a resource.
+Delete         | `DELETE`  | Deletes a resource.
 {: class="table table-bordered table-hover"}
 
 ## API key
 
 All the requests must include an API key. There is one API key per application that is using the API.
 If you don't have one, you have to request it before starting to use the API.
+
+To request an API key, see [this section]({{ BASE_PATH }}/getting-started.html).
 
 Once you have an API key, you make requests to the API by adding an HTTP header : `api-key: <YOUR API KEY>`.
 
@@ -76,7 +78,7 @@ In each response, there are 3 sections : the metadata, the real data and the lin
 The **metadata** are essentially used when a collection of data is returned, basically to give pagination information.
 
 The key used for the **data** section depends on the data that is being returned.
-For example, if the server returns a single user, the key will be `user`. If a collection of user is returned, then the key is `users`.
+For example, if the server returns a single user, the key will be `user`. If a collection of users is returned, then the key is `users`.
 
 The **links** section will be explained in the [hypermedia](#hypermedia) part.
 
