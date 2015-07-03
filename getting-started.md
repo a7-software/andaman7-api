@@ -26,9 +26,11 @@ If you don't already have them, please make a request by hitting the button belo
 
 Your first API call will consist in getting your personal information.
 
-To do this, you simply need to perform a `GET` HTTP request, mentioning your *API key* and your *credentials*, to the following URL : `{{ me_url }}`
+To do this, you simply need to perform a `GET` HTTP request, mentioning your *API key* and your *credentials*, to the 
+following URL : `{{ me_url }}`
 
-For more information about the authentication, check out [this part]({{ BASE_PATH }}/guide/introduction.html\#authentication) of the developer's guide.
+For more information about the authentication, check out [this part]({{ BASE_PATH }}/guide/introduction.html\#authentication) 
+of the developer's guide.
 
 #### Form
 
@@ -89,7 +91,8 @@ For example, in hospitals, devices can be MRI machines or PET scanners.
 More generally, a device is something that can produce information to be sent to Andaman7.
 
 Adding a device is pretty simple, you need to perform a POST HTTP request to `{{ devices_url }}`
-specifying the identifier ([UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) version 4) of the new device and the device name in the body of the request.
+specifying the identifier ([UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) version 4) of the new 
+device and the device name in the body of the request.
 
 Example of UUID v4 : `25340a74-14b3-4008-a6a3-fe60a2847c34`.
 
@@ -140,8 +143,13 @@ Example of UUID v4 : `25340a74-14b3-4008-a6a3-fe60a2847c34`.
 ## Step 4 : Invite a user to your circle of trust
 ***
 
-To add a user to your circle of trust, you first need to get the ID of this user.
-You can get user ID's by searching the users.
+To be able to send data to an Andaman7 user, you first need to add the user to your "circle of trust". This triggers a
+request to the user asking them if they agree to receive data from you. If they do, they will receive your data. If they
+don't, the data you send them will be ignored.
+
+To add a user to your circle of trust, you first need to get the A7 ID of this user. You can get the user's ID (a uuid) 
+by searching the users. The easiest way to find the right user is to query them based on the email address they used to 
+register to Andaman7 (which they can find in their version of Andaman7, in "Settings / My administrative data / Identifier").
 
 ### Search among existing users
 
@@ -166,9 +174,10 @@ For more information on query filter parameters, see [this section]({{ BASE_PATH
     <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>'
 </div>
 
-### Send an invitation
+### Add a user to your circle of trust
 
-Once you have found the ID of the user you want to add to your circle of trust, you can send him or her an invitation.
+Once you have found the ID of the user, you can add him or her to your circle of trust, which will trigger an invitation
+for her to allow data coming from you.
 
 This can be done using a PUT HTTP request on `{{ trusted_users_url }}` with a JSON body specifying your device ID and the ID of the user you want to invite.
 
@@ -176,7 +185,7 @@ This can be done using a PUT HTTP request on `{{ trusted_users_url }}` with a JS
 
 <form class="form-inline">
     <div class="form-group">
-        <input id="memberIdInput" type="text" placeholder="Member ID" class="form-control" />
+        <input id="memberIdInput" type="text" placeholder="Invited user ID" class="form-control" />
     </div>
 </form>
 
@@ -188,7 +197,7 @@ This can be done using a PUT HTTP request on `{{ trusted_users_url }}` with a JS
     Authorization: Basic <span class="base64"></span><br/>
     Content-Type: application/json<br/>
     <br/>
-    { "senderDeviceId": "<span id="deviceId" class="uuid"></span>", "memberId": "<span class="memberId"></span>" }
+    { "senderDeviceId": "<span class="deviceId"></span>", "invitedUserId": "<span class="memberId"></span>" }
 </div>
 
 #### Curl command

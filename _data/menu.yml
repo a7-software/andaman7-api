@@ -52,6 +52,10 @@
 - text: Code samples
   url: /code-samples.html
   fa-icon: code
+- text: Developer forum
+  url: /forum.html
+  fa-icon: comment
+  external: true
 - text: GitHub
   url: https://github.com/a7-software
   fa-icon: github
