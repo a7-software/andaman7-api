@@ -11,14 +11,21 @@ title: Getting started
 
 <div id="toc"></div>
 
-## Step 1 : Request an API key
+## Step 0 : Read the A7 protocol page
 ***
 
-Before starting to use the API, you need an API key as well as an account.
+To be aware of the philosophy of Andaman7 and its protocol, you should first read the [A7 protocol]({{ BASE_PATH }}/a7-protocol.html) page.
+
+<br/>
+
+## Step 1 : Create an account and request an API key
+***
+
+Before starting to use the API, you need an account as well as an API key.
 
 If you don't already have them, please make a request by hitting the button below. Otherwise, let's go to the next step.
 
-<br/><button class="btn btn-primary">Get an API key</button> 
+<br/><button class="btn btn-primary">Register / Get an API key</button> 
 <br/><br/>
 
 ## Step 2 : Your first request
@@ -27,7 +34,7 @@ If you don't already have them, please make a request by hitting the button belo
 Your first API call will consist in getting your personal information.
 
 To do this, you simply need to perform a `GET` HTTP request, mentioning your *API key* and your *credentials*, to the 
-following URL : `{{ me_url }}`
+following URL : `{{ me_url }}`. The credentials are those you gave during the account creation.
 
 For more information about the authentication, check out [this part]({{ BASE_PATH }}/guide/overview.html#authentication) 
 of the developer's guide.
@@ -46,7 +53,8 @@ of the developer's guide.
     </div>
 </form>
 
-<p>Examples :</p>
+#### Examples
+
 <ul>
     <li>API key: <code>f41d37d8-2d7e-4c5b-bf09-e8689f14464a</code></li>
     <li>Email: <code>it-support@hospital-x.com</code></li>
@@ -109,6 +117,7 @@ device and the device name in the body of the request.  Example of UUID v4 : `25
 The UUID of the device must be used in the `creatorDeviceId` field of all further API requests.
 
 Adding a device should be done once and the addition of other devices should only be done in exceptional cases.
+It is allowed to create up to 5 devices.
 
 #### Form
 
@@ -121,6 +130,12 @@ Adding a device should be done once and the addition of other devices should onl
     </div>
 </form>
 
+#### Examples
+
+<ul>
+    <li>Device ID: <code>25340a74-14b3-4008-a6a3-fe60a2847c34</code></li>
+    <li>Device name: <code>MRI HP 8000 3T</code>, or <code>EHR EPIC</code>, or <code>Blood Analyser Siemens Advia2120i</code></li>
+</ul>
 
 #### HTTP request
 
@@ -203,6 +218,12 @@ This can be done using a PUT HTTP request on `{{ trusted_users_url }}` with a JS
         <input id="memberIdInput" type="text" placeholder="Invited user ID" class="form-control" />
     </div>
 </form>
+
+#### Examples
+
+<ul>
+    <li>Invited user ID: <code>2269cb0d-9884-42c5-99f2-002e04d19b6e</code></li>
+</ul>
 
 #### HTTP request
 
