@@ -19,10 +19,10 @@ You must be authenticated and/or provide a valid API key to access the resource.
 
 #### How to solve it
 Check that the API key you provided is a valid one and check that it is correctly set in the headers.
-See [here]({{ BASE_URL }}/guide/overview.html#api-key) how to set the API key.
+See [here]({{ BASE_PATH }}/guide/overview.html#api-key) how to set the API key.
 
 If the API key is correctly set and is valid, the problem probably comes from the credentials.
-Check that the credentials are correctlye set and are valide. See [here]({{ BASE_URL }}/guide/overview.html#authentication) how to authenticate.
+Check that the credentials are correctly set and are valid. See [here]({{ BASE_PATH }}/guide/overview.html#authentication) how to authenticate.
 
 
 ### 404 - Not Found
@@ -44,7 +44,7 @@ Check that the URL that you provided is correct. See the page of the API endpoin
 Something is broken on our side.
 
 #### How to solve it
-Please [contact us](mailto:api@andaman7.com) or you can report the problem on the [forum](http://api-forum.andaman7.com/). We will try to solve the problem as soon as possible.
+Please [contact us](mailto:api@andaman7.com) or you can report the problem on the [forum]({{ BASE_PATH }}/forum.html). We will try to solve the problem as soon as possible.
 
 
 ## Custom codes
