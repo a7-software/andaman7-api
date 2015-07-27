@@ -29,7 +29,7 @@ Your first API call will consist in getting your personal information.
 To do this, you simply need to perform a `GET` HTTP request, mentioning your *API key* and your *credentials*, to the 
 following URL : `{{ me_url }}`
 
-For more information about the authentication, check out [this part]({{ BASE_PATH }}/guide/introduction.html\#authentication) 
+For more information about the authentication, check out [this part]({{ BASE_PATH }}/guide/overview.html#authentication) 
 of the developer's guide.
 
 #### Form
@@ -45,6 +45,13 @@ of the developer's guide.
         <input id="passwordInput" type="password" placeholder="Password" class="form-control" />
     </div>
 </form>
+
+<p>Examples :</p>
+<ul>
+    <li>API key: <code>f41d37d8-2d7e-4c5b-bf09-e8689f14464a</code></li>
+    <li>Email: <code>it-support@hospital-x.com</code></li>
+    <li>Password: <code>your password</code></li>
+</ul>
 
 #### HTTP request
 
@@ -88,13 +95,20 @@ of the developer's guide.
 In this step, you will create a device. This is a requirement in order to share data with other users.
 In the Andaman7 application, devices are smartphones and tablets. But, in other contexts they might be anything else.
 For example, in hospitals, devices can be MRI machines or PET scanners.
-More generally, a device is something that can produce information to be sent to Andaman7.
+
+More generally, a device is something that can produce information to be sent to Andaman7. To be simple, you can use
+only one device bearing the name of the institution or the medical software used.
+
+A device only belongs to a user. In Andaman7, a user is someone who is able to record information into owned or shared
+EHRs. In other contexts, the users can have a broader definition. For example, there can be one user per hospital
+service or a single user for a laboratory.
 
 Adding a device is pretty simple, you need to perform a POST HTTP request to `{{ devices_url }}`
 specifying the identifier ([UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) version 4) of the new 
-device and the device name in the body of the request.
+device and the device name in the body of the request.  Example of UUID v4 : `25340a74-14b3-4008-a6a3-fe60a2847c34`.
+The UUID of the device must be used in the `creatorDeviceId` field of all further API requests.
 
-Example of UUID v4 : `25340a74-14b3-4008-a6a3-fe60a2847c34`.
+Adding a device should be done once and the addition of other devices should only be done in exceptional cases.
 
 #### Form
 
@@ -106,6 +120,7 @@ Example of UUID v4 : `25340a74-14b3-4008-a6a3-fe60a2847c34`.
         <input id="deviceNameInput" type="text" placeholder="Device name" class="form-control" />
     </div>
 </form>
+
 
 #### HTTP request
 
@@ -156,7 +171,7 @@ register to Andaman7 (which they can find in their version of Andaman7, in "Sett
 Search can be achieved by sending a GET HTTP request to `{{ users_url }}`.
 
 To filter the users based on certain criteria, additional query parameters can be specified.
-For more information on query filter parameters, see [this section]({{ BASE_PATH }}/endpoints/users.html\#getUsersPanel).
+For more information on query filter parameters, see [this section]({{ BASE_PATH }}/endpoints/users.html#getUsersPanel).
 
 #### HTTP request
 
@@ -236,6 +251,8 @@ This can be done using a PUT HTTP request on `{{ trusted_users_url }}` with a JS
 
 You are now reaching the end of this tutorial. To go further, we invite you to read the [developer's guide]({{ BASE_PATH }}/guide/overview.html).
 
+To get help, learn more or simply discuss our API and integration issues, register to our [developers forum]({{ BASE_PATH }}/forum.html).
+
 
 <script type="text/javascript">
 
@@ -255,8 +272,6 @@ You are now reaching the end of this tutorial. To go further, we invite you to r
     
         $("#emailInput").bind("keyup", buildBasicAuth);
         $("#passwordInput").bind("keyup", buildBasicAuth);
-        
-        $('#deviceIdInput').val(generateUUID());
     
         $('.uuid').each(function() {
             $(this).text(generateUUID());
