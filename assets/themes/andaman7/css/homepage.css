@@ -18,11 +18,12 @@
     -webkit-box-shadow: inset 0px -17px 49px -19px rgba(0,0,0,0.93);
     -moz-box-shadow: inset 0px -17px 49px -19px rgba(0,0,0,0.93);
     box-shadow: inset 0px -17px 49px -19px rgba(0,0,0,0.93);
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;;
+
 }
 
 .jumbotron h1 {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 3em;
     color: white;
 }
@@ -40,4 +41,11 @@ h2 .fa {
     .jumbotron h1 {
         font-size: 6em;
     }
+}
+
+.btn-xl {
+    padding: 15px 24px;
+    font-size: 25px;
+    line-height: 1.33;
+    border-radius: 6px;
 }
