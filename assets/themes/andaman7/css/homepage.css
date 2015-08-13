@@ -23,12 +23,11 @@
 
 .jumbotron h1 {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 4em;
+    font-size: 3em;
     color: white;
 }
 
 .jumbotron .container {
-    width: 75%;
     margin: auto;
 }
 
@@ -44,5 +43,10 @@ h2 .fa {
 
     .jumbotron h1 {
         font-size: 6em;
+    }
+
+    .jumbotron .container {
+        width: 75%;
+        margin: auto;
     }
 }
