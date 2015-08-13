@@ -1,0 +1,48 @@
+#page-wrapper {
+    padding: 0;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+.jumbotron {
+    min-height: 300px;
+    background-image: url('../images/banner.jpg');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+
+    /*border-bottom: 5px solid #009C30;*/
+    -webkit-box-shadow: inset 0px -17px 49px -19px rgba(0,0,0,0.93);
+    -moz-box-shadow: inset 0px -17px 49px -19px rgba(0,0,0,0.93);
+    box-shadow: inset 0px -17px 49px -19px rgba(0,0,0,0.93);
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;;
+}
+
+.jumbotron h1 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 4em;
+    color: white;
+}
+
+.jumbotron .container {
+    width: 75%;
+    margin: auto;
+}
+
+h2 .fa {
+    font-size: 3em;
+}
+
+@media (min-width: 768px) {
+
+    .jumbotron {
+        min-height: 600px;
+    }
+
+    .jumbotron h1 {
+        font-size: 6em;
+    }
+}
