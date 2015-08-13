@@ -27,10 +27,6 @@
     color: white;
 }
 
-.jumbotron .container {
-    margin: auto;
-}
-
 h2 .fa {
     font-size: 3em;
 }
@@ -43,10 +39,5 @@ h2 .fa {
 
     .jumbotron h1 {
         font-size: 6em;
-    }
-
-    .jumbotron .container {
-        width: 75%;
-        margin: auto;
     }
 }
