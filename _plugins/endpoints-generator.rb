@@ -3,6 +3,7 @@ require 'uri'
 require 'open-uri'
 require 'openssl'
 require 'fileutils'
+require 'rainbow'
 
 module OpenSSL
   module SSL
@@ -36,22 +37,28 @@ module Jekyll
       swaggerBasePath = site.data['swagger']['baseUrl']
 
       descriptions = Hash.new
-      swagger = JSON open(swaggerBasePath) { |io| io.read }
 
-      swagger['apis'].each do |api|
-        descriptions[URI.escape(api['path'])] = api['description']
-      end
+      begin
+        swagger = JSON open(swaggerBasePath) { |io| io.read }
 
-      site.data['swagger']['endpoints'].each do |api|
-        endpoint = JSON open(swaggerBasePath + api['uri']) { |io| io.read }
+        swagger['apis'].each do |api|
+          descriptions[URI.escape(api['path'])] = api['description']
+        end
 
-        endpoint['name'] = api['name']
-        endpoint['page'] = api['page'] + '.html'
-        endpoint['description'] = descriptions[api['uri']]
-        endpoint['fa-icon'] = api['fa-icon']
-        endpoint['json'] = endpoint.to_json
+        site.data['swagger']['endpoints'].each do |api|
+          endpoint = JSON open(swaggerBasePath + api['uri']) { |io| io.read }
 
-        site.pages << EndpointPage.new(site, site.source, dir, endpoint)
+          endpoint['name'] = api['name']
+          endpoint['page'] = api['page'] + '.html'
+          endpoint['description'] = descriptions[api['uri']]
+          endpoint['fa-icon'] = api['fa-icon']
+          endpoint['json'] = endpoint.to_json
+
+          site.pages << EndpointPage.new(site, site.source, dir, endpoint)
+        end
+      rescue Errno::ECONNREFUSED
+        puts Rainbow("ERROR: Please start Tork server so the following URL is available : #{swaggerBasePath}").color(:red)
+        exit
       end
     end
   end
