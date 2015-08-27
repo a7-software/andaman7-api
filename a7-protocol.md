@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: comments
 title: A7 Protocol
 ---
 {% include JB/setup %}

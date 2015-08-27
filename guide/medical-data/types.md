@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: comments
 title: Medical data types
 ---
 {% include JB/setup %}

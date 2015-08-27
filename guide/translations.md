@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: comments
 title: Translations
 ---
 {% include JB/setup %}

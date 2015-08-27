@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: comments
 title: Getting started
 ---
 {% include JB/setup %}
