@@ -43,7 +43,7 @@ Once you have an API key, you make requests to the API by adding an HTTP header 
 
 ## Authentication
 
-Some API calls need the end user to be authenticated. This can be achieved using *Basic HTTP Authentication*.
+Some API calls need the end user to be authenticated. This can be achieved using [Basic HTTP Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication).
 
 Thus, your request must include an additional HTTP header : `Authorization: Basic <CREDENTIALS>`. 
 Where `<CREDENTIALS>` is the concatenation of the username, the `:` symbol and the password hashed using the SHA-256 algorithm.
@@ -64,8 +64,11 @@ Code     | Reason                | Description
 
 ### Format
 
-As said earlier, all the messages are in JSON format. All the responses have the same format.
-In each response, there are 3 sections : the metadata, the real data and the links.
+As said earlier, all the messages are in JSON format. By default, they only contain the raw asked data.
+But it is possible to specify the `_envelope` query parameter and set its value to `true` in order to get additional
+information about the request. Example : `https://api.andaman7.com/public/v1/users?_envelope=true`
+
+The envelope, as we call it, contains 3 sections : the metadata, the raw data and the links.
 
 ~~~json
 {
@@ -104,10 +107,10 @@ However, the `developerMessage` is a description that is more oriented to the de
 ## Hypermedia
 {:#hypermedia}
 
-Most responses include links to other resources that are related to the returned resource.
-Those links might be useful to developers who are discovering the API.
+When the envelope is displayed, most responses include links to other resources that are related to the current one.
+They give clues on the relationship between resources and may ease the first contact with the API.
 
-Those links are included in the `links` section of each response and it contains at least one item, which is the link to the current resource (`self`).
+Those links are included in the `links` section of the envelope and it contains at least one item, which is the link to the current resource (`self`).
 
 Here is an example of response :
 
@@ -134,16 +137,97 @@ Here is an example of response :
 
 ## Pagination
 
-TODO
+The pagination is simply used to split a large collection of items into multiple pages. For example, this can be useful
+for mobile apps to lazy load some search results.
 
+Pagination can be achieved by specifying 2 query parameters : `_page` and `_perPage`, respectively for the number of the
+page an the number of items in a page.
+
+Here is the response after hitting <code>GET {{ site.andaman7_endpoint_url }}/users?<strong>_page=3&_perPage=8</strong></code> to get
+the third page of the users with 8 users per page.
+
+~~~json
+{
+    "meta": {
+        "page": 3,
+        "perPage": 8,
+        "totalPages": 19,
+        "count": 8,
+        "totalItems": 146,
+        "hasMore": true
+    },
+    "users": [
+        ...
+    ],
+    "links": [
+        {
+            "rel": "first",
+            "href": "{{ site.andaman7_endpoint_url }}/users?_page=1&_perPage=8"
+        },
+        {
+            "rel": "prev",
+            "href": "{{ site.andaman7_endpoint_url }}/users?_page=2&_perPage=8"
+        },
+        {
+            "rel": "next",
+            "href": "{{ site.andaman7_endpoint_url }}/users?_page=4&_perPage=8"
+        },
+        {
+            "rel": "last",
+            "href": "{{ site.andaman7_endpoint_url }}/users?_page=19&_perPage=8"
+        }
+    ]
+}
+~~~
+
+You can notice that there are some additional information in the `meta` section and there are also links to navigate
+through the pages in the `links` section.
 
 ## Filtering
 
-TODO
+If you want only some fields to appear in the response or some you don't, you can add the `_fields` query parameter.
+The value is the coma-separated list of the fields you want to appear in the response. Nested fields must be separated from their parent by a `.`.
+On the other side, if you want a field not to appear in the response, you have to prefix its name by a `!`.
+
+Example : <code>{{ site.andaman7_endpoint_url }}/users?<strong>_fields=type,administrative.firstName,administrative.lastName</strong></code>
+
+You should get something like this :
+
+~~~json
+[
+  {
+    "type": "PATIENT",
+    "administrative": {
+      "firstName": "John",
+      "lastName": "Doe"
+    }
+  },
+  {
+    "type": "DOCTOR",
+    "administrative": {
+      "firstName": "Gregory",
+      "lastName": "House"
+    }
+  },
+  ...
+]
+~~~
 
 ## Search
 
-TODO
+Each resource can be searched according to their fields. To do so, queries must include a query parameter per search field.
+
+### Supported operators
+
+Operator                       | Description                                  | Parameter(s) type(s)
+------------------------------ | -------------------------------------------- | --------------------
+`eq(<param>)`                  | Equal to &lt;param&gt;                       | String, number or date
+`lt(<param>)`                  | Less than &lt;param&gt;                      | Number or date
+`le(<param>)`                  | Less than or equal to &lt;param&gt;          | Number or date
+`gt(<param>)`                  | Greater than &lt;param&gt;                   | Number or date
+`ge(<param>)`                  | Greater than or equal to &lt;param&gt;       | Number or date
+`between(<param1>, <param2>)`  | Between &lt;param1&gt; and &lt;param2&gt;    | Number or date
+{: class="table table-bordered table-striped table-hover"}
 
 
 <script type="text/javascript">
