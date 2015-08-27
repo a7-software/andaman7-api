@@ -30,7 +30,7 @@ Create         | `POST`    | Creates a new resource.
 Read           | `GET`     | Retrieves a single resource or a collection of resources.
 Update         | `PUT`     | Updates an existing resource.
 Delete         | `DELETE`  | Deletes a resource.
-{: class="table table-bordered table-hover"}
+{: class="table table-bordered table-striped table-hover"}
 
 ## API key
 
@@ -112,7 +112,9 @@ They give clues on the relationship between resources and may ease the first con
 
 Those links are included in the `links` section of the envelope and it contains at least one item, which is the link to the current resource (`self`).
 
-Here is an example of response :
+### Example
+
+Here is an example of envelope :
 
 ~~~json
 {
@@ -142,6 +144,8 @@ for mobile apps to lazy load some search results.
 
 Pagination can be achieved by specifying 2 query parameters : `_page` and `_perPage`, respectively for the number of the
 page an the number of items in a page.
+
+### Example
 
 Here is the response after hitting <code>GET {{ site.andaman7_endpoint_url }}/users?<strong>_page=3&_perPage=8</strong></code> to get
 the third page of the users with 8 users per page.
@@ -189,7 +193,9 @@ If you want only some fields to appear in the response or some you don't, you ca
 The value is the coma-separated list of the fields you want to appear in the response. Nested fields must be separated from their parent by a `.`.
 On the other side, if you want a field not to appear in the response, you have to prefix its name by a `!`.
 
-Example : <code>{{ site.andaman7_endpoint_url }}/users?<strong>_fields=type,administrative.firstName,administrative.lastName</strong></code>
+### Example
+
+Try to hit this URL : <code>{{ site.andaman7_endpoint_url }}/users?<strong>_fields=type,administrative.firstName,administrative.lastName</strong></code>
 
 You should get something like this :
 
@@ -217,6 +223,9 @@ You should get something like this :
 
 Each resource can be searched according to their fields. To do so, queries must include a query parameter per search field.
 
+For string type fields, the given pattern is contained in the field. The search is case insensitive.
+For other type fields like numbers or dates, we provide comparison operators :
+
 ### Supported operators
 
 Operator                       | Description                                  | Parameter(s) type(s)
@@ -229,6 +238,42 @@ Operator                       | Description                                  | 
 `between(<param1>, <param2>)`  | Between &lt;param1&gt; and &lt;param2&gt;    | Number or date
 {: class="table table-bordered table-striped table-hover"}
 
+The dates must be in ISO format (ex: 2015-08-27) and you can use the keyword `now` to refer to the current date.
+
+### Example
+
+For example, to search the english translation entries containing "test" we call the following URL : <code>{{ site.andaman7_endpoint_url }}/translations?creationDate=<strong>between(2015-07-01, 2015-07-15)</strong>&<strong>translationEntries.EN=date</strong></code>.
+
+Here is the returned JSON :
+
+~~~json
+[
+    {
+        "id": "E3DE38C8-1E64-420F-9864-62F70E1F0E19",
+        "self": "http://localhost:8080/public/v1/translations/webapp.validation.date?_languages=*",
+        "creationDate": "2015-07-02T21:26:49.650+0000",
+        "modificationDate": "2015-07-02T21:26:49.650+0000",
+        "key": "webapp.validation.date",
+        "translationEntries": {
+            "EN": "Validation date",
+            "FR": "Date de validation",
+            "NL": "Validatiedatum"
+        }
+    },
+    {
+        "id": "AA75D62C-7FDD-454E-8EA2-0FFCA25EBDC4",
+        "self": "http://localhost:8080/public/v1/translations/webapp.monitoring.date?_languages=*",
+        "creationDate": "2015-07-02T21:16:35.790+0000",
+        "modificationDate": "2015-07-02T21:16:35.790+0000",
+        "key": "webapp.monitoring.date",
+        "translationEntries": {
+            "EN": "Date",
+            "FR": "Date",
+            "NL": "Datum"
+        }
+    }
+]
+~~~
 
 <script type="text/javascript">
 

@@ -46,7 +46,7 @@
   fa-icon: cubes
   subitems-page: _navbar_endpoints.html
 - text: Swagger console
-  url: https://prod-server.andaman7.com/swagger/index.html
+  url: https://my.andaman7.com/swagger/index.html
   fa-icon: flask
   external: true
 - text: Code samples

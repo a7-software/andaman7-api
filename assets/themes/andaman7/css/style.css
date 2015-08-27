@@ -2,6 +2,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
 }
 
+body {
+    font-family: Lato, Arial, Helvetica, sans-serif;
+}
+
 a,
 a:hover,
 a:active,
@@ -32,17 +36,6 @@ li {
 
 }
 
-.code {
-    color: #c7254e;
-    font-size: 90%;
-    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-    word-wrap: break-word;
-}
-
-pre {
-    padding: 19px;
-}
-
 .tabulation {
     padding-left: 5em;
 }
@@ -55,6 +48,10 @@ pre {
 .page-header {
     padding-bottom: 0px;
     margin-bottom: 10px;
+}
+
+#page-wrapper {
+    font-size: 16px;
 }
 
 @media (min-width: 1500px) {
@@ -77,19 +74,36 @@ pre {
     }
 }
 
+.code {
+    color: #c7254e;
+    font-size: 14px;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    word-wrap: break-word;
+}
 
-/*
-Disqus
-*/
+@media (max-width: 767px) {
+    code {
+        word-wrap: break-word;
+    }
+}
+
+pre {
+    padding: 19px;
+}
+
+
+/********
+  Disqus
+ ********/
 
 #disqus_thread {
     margin-top: 50px;
 }
 
 
-/*
-Navbar
-*/
+/********
+  Navbar
+ ********/
 
 .navbar .navbar-brand {
     background: url("../images/logo.png") no-repeat scroll center center;
