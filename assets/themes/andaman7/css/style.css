@@ -32,8 +32,15 @@ li {
     border-radius: 4px;
 }
 
-.well .code code {
+.code {
+    color: #c7254e;
+    font-size: 12px;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    word-wrap: break-word;
+}
 
+pre {
+    padding: 19px;
 }
 
 .tabulation {
@@ -48,10 +55,6 @@ li {
 .page-header {
     padding-bottom: 0px;
     margin-bottom: 10px;
-}
-
-#page-wrapper {
-    font-size: 16px;
 }
 
 @media (min-width: 1500px) {
@@ -72,13 +75,6 @@ li {
         padding-top: 20px;
         padding-bottom: 50px;
     }
-}
-
-.code {
-    color: #c7254e;
-    font-size: 14px;
-    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-    word-wrap: break-word;
 }
 
 @media (max-width: 767px) {
