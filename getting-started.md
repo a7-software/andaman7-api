@@ -25,7 +25,50 @@ Before starting to use the API, you need an account as well as an API key.
 
 If you don't already have them, please make a request by hitting the button below. Otherwise, let's go to the next step.
 
-<br/><button class="btn btn-primary">Register / Get an API key</button> 
+<br/><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Register / Get an API key</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="POST">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Registration form</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="inputFirstName" class="col-sm-3 control-label">First name</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="inputFirstName" name="firstName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastName" class="col-sm-3 control-label">Last name</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="inputLastName" name="lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-7">
+                            <input type="email" class="form-control" id="inputEmail" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-7 col-sm-offset-3">
+                            <div class="g-recaptcha" data-sitekey="6LdTDwwTAAAAAMpzvxskypjvWv0juCX9cgbdLJJn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary disabled">Register</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <br/><br/>
 
 ## Step 2 : Your first request
