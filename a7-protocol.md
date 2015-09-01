@@ -71,7 +71,7 @@ An AMI is basically a key-value pair augmented with :
 * the source of the information - the person and the device that is creating the piece of info (a doctor, a patient, a lab machine, a hospital...)
 * a timestamp of when the information was created
 
-AMIs are universally unique (we give them a UUID by the way).
+AMIs are universally unique (we give them a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) by the way).
 Given the fact that they are a combination of key, value, source and timestamp, it's very natural that they are unique.
 AMIs can never be modified.  There is no need to modify an AMI. 
 If you want to enter a new value for weight, you just create an new AMI (a new combination of key, value, source and timestamp). 
