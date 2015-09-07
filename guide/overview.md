@@ -276,6 +276,18 @@ Here is the returned JSON :
 ~~~
 
 
+## Rate limit
+
+By default, each user of the API can send a maximum of 10 requests in a 20 seconds window.
+If you exceed this limit, you will get a [HTTP 429 "Too many requests"]({{ BASE_PATH }}/guide/errors.html#429) response code.
+
+Each response contains the following HTTP headers :
+
+* `X-Rate-Limit-Limit`: the limit of requests that can be sent in a single time window
+* `X-Rate-Limit-Remaining`: the number of requests left for the 20 seconds window
+* `X-Rate-Limit-Reset`: the remaining seconds before the rate limit resets
+
+
 ## Postman collection
 
 If you plan to use [Postman](https://www.getpostman.com/) to test the API calls, you might want to download our

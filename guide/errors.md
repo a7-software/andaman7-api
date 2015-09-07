@@ -10,8 +10,8 @@ title: Errors
 ## HTTP status codes
 ***
 
-### 401 - Unauthorized
-{: id="401"}
+### 403 - Forbidden
+{: id="403"}
 ***
 
 #### Description
@@ -34,6 +34,17 @@ The requested resource has not been found.
 
 #### How to solve it
 Check that the URL that you provided is correct. See the page of the API endpoint you are trying to contact.
+
+### 429 - Too Many Requests
+{: id="429"}
+***
+
+#### Description
+You have have made a lot of API request and you have exceeded the rate limit.
+By default, you can send 10 request in a 20 seconds window.
+
+#### How to solve it
+Wait until the time window is reset.
 
 
 ### 500 - Internal Server Error
