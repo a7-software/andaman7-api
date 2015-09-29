@@ -36,22 +36,26 @@ If you don't already have them, please make a request by hitting the button belo
                     <h4 class="modal-title">Registration form</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        The form is not available yet. In the meantime, you can contact us by <a href="mailto:api@andaman7.com">email</a> to get your API key.
+                    </div>
                     <div class="form-group">
                         <label for="inputFirstName" class="col-sm-3 control-label">First name</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" id="inputFirstName" name="firstName">
+                            <input type="text" class="form-control" id="inputFirstName" name="firstName" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputLastName" class="col-sm-3 control-label">Last name</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" id="inputLastName" name="lastName">
+                            <input type="text" class="form-control" id="inputLastName" name="lastName" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="col-sm-3 control-label">Email</label>
                         <div class="col-sm-7">
-                            <input type="email" class="form-control" id="inputEmail" name="email">
+                            <input type="email" class="form-control" id="inputEmail" name="email" disabled>
                         </div>
                     </div>
                     <div class="form-group">
