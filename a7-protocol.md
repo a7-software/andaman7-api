@@ -170,9 +170,7 @@ This list must be encoded into a string because this field is encrypted in the s
 
 ~~~json
 {  
-    "id": "ea9d723c-d316-4845-ae53-987e033305e2",
     "sourceDeviceId": "d5736213-9e26-4c9d-a1ea-8b0873aa1282",
-    "sourceUserId": "7e698f06-f58a-446e-9488-f9824050c2e7",
     "a7Items": "<A7_ITEMS_LIST>"
 }
 ~~~

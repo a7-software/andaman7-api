@@ -7,7 +7,6 @@ title: Getting started
 {% capture me_url %}{{ site.andaman7_endpoint_url }}/users/me{% endcapture %}
 {% capture devices_url %}{{ site.andaman7_endpoint_url }}/users/me/devices{% endcapture %}
 {% capture users_url %}{{ site.andaman7_endpoint_url }}/users{% endcapture %}
-{% capture trusted_users_url %}{{ site.andaman7_endpoint_url }}/users/me/trusted-users{% endcapture %}
 
 <div id="toc"></div>
 
@@ -147,7 +146,7 @@ of the developer's guide.
 ## Step 3 : Add a device
 ***
 
-In this step, you will create a device. This is a requirement in order to share data with other users.
+In order to share data with other users, you need to create at least one device.
 In the Andaman7 application, devices are smartphones and tablets. But, in other contexts they might be anything else.
 For example, in hospitals, devices can be MRI machines or PET scanners.
 
@@ -217,18 +216,13 @@ It is allowed to create up to 5 devices.
 <br/>
 
 
-## Step 4 : Invite a user to your circle of trust
+## Step 4 : Send medical data
 ***
 
-To be able to send data to an Andaman7 user, you first need to add the user to your "circle of trust". This triggers a
-request to the user asking them if they agree to receive data from you. If they do, they will receive your data. If they
-don't, the data you send them will be ignored.
+Now that you have a device on your account, you can use this device to send medical data to another user (e.g. your general practitioner).
+To do so, you need to search among users of Andaman7 to get the identifier of the recipient.
 
-To add a user to your circle of trust, you first need to get the A7 ID of this user. You can get the user's ID (a uuid) 
-by searching the users. The easiest way to find the right user is to query them based on the email address they used to 
-register to Andaman7 (which they can find in their version of Andaman7, in "Settings / My administrative data / Identifier").
-
-### Search among existing users
+### Search among users
 
 Search can be achieved by sending a GET HTTP request to `{{ users_url }}`.
 
@@ -238,7 +232,7 @@ For more information on query filter parameters, see [this section]({{ BASE_PATH
 #### HTTP request
 
 <div class="well code">
-    GET {{ users_url }}?_page=1&_perPage=10<br/>
+    GET {{ users_url }}?_page=1&_perPage=10&_envelope=true&administrative.firstName=John&administrative.lastName=Doe<br/>
     api-key: <span class="apiKey"></span><br/>
     Authorization: Basic <span class="base64"></span>
 </div>
@@ -246,76 +240,113 @@ For more information on query filter parameters, see [this section]({{ BASE_PATH
 #### Curl command
 
 <div class="well code">
-    curl {{ users_url }}?_page=1&_perPage=10 \<br/>
+    curl {{ users_url }}?_page=1&_perPage=10&_envelope=true&administrative.firstName=John&administrative.lastName=Doe \<br/>
     <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
     <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>'
-</div>
-
-### Add a user to your circle of trust
-
-Once you have found the ID of the user, you can add him or her to your circle of trust, which will trigger an invitation
-for her to allow data coming from you.
-
-This can be done using a PUT HTTP request on `{{ trusted_users_url }}` with a JSON body specifying your device ID and the ID of the user you want to invite.
-
-#### Form
-
-<form class="form-inline">
-    <div class="form-group">
-        <input id="memberIdInput" type="text" placeholder="Invited user ID" class="form-control" />
-    </div>
-</form>
-
-#### Examples
-
-<ul>
-    <li>Invited user ID: <code>2269cb0d-9884-42c5-99f2-002e04d19b6e</code></li>
-</ul>
-
-#### HTTP request
-
-<div class="well code">
-    POST {{ trusted_users_url }}<br/>
-    api-key: <span class="apiKey"></span><br/>
-    Authorization: Basic <span class="base64"></span><br/>
-    Content-Type: application/json<br/>
-    <br/>
-    { "senderDeviceId": "<span class="deviceId"></span>", "invitedUserId": "<span class="memberId"></span>" }
-</div>
-
-#### Curl command
-
-<div class="well code">
-    curl {{ trusted_users_url }} \<br/>
-    <span class="tabulation"></span>-X PUT \<br/>
-    <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
-    <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>' \<br/>
-    <span class="tabulation"></span>-H 'Content-Type: application/json' \<br/>
-    <span class="tabulation"></span>-d '{ "senderDeviceId": "<span class="deviceId"></span>" "memberId": "<span class="memberId"></span>" }'
 </div>
 
 #### Example of HTTP response body
 
 ~~~json
-[
-    {
-        "self": "{{ users_url }}/f12503f3-3e5d-453f-ae3b-ae9c1c8aff6f",
-        "id": "f12503f3-3e5d-453f-ae3b-ae9c1c8aff6f",
-        "administrative": {
-            "firstName": "Rosanna",
-            "lastName": "Bryant"
-        }
+{
+    "meta": {
+        "page": 1,
+        "perPage": 10,
+        "totalPages": 1,
+        "count": 1,
+        "totalItems": 1,
+        "hasMore": false
     },
-    {
-        "self": "{{ users_url }}/97e9da54-5481-454d-ac61-0fe1dd5464d5",
-        "id": "97e9da54-5481-454d-ac61-0fe1dd5464d5",
-        "administrative": {
-            "firstName": "Kirkland",
-            "lastName": "Malone"
+    "users": [
+        {
+            "id": "77752fb0-669f-11e5-a837-0800200c9a66",
+            "self": "{{ users_url }}/77752fb0-669f-11e5-a837-0800200c9a66",
+            "creationDate": "2015-09-29T13:38:39.867+0000",
+            "creatorDeviceId": "00000000-0000-0000-0000-000000000001",
+            "type": "DOCTOR",
+            "administrative": {
+                "firstName": "John",
+                "lastName": "Doe",
+                "address": {
+                    "street": "Hickory Street",
+                    "number": "7674",
+                    "zip": "06111",
+                    "town": "Newington",
+                    "country": "USA, CT"
+                }
+            }
         }
-    }
-]
+    ]
+}
 ~~~
+
+### Send data
+
+Once you have found the ID of the recipient, you can send the medical data you want to share.
+Let's say that we want to send our height to John Doe, our general pratitioner, who has the id `77752fb0-669f-11e5-a837-0800200c9a66`.
+
+We need to perform a POST HTTP request on `{{ users_url }}/77752fb0-669f-11e5-a837-0800200c9a66/a7-items` with the following JSON body :
+
+<div class="highlight">
+<pre>
+<code class="language-json">
+<span class="p">{</span>  
+    <span class="nt">"sourceDeviceId"</span><span class="p">:</span> <span class="s2">"d5736213-9e26-4c9d-a1ea-8b0873aa1282"</span><span class="p">,</span>
+    <span class="nt">"a7Items"</span><span class="p">:</span> <span class="s2"><strong>"</strong>[
+        {  
+            "id": "ad625c90-66b0-11e5-a837-0800200c9a66",
+            "creationDate": "2015-09-29T14:06:48.206+0000",
+            "creatorDeviceId": "<span class="deviceId"></span>",
+            "creatorUserId": "08ac1180-fd21-11e4-b939-0800200c9a66",
+            "type": "AmiSet",
+            "key": "<strong>amiSet.ehr</strong>",
+            "value": null,
+            "version": 8,
+            "uuidMulti": null,
+            "parentId": null
+        },
+        {  
+            "id": "8ef93cb2-d4f0-4067-8957-c0b2d72d62de",
+            "creationDate": "2015-09-29T14:06:48.206+0000",
+            "creatorDeviceId": "<span class="deviceId"></span>",
+            "creatorUserId": "08ac1180-fd21-11e4-b939-0800200c9a66",
+            "type": "AMI",
+            "key": "<strong>ami.weight</strong>",
+            "value": "75",
+            "version": 8,
+            "uuidMulti": null,
+            "parentId": "ad625c90-66b0-11e5-a837-0800200c9a66""
+        },
+        {  
+            "id": "ecdb3500-66b9-11e5-a837-0800200c9a66",
+            "creationDate": "2015-09-29T14:06:48.206+0000",
+            "creatorDeviceId": "<span class="deviceId"></span>",
+            "creatorUserId": "08ac1180-fd21-11e4-b939-0800200c9a66",
+            "type": "AMI",
+            "key": "<strong>ami.namespaceEntry</strong>",
+            "value": "be.ac.ulg.chu:ad625c90-66b0-11e5-a837-0800200c9a66"",
+            "version": 8,
+            "uuidMulti": null,
+            "parentId": "ad625c90-66b0-11e5-a837-0800200c9a66"
+        },
+    ]<strong>"</strong></span>
+<span class="p">}</span>
+</code>
+</pre>
+</div>
+
+You can see that we need to specify the identifier of the sender device and the data itself.
+Data is represented as a list of A7 items. They are generic JSON object that can be any object managed in Andaman7.
+All A7 item should be identified by a UUID generated by the sender
+Please note that this JSON list is actually a string. That is because, in the secured version of the API, this string is encrypted.
+
+In this example, we can distinguish 2 kinds of A7 item : an AmiSet and two AMIs.
+The AmiSet is a container of AMIs, in this case, it represents the EHR in which the data will be added.
+The two AMIs are respectively for the weight and for a namespace entry. You may have noticed that both AMIs have the same parent ID which is the ID of the EHR.
+
+The namespace is a way to identify an EHR in a certain context. For instance, a hospital have its own 
+
+<br/>
 
 You are now reaching the end of this tutorial. To go further, we invite you to read the [developer's guide]({{ BASE_PATH }}/guide/overview.html).
 

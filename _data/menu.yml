@@ -23,7 +23,7 @@
       fa-icon: newspaper-o
     - text: Users
       url: /guide/users.html
-      fa-icon: users
+      fa-icon: user
     - text: Medical data
       fa-icon: stethoscope
       subitems:
@@ -36,6 +36,9 @@
         - text: Security
           url: /guide/medical-data/security.html
           fa-icon: lock
+    - text: Circle of Trust
+      url: /guide/circle-of-trust.html
+      fa-icon: users
     - text: Translations
       url: /guide/translations.html
       fa-icon: comment
