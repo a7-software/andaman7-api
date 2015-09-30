@@ -1,12 +1,10 @@
 ---
 layout: comments
-title: Users
+title: Getting started
 ---
 {% include JB/setup %}
 
 <div id="toc"></div>
-
-
 
 <script type="text/javascript">
 

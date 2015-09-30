@@ -24,6 +24,9 @@
     - text: Users
       url: /guide/users.html
       fa-icon: user
+    - text: Devices
+      url: /guide/devices.html
+      fa-icon: tablet
     - text: Medical data
       fa-icon: stethoscope
       subitems:
