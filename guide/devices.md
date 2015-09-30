@@ -15,5 +15,6 @@ title: Getting started
             listType: 'ul',
             headers: 'h1, h2, h3'
         });
+    });
     
 </script>
