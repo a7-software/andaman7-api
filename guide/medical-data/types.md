@@ -6,171 +6,234 @@ title: Medical data types
 
 <div id="toc"></div>
 
-## AMIs
+## Version 8
 
-### Administrative
+### AMIs
 
-Name | Key | Version | Description | Type | Qualifiers |
---- | ------- | ---- | ----------- | ---- | ---------- |
-Namespace entry     | `ami.namespaceEntry`      | 8 | | string |  |
-Last name           | `ami.lastName`            | 8 | | string |  |
-First name          | `ami.firstName`           | 8 | | string |  |
-Calling name        | `ami.callingName`         | 8 | | string |  |
-Third name          | `ami.thirdName`           | 8 | | string |  |
-Sex                 | `ami.sex`                 | 8 | | `sl.sex` |  |
-Language            | `ami.language`            | 8 | | `sl.language` |  |
-Nationality         | `ami.nationality`         | 8 | | string |  |
-Picture             | `ami.picture`             | 8 | | string |  |
-Marital status      | `ami.maritalStatus`       | 8 | | `sl.maritalStatus` | `qualifier.startDate` |
-Kids                | `ami.kids`                | 8 | | number |  |
-Blood group         | `ami.bloodGroup`          | 8 | | `sl.bloodGroup` |  |
-Birth date          | `ami.birthDate`           | 8 | | date |  |
-Birth place         | `ami.birthPlace`          | 8 | | string |  |
-Death date          | `ami.deathDate`           | 8 | | date |  |
-Death place         | `ami.deathPlace`          | 8 | | string |  |
-Address             | `ami.address`             | 8 | | string |  |
-Number              | `ami.number`              | 8 | | number |  |
-Zip code            | `ami.zipCode`             | 8 | | number |  |
-Box                 | `ami.box`                 | 8 | | string |  |
-Town                | `ami.town`                | 8 | | string |  |
-Country             | `ami.country`             | 8 | | string |  |
-Personal phone      | `ami.personalPhone`       | 8 | | string |  |
-Professional phone  | `ami.professionalPhone`   | 8 | | string |  |
-Personal mail       | `ami.personalMail`        | 8 | | string |  |
-Professional mail   | `ami.professionalMail`    | 8 | | string |  |
-Mobile phone        | `ami.mobilePhone`         | 8 | | string |  |
-Fax                 | `ami.fax`                 | 8 | | string |  |
-Doctor function     | `ami.doctorFunction`      | 8 | | `sl.doctorFunction` |  |
-Function            | `ami.function`            | 8 | | `sl.regime` |  |
-Employ              | `ami.employ`              | 8 | | `sl.regime` | `qualifier.employer`, `qualifier.startDate`, `qualifier.endDate` |
+#### Administrative
+
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Namespace entry     | `ami.namespaceEntry`      |  | string |  |  |
+Last name           | `ami.lastName`            |  | string |  |  |
+First name          | `ami.firstName`           |  | string |  |  |
+Calling name        | `ami.callingName`         |  | string |  |  |
+Third name          | `ami.thirdName`           |  | string |  |  |
+Sex                 | `ami.sex`                 |  | `sl.sex` | `li.man`, `li.woman`, `li.unknow` |
+Language            | `ami.language`            |  | `sl.language` | `li.french`, `li.english`, `li.german`, `li.dutch`, `li.italian`, `li.spanish` |  |
+Nationality         | `ami.nationality`         |  | string |  |  |
+Picture             | `ami.picture`             |  | string |  |  |
+Marital status      | `ami.maritalStatus`       |  | `sl.maritalStatus` | `li.single`, `li.married`, `li.cohabitant`, `li.divorced`, `li.other` | `qualifier.startDate` |
+Kids                | `ami.kids`                |  | number |  |  |
+Blood group         | `ami.bloodGroup`          |  | `sl.bloodGroup` | `li.O-`, `li.O+`, `li.A-`, `li.A+`, `li.B-`, `li.B+`, `li.AB-`, `li.AB+` |  |
+Birth date          | `ami.birthDate`           |  | date |  |  |
+Birth place         | `ami.birthPlace`          |  | string |  |  |
+Death date          | `ami.deathDate`           |  | date |  |  |
+Death place         | `ami.deathPlace`          |  | string |  |  |
+Address             | `ami.address`             |  | string |  |  |
+Number              | `ami.number`              |  | number |  |  |
+Zip code            | `ami.zipCode`             |  | number |  |  |
+Box                 | `ami.box`                 |  | string |  |  |
+Town                | `ami.town`                |  | string |  |  |
+Country             | `ami.country`             |  | string |  |  |
+Personal phone      | `ami.personalPhone`       |  | string |  |  |
+Professional phone  | `ami.professionalPhone`   |  | string |  |  |
+Personal mail       | `ami.personalMail`        |  | string |  |  |
+Professional mail   | `ami.professionalMail`    |  | string |  |  |
+Mobile phone        | `ami.mobilePhone`         |  | string |  |  |
+Fax                 | `ami.fax`                 |  | string |  |  |
+Doctor function     | `ami.doctorFunction`      |  | `sl.doctorFunction` | `li.generalist`, `li.gyneco`, `li.neurologue`, `li.dentiste`, `li.podologue`, `li.pharmacien`, `li.infirmier`, `li.phsychologue`, `li.physiotherapy`, `li.ostheopathy`, `li.dietitian`, `li.other` |  |
+Function            | `ami.function`            |  | `sl.regime` | `li.worker`, `li.patient`, `li.student`, `li.apprentice`, `li.selfEmployed`, `li.interim`, `li.employee`, `li.volunteer`, `li.thirdParty`, `li.civilServant` |  |
+Employ              | `ami.employ`              |  | `sl.regime` | `li.worker`, `li.patient`, `li.student`, `li.apprentice`, `li.selfEmployed`, `li.interim`, `li.employee`, `li.volunteer`, `li.thirdParty`, `li.civilServant` | `qualifier.employer`, `qualifier.startDate`, `qualifier.endDate` |
 {: class="table table-bordered table-striped table-hover table-condensed table-responsive"}
 
-### Contacts
+#### Contacts
 
-Name | Key | Version | Description | Type | Qualifiers |
---- | ------- | ---- | ----------- | ---- | ---------- |
-Doctor              | `ami.doctor`              | 8 | | string | `qualifier.speciality`, `qualifier.address`, `qualifier.phone`, `qualifier.mobilePhone`, `qualifier.mail` |
-Emergency contact   | `ami.ememrgencyContact`   | 8 | | string | `qualifier.relation`, `qualifier.phone`, `qualifier.email`, `qualifier.address` |
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Doctor              | `ami.doctor`              |  | string |  | `qualifier.speciality`, `qualifier.address`, `qualifier.phone`, `qualifier.mobilePhone`, `qualifier.mail` |
+Emergency contact   | `ami.ememrgencyContact`   |  | string |  | `qualifier.relation`, `qualifier.phone`, `qualifier.email`, `qualifier.address` |
 {: class="table table-bordered table-striped table-hover table-condensed"}
 
-### Insurances
+#### Insurances
 
-Name | Key | Version | Description | Type | Qualifiers |
---- | ------- | ---- | ----------- | ---- | ---------- |
-Mutual fundation    | `ami.mutualFundation`   | 8 | | string | `qualifier.startDate`, `qualifier.endDate` |
-Insurance           | `ami.insurance`         | 8 | | string | `qualifier.startDate`, `qualifier.endDate` |
-Complementary insurance | `ami.complementaryInsurance`  | 8 | | string | `qualifier.startDate`, `qualifier.endDate` |
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Mutual fundation    | `ami.mutualFundation`   |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
+Insurance           | `ami.insurance`         |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
+Complementary insurance | `ami.complementaryInsurance`  |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
 {: class="table table-bordered table-striped table-hover table-condensed"}
 
-### Biometry
+#### Biometry
 
-Name | Key | Version | Description | Type | Qualifiers |
---- | ------- | ---- | ----------- | ---- | ---------- |
-Height              | `ami.height`              | 8 | | number | `qualifier.unit` (length unit) |
-Weight              | `ami.weight`              | 8 | | number | `qualifier.unit` (mass unit) |
-BMI                 | `ami.bmi`                 | 8 | | number |  |
-Waist               | `ami.waist`               | 8 | | number | `qualifier.unit` (length unit) |
-Hips                | `ami.hips`                | 8 | | number | `qualifier.unit` (length unit) |
-Waist hips ratio    | `ami.waistHipsRatio`      | 8 | | number |  |
-Adiposity           | `ami.adiposity`           | 8 | | number |  |
-Fever               | `ami.fever`               | 8 | | number | `qualifier.unit` (temperature unit |
-Tension             | `ami.tension`             | 8 | | string | `qualifier.date`, `qualifier.result` |
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Height              | `ami.height`              |  | number |  | `qualifier.unit` (length unit) |
+Weight              | `ami.weight`              |  | number |  | `qualifier.unit` (mass unit) |
+BMI                 | `ami.bmi`                 |  | number |  |  |
+Waist               | `ami.waist`               |  | number |  | `qualifier.unit` (length unit) |
+Hips                | `ami.hips`                |  | number |  | `qualifier.unit` (length unit) |
+Waist hips ratio    | `ami.waistHipsRatio`      |  | number |  |  |
+Adiposity           | `ami.adiposity`           |  | number |  |  |
+Fever               | `ami.fever`               |  | number |  | `qualifier.unit` (temperature unit |
+Tension             | `ami.tension`             |  | string |  | `qualifier.date`, `qualifier.result` |
 {: class="table table-bordered table-striped table-hover table-condensed"}
 
-### Habits
+#### Habits
 
-Name | Key | Version | Description | Type | Qualifiers |
---- | ------- | ---- | ----------- | ---- | ---------- |
-Smoker frequency    | `ami.smokerFrequency`     | 8 | | `sl.smokerFrequency` | `qualifier.startDate`, `qualifier.quantity`, `qualifier.type` (smoker type) |
-Drinker             | `ami.drinker`             | 8 | | `sl.drinkerType` | `qualifier.type` (drinking frequency), `qualifier.quantity` (drinking quantity) |
-Drug                | `ami.drug`                | 8 | | `sl.drugAddiction` | `qualifier.type` (drug type), `qualifier.quantity` (drug quantity) |
-Sport               | `ami.sport`               | 8 | | `sl.sportFrequency` | `qualifier.type` (sport type), `qualifier.startDate` |
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Smoker frequency    | `ami.smokerFrequency`     |  | `sl.smokerFrequency` | `li.nonSmoker`, `li.exSmoker`, `li.smoker` | `qualifier.startDate`, `qualifier.quantity`, `qualifier.type` (smoker type) |
+Drinker             | `ami.drinker`             |  | `sl.drinkerType` | `li.abstainer`, `li.exDrinker`, `li.casual`, `li.drinker` | `qualifier.type` (drinking frequency), `qualifier.quantity` (drinking quantity) |
+Drug                | `ami.drug`                |  | `sl.drugAddiction` | `li.nonAddict`, `li.exAddict`, `li.addict` | `qualifier.type` (drug type), `qualifier.quantity` (drug quantity) |
+Sport               | `ami.sport`               |  | `sl.sportFrequency` | `li.recreation`, `li.competition`, `li.never` | `qualifier.type` (sport type), `qualifier.startDate` |
 {: class="table table-bordered table-striped table-hover table-condensed"}
 
-### Documents
+#### Documents
 
-Name | Key | Version | Description | Type | Qualifiers |
---- | ------- | ---- | ----------- | ---- | ---------- |
-Test results        | `ami.document.testResult` | 8 | | document | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
-Prescription        | `ami.document.prescription` | 8 | | document | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
-Note                | `ami.document.note`       | 8 | | document | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
-X-Ray               | `ami.document.xRay`       | 8 | | document | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
-Report              | `ami.document.report`     | 8 | | document | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
-Picture             | `ami.document.picture`    | 8 | | document | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
-Blood analysis      | `ami.document.bloodAnalysis`  | 8 | | document | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
-Draft               | `ami.document.draft`      | 8 | | document | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Test results        | `ami.document.testResult` | | document |  | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
+Prescription        | `ami.document.prescription` | | document |  | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
+Note                | `ami.document.note`       | | document |  | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
+X-Ray               | `ami.document.xRay`       | | document |  | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
+Report              | `ami.document.report`     | | document |  | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
+Picture             | `ami.document.picture`    | | document |  | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
+Blood analysis      | `ami.document.bloodAnalysis`  | | document |  | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
+Draft               | `ami.document.draft`      | | document |  | `qualifier.description`, `qualifier.filename`, `qualifier.mimetype` |
 {: class="table table-bordered table-striped table-hover table-condensed"}
 
-### Notes
+#### Notes
 
-Name | Key | Version | Description | Type | Qualifiers |
---- | ------- | ---- | ----------- | ---- | ---------- |
-Personal note       | `ami.personalNote`        | 8 | | note |  |
-Private note        | `ami.privateNode`         | 8 | | note |  |
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Personal note       | `ami.personalNote`        |  | note |  |  |
+Private note        | `ami.privateNode`         |  | note |  |  |
 {: class="table table-bordered table-striped table-hover table-condensed"}
 
-## Qualifiers
+#### Consultation
 
-Name | Key | Version | Description | Type |
----- | --- | ------- | ----------- | ---- |
-Note                | `default.note`            | 8 |  | string |
-Employer            | `qualifier.employer`      | 8 |  | string |
-Speciality          | `qualifier.speciality`    | 8 |  | string |
-Address             | `qualifier.address`       | 8 |  | string |
-Phone               | `qualifier.phone`         | 8 |  | string |
-Mobile phone        | `qualifier.mobilePhone`   | 8 |  | string |
-Email               | `qualifier.email`         | 8 |  | string |
-Relationship        | `qualifier.relation`      | 8 |  | `sl.relationship` |
-Start date          | `qualifier.startDate`     | 8 |  | date |
-End date            | `qualifier.endDate`       | 8 |  | date |
-Length unit         | `qualifier.unit`          | 8 |  | `sl.unit.length` |
-Mass unit           | `qualifier.unit`          | 8 |  | `sl.unit.mass` |
-Temperature unit    | `qualifier.unit`          | 8 |  | `sl.unit.temperature` |
-Date                | `qualifier.date`          | 8 |  | date |
-Result              | `qualifier.result`        | 8 |  | string |
-Test result         | `qualifier.result`        | 8 |  | `sl.testResult` |
-Quantity            | `qualifier.quantity`      | 8 |  | number |
-Smoker type         | `qualifier.type`          | 8 |  | `sl.smokerType` |
-Drinking frequency  | `qualifier.type`          | 8 |  | `sl.drinkingFrequency` |
-Drinking quantity   | `qualifier.quantity`      | 8 |  | `sl.drinkingQuantity` |
-Drug type           | `qualifier.type`          | 8 |  | `sl.drugType` |
-Drug quantity       | `qualifier.quantity`      | 8 |  | `sl.drugQuantity` |
-Sport type          | `qualifier.type`          | 8 |  | `sl.sportType` |
-Description         | `qualifier.description`   | 8 |  | string |
-File name           | `qualifier.filename`      | 8 |  | string |
-MIME type           | `qualifier.mimetype`      | 8 |  | string |
-Reason              | `qualifier.reason`        | 8 |  | string |
-Doctor              | `qualifier.doctor`        | 8 |  | string |
-Question            | `qualifier.question`      | 8 |  | string |
-Type                | `qualifier.type`          | 8 |  | string |
-Catchup             | `qualifier.catchup`       | 8 |  | date |
-Quantity            | `qualifier.quantity`      | 8 |  | string |
-Administration type | `qualifier.administrationType`    | 8 |  | string |
-Dose                | `qualifier.dose`          | 8 |  | string |
-Frequency           | `qualifier.frequency`     | 8 |  | string |
-Side effect         | `qualifier.sideEffect`    | 8 |  | string |
-Recharge amount     | `qualifier.rechargeAmount` | 8 |  | string |
-Registration number | `qualifier.registrationNumber` | 8 |  | string |
-Hospital            | `qualifier.hospital`      | 8 |  | string |
-Duration            | `qualifier.duration`      | 8 |  | string |
-Severity            | `qualifier.severity`      | 8 |  | `sl.allergySeverity` |
-Symptoms            | `qualifier.symptoms`      | 8 |  | string |
-Prescribed drug     | `qualifier.prescribedDrug` | 8 |  | string |
-LDL                 | `qualifier.ldl`           | 8 |  | string |
-HDL                 | `qualifier.hdl`           | 8 |  | string |
-Triglycerides       | `qualifier.triglycerides` | 8 |  | string |
-Name                | `qualifier.name`          | 8 |  | string |
-Monitoring          | `qualifier.monitoring`    | 8 |  | string |
-------------------- | ------------------------- | - | --------- |
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Consultation        | `ami.consultation`        |  | string |  | `qualifier.date`, `qualifier.reason`, `qualifier.doctor`, `qualifier.question`, `qualifier.result` |
+{: class="table table-bordered table-striped table-hover table-condensed"}
+
+#### Drugs
+
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Vaccine             | `ami.vaccine`             |  | string |  | `qualifier.date`, `qualifier.type`, `qualifier.catchup`, `qualifier.quantity`, `qualifier.administrationType` |
+Medication          | `ami.medication`          |  | string |  | `qualifier.dose`, `qualifier.frequency`, `qualifier.reason`, `qualifier.startDate`, `qualifier.endDate`, `qualifier.sideEffect` |
+Prescription        | `ami.prescription`        |  | string |  | `qualifier.date`, `qualifier.rechargeAmount`, `qualifier.registrationNumber` |
+{: class="table table-bordered table-striped table-hover table-condensed"}
+
+#### Antecedents
+
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Therapy             | `ami.therapy`             |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
+Work accident       | `ami.workAccident`        |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
+Familial antecedent | `ami.familialAntecedent`  |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
+Medical antecedent  | `ami.medicalAntecedent`   |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
+Chirurgical antecedent  | `ami.chirurgicalAntecedent`   |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
+Hospital stay       | `ami.hospitalStay`        |  | string |  | `qualifier.date`, `qualifier.reason`, `qualifier.result`, `qualifier.hospital`, `qualifier.duration` |
+Surgery             | `ami.surgery`             |  | string |  | `qualifier.date`, `qualifier.result`, `qualifier.hospital`, `qualifier.doctor` |
+{: class="table table-bordered table-striped table-hover table-condensed"}
+
+#### Diseases
+
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Disease             | `ami.disease`             |  | string |  | `qualifier.startDate`, `qualifier.endDate` |
+Allergy             | `ami.allergy`             |  | string |  | `qualifier.result` (test result), `qualifier.severity` (allergy severity), `qualifier.date`, `qualifier.symptoms`, `qualifier.prescribedDrug` |
+Family allergy      | `ami.famillyAllergy`      |  | string |  | `qualifier.date`, `qualifier.symptoms`, `qualifier.prescribedDrug` |
+Intolerance         | `ami.intolerance`         |  | string |  | `qualifier.result` (test result), `qualifier.severity` (allergy severity), `qualifier.date`, `qualifier.symptoms`, `qualifier.prescribedDrug` |
+{: class="table table-bordered table-striped table-hover table-condensed"}
+
+#### Blood analysis
+
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Cholesterol         | `ami.cholesterol`         |  | string |  | `qualifier.date`, `qualifier.ldl`, `qualifier.hdl`, `qualifier.triglycerides` |
+Glucose             | `ami.glucode`             |  | string |  | `qualifier.date`, `qualifier.name`, `qualifier.type` |
+Glycated hemoglobin | `ami.glycatedHemoglobin`  |  | string |  | `qualifier.date`, `qualifier.result` |
+Prostate-Specific Antigen   | `ami.psa`         |  | string |  | `qualifier.date`, `qualifier.result` |
+{: class="table table-bordered table-striped table-hover table-condensed"}
+
+#### Medical imaging
+
+Name | Key | Description | Type | Possible values | Qualifiers |
+---- | --- | ----------- | ---- | --------------- | ---------- |
+Coloscopy           | `ami.coloscopy`           |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+Electroencephalography  | `ami.eeg`             |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+Electrocardiography | `ami.ecg`                 |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+Magnetic resonance imaging  | `ami.irm`         |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+CT scan             | `ami.tdm`                 |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+Positron emission tomography    | `ami.tdm`     |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+Radiography         | `ami.radiography`         |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+Mammography         | `ami.mammography`         |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+Echography          | `ami.echography`          |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+Endoscopy           | `ami.endoscopy`           |  | string |  | `qualifier.date`, `qualifier.monitoring`, `qualifier.result` |
+{: class="table table-bordered table-striped table-hover table-condensed"}
+
+### Qualifiers
+
+Name | Key | Description | Type | Possible values |
+---- | --- | ----------- | ---- | --------------- |
+Note                | `default.note`            |  | string |  |
+Employer            | `qualifier.employer`      |  | string |  |
+Speciality          | `qualifier.speciality`    |  | string |  |
+Address             | `qualifier.address`       |  | string |  |
+Phone               | `qualifier.phone`         |  | string |  |
+Mobile phone        | `qualifier.mobilePhone`   |  | string |  |
+Email               | `qualifier.email`         |  | string |  |
+Relationship        | `qualifier.relation`      |  | `sl.relationship` | `li.father`, `li.mother`, `li.sister`, `li.brother`, `li.friend`, `li.husband`, `li.wife`, `li.other` |
+Start date          | `qualifier.startDate`     |  | date |  |
+End date            | `qualifier.endDate`       |  | date |  |
+Length unit         | `qualifier.unit`          |  | `sl.unit.length` | `li.meter`, `li.centimeter`, `li.millimeter`, `li.yard`, `li.foot`, `li.inch` |
+Mass unit           | `qualifier.unit`          |  | `sl.unit.mass` | `li.kilogram`, `li.gram`, `li.milligram`, `li.stone`, `li.pound`, `li.ounce`, `li.dram` |
+Temperature unit    | `qualifier.unit`          |  | `sl.unit.temperature` | `li.celsius`, `li.fahrenheit` |
+Date                | `qualifier.date`          |  | date |  |
+Result              | `qualifier.result`        |  | string |  |
+Test result         | `qualifier.result`        |  | `sl.testResult` | `li.positive`, `li.negative`, `li.undefined` |
+Quantity            | `qualifier.quantity`      |  | number |  |
+Smoker type         | `qualifier.type`          |  | `sl.smokerType` | `li.cigarette`, `li.cigare`, `li.other` |
+Drinking frequency  | `qualifier.type`          |  | `sl.drinkingFrequency` | `li.frequent`, `li.notFrequent`, `li.never` |
+Drinking quantity   | `qualifier.quantity`      |  | `sl.drinkingQuantity` | `li.1-2g/day`, `li.3-4g/day`, `li.5-6g/day`, `li.7-9g/day`, `li.>9g/day` |
+Drug type           | `qualifier.type`          |  | `sl.drugType` | `li.cannabis`, `li.cocaine`, `li.amphetamine`, `li.xtc`, `li.ghb`, `li.hallucinogen`, `li.heroin`, `li.other` |
+Drug quantity       | `qualifier.quantity`      |  | `sl.drugQuantity` | `li.1-2`, `li.3-4`, `li.5-6`, `li.7-9`, `li.>=10` |
+Sport type          | `qualifier.type`          |  | `sl.sportType` | `li.bicycle`, `li.football`, `li.running`, `li.swimming`, `li.fishing`, `li.other` |
+Description         | `qualifier.description`   |  | string |  |
+File name           | `qualifier.filename`      |  | string |  |
+MIME type           | `qualifier.mimetype`      |  | string |  |
+Reason              | `qualifier.reason`        |  | string |  |
+Doctor              | `qualifier.doctor`        |  | string |  |
+Question            | `qualifier.question`      |  | string |  |
+Type                | `qualifier.type`          |  | string |  |
+Catchup             | `qualifier.catchup`       |  | date |  |
+Quantity            | `qualifier.quantity`      |  | string |  |
+Administration type | `qualifier.administrationType`    |  | string |  |
+Dose                | `qualifier.dose`          |  | string |  |
+Frequency           | `qualifier.frequency`     |  | string |  |
+Side effect         | `qualifier.sideEffect`    |  | string |  |
+Recharge amount     | `qualifier.rechargeAmount` |  | string |  |
+Registration number | `qualifier.registrationNumber` |  | string |  |
+Hospital            | `qualifier.hospital`      |  | string |  |
+Duration            | `qualifier.duration`      |  | string |  |
+Severity            | `qualifier.severity`      |  | `sl.allergySeverity` | `li.serious`, `li.soft`, `li.verySerious`, `li.average` |
+Symptoms            | `qualifier.symptoms`      |  | string |  |
+Prescribed drug     | `qualifier.prescribedDrug` |  | string |  |
+LDL                 | `qualifier.ldl`           |  | string |  |
+HDL                 | `qualifier.hdl`           |  | string |  |
+Triglycerides       | `qualifier.triglycerides` |  | string |  |
+Name                | `qualifier.name`          |  | string |  |
+Monitoring          | `qualifier.monitoring`    |  | string |  |
 {: class="table table-bordered table-striped table-hover table-condensed"}
 
 
-## Selection lists
+### AmiSets
 
-
-## AmiSets
-
-## AmiRefs
+### AmiRefs
 
 
 <script type="text/javascript">
