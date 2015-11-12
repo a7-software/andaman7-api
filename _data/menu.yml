@@ -62,7 +62,7 @@
   url: /forum.html
   fa-icon: comment
 - text: GitHub
-  url: https://github.com/a7-software
+  url: https://github.com/andaman7
   fa-icon: github
   external: true
 - text: Twitter
