@@ -55,9 +55,9 @@ pre {
 
 @media (min-width: 1500px) {
 
-    #page-wrapper .row {
-        margin-left: 150px;
-        margin-right: 150px;
+    #page-wrapper > .row {
+        margin-left: 50px;
+        margin-right: 50px;
         padding-top: 20px;
         padding-bottom: 80px;
     }
@@ -65,7 +65,7 @@ pre {
 
 @media (max-width: 1499px) {
 
-    #page-wrapper .row {
+    #page-wrapper > .row {
         margin-left: 20px;
         margin-right: 20px;
         padding-top: 20px;
@@ -81,6 +81,19 @@ pre {
 
 pre {
     padding: 19px;
+}
+
+thead {
+    background-color: #eaeaea;
+}
+
+.table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 
@@ -165,7 +178,7 @@ only screen and (                min-resolution: 2dppx) {
 
 /*
 Sticky footer
-*/
+ */
 
 html {
     position: relative;
@@ -174,7 +187,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 51px;
+    margin-bottom: 61px;
 }
 
 .footer {
@@ -190,4 +203,142 @@ body {
 
 .container .text-muted {
     margin: 20px 0;
+}
+
+
+/*
+ Affix
+ */
+
+.amidicts-sidebar.affix {
+    position: static;
+}
+@media (min-width:768px) {
+    .amidicts-sidebar {
+        padding-left: 20px;
+    }
+}.bs-docs-sidenav {
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }
+.amidicts-sidebar .nav>li>a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #767676;
+}
+.amidicts-sidebar .nav>li>a:focus,
+.amidicts-sidebar .nav>li>a:hover {
+    padding-left: 19px;
+    color: #009C30;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #009C30;
+}
+.amidicts-sidebar .nav>.active:focus>a,
+.amidicts-sidebar .nav>.active:hover>a,
+.amidicts-sidebar .nav>.active>a {
+    padding-left: 18px;
+    font-weight: 700;
+    color: #009C30;
+    background-color: transparent;
+    border-left: 2px solid #009C30;
+}
+.amidicts-sidebar .nav .nav {
+    display: none;
+    padding-bottom: 10px;
+}
+.amidicts-sidebar .nav .nav>li>a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.amidicts-sidebar .nav .nav>li>a:focus,
+.amidicts-sidebar .nav .nav>li>a:hover {
+    padding-left: 29px;
+}
+.amidicts-sidebar .nav .nav>.active:focus>a,
+.amidicts-sidebar .nav .nav>.active:hover>a,
+.amidicts-sidebar .nav .nav>.active>a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+.ami-dicts-sidebar .nav .nav .nav > li > a {
+    padding-left: 50px;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.back-to-top {
+    display: none;
+    padding: 4px 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: 500;
+    color: #999;
+}
+.back-to-top:hover {
+    color: #009C30;
+    text-decoration: none;
+}
+@media (min-width:768px) {
+    .back-to-top {
+        display: block;
+    }
+}@media (min-width:992px) {
+    .amidicts-sidebar .nav>.active>ul {
+        display: block;
+    }
+    .amidicts-sidebar.affix,
+    .amidicts-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .amidicts-sidebar.affix {
+        position: fixed;
+        top: 20px;
+    }
+    .amidicts-sidebar.affix-bottom {
+        position: absolute;
+    }
+    .amidicts-sidebar.affix .bs-docs-sidenav,
+    .amidicts-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}@media (min-width:1200px) {
+    .amidicts-sidebar.affix,
+    .amidicts-sidebar.affix-bottom {
+        width: 263px;
+    }
+}
+
+/*
+ Datatable
+ */
+
+.dataTables_wrapper .row {
+    margin: 0;
+}
+
+/*
+ Table search
+ */
+
+.results tr[visible='false'],
+.no-result{
+    display:none;
+}
+
+.results tr[visible='true']{
+    display:table-row;
+}
+
+.counter{
+    padding:8px;
+    color:#ccc;
 }

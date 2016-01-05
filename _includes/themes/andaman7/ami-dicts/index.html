@@ -1,0 +1,107 @@
+<h1>{% if endpoint.fa-icon %}<i class="fa fa-{{ page.resource.fa-icon }}"></i> {% endif %}{{ page.title }}</h1>
+<hr/>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="amiDictsTabs" role="tablist">
+    <li role="presentation" class="active"><a href="#aggregatedVersion" role="tab" data-toggle="tab">Aggregated version</a></li>
+    <li role="presentation"><a href="#allVersions" role="tab" data-toggle="tab">All versions</a></li>
+</ul>
+
+<br/>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <!-- Aggregated version -->
+    <div role="tabpanel" class="tab-pane active" id="aggregatedVersion">
+        {% include themes/andaman7/ami-dicts/aggregated-version.html dictionary=page.aggregatedDict %}
+    </div>
+
+    <!-- All versions -->
+    <div role="tabpanel" class="tab-pane" id="allVersions">
+        {% include themes/andaman7/ami-dicts/all-versions.html dictionaries=page.dictionaries %}
+    </div>
+</div>
+
+{% include JB/comments %}
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $('#amiDictsTabs a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show')
+        });
+
+        /*$('.main-table').floatThead({
+            position: 'fixed'
+        });*/
+
+        /*$('.main-table').DataTable( {
+            scrollX: false,
+            paging: false,
+            info: false,
+            searching: false,
+            fixedHeader: true,
+            autoWidth: false,
+        });*/
+
+        $('a.item-anchor').click(function(){
+            $('html, body').animate({
+                scrollTop: $($(this).attr("href")).offset().top-38
+            });
+            $($(this).attr("href")).effect("highlight", {color: '#acdb61'}, 2500);
+            return false;
+        });
+
+        $('a.affix-link').click(function(){
+            $('html, body').animate({
+                scrollTop: $($(this).attr("href")).offset().top-10
+            });
+            return false;
+        });
+
+        $('body').scrollspy({
+            target: '.amidicts-sidebar'
+        });
+
+        $(".amidicts-sidebar").affix({
+            offset: {
+                top: function() {
+                    var sidebar = $('.amidicts-sidebar'),
+                        sidebarTop = sidebar.offset().top,
+                        sidebarTopMargin = parseInt(sidebar.children(0).css("margin-top"), 10);
+                    return this.top = sidebarTop - sidebarTopMargin
+                },
+                bottom: function() {
+                    return this.bottom = $('#disqus_thread').children().height() + parseInt($('#page-wrapper .row').css('padding-bottom'), 10)
+                }
+            }
+        });
+    });
+
+    $(".search").keyup(function () {
+        var searchTerm = $(".search").val();
+        var listItem = $('.results > tbody').children('tr');
+        var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+        $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+            return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+        }
+        });
+
+        $(".results > tbody > tr").not(":containsi('" + searchSplit + "')").each(function(e){
+            $(this).attr('visible','false');
+        });
+
+        $(".results > tbody > tr:containsi('" + searchSplit + "')").each(function(e){
+            $(this).attr('visible','true');
+        });
+
+        var jobCount = $('.results > tbody > tr[visible="true"]').length;
+        $('.counter').text(jobCount + (jobCount > 1 ? ' items' : ' item'));
+
+        if(jobCount == '0') {$('.no-result').show();}
+        else {$('.no-result').hide();}
+    });
+
+</script>
