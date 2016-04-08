@@ -96,6 +96,10 @@ thead {
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 
 /********
   Disqus
@@ -317,6 +321,14 @@ body {
     }
 }
 
+ul li.divider:after {
+    content: "";
+    display: block;
+    height: 1px;
+    margin: 10px;
+    background: #eeeeee;
+}
+
 /*
  Datatable
  */
@@ -329,16 +341,16 @@ body {
  Table search
  */
 
-.results tr[visible='false'],
-.no-result{
-    display:none;
+tr[visible='false'],
+tr[id^='no-result-'] {
+    display: none;
 }
 
-.results tr[visible='true']{
-    display:table-row;
+tr[visible='true']{
+    display: table-row;
 }
 
-.counter{
-    padding:8px;
-    color:#ccc;
+span[id^="counter-"] {
+    padding: 8px;
+    color: #ccc;
 }

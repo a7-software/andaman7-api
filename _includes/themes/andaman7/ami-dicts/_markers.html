@@ -1,0 +1,15 @@
+{% assign parent = include.parent %}
+
+{% if parent['markers'] and parent['markers'] != empty %}
+{% assign markers = parent['markers'] | sort: 'id' %}
+<div class="table-responsive">
+    <table class="table">
+        {% for marker in markers %}
+        <tr>
+            <td><code>{{ marker['id'] }}</code></td>
+            <td><!-- TODO : description --></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endif %}

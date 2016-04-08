@@ -1,0 +1,48 @@
+{% assign amiSets = include.amiSets %}
+{% assign search = include.search %}
+{% assign version = include.version %}
+
+{% if amiSets != empty %}
+
+<h3 id="ami-sets{% if version %}-v{{ version }}{% endif %}">AMISets</h3>
+
+{% if search == "true" %}
+<div class="col-lg-3 col-md-5 col-sm-5 col-xs-7 form-group pull-right">
+    <input type="text" class="search-amisets form-control" placeholder="What are you looking for ?">
+</div>
+<span class="pull-right" id="counter-amisets"></span>
+{% endif %}
+
+<!-- AmiSets -->
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed" id="results-amisets">
+        <thead>
+        <tr>
+            <th class="col-md-1">AmiSet key</th>
+            <th class="col-md-2">Description</th>
+            <th class="col-md-1">Version</th>
+            <th class="col-md-1">Type</th>
+            <th class="col-md-3">AmiRefs</th>
+            <th class="col-md-3">Qualifiers</th>
+            <th class="col-md-1">Markers</th>
+        </tr>
+        <tr class="warning" id="no-result-amisets">
+            <td colspan="8"><i class="fa fa-warning"></i> No result</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for amiSet in amiSets %}
+        <tr>
+            <td><code>{{ amiSet['id'] }}</code></td>
+            <td><!-- TODO --></td>
+            <td>{{ amiSet['version'] }}</td>
+            <td><code>{{ amiSet['type'] }}</code></td>
+            <td>{% include themes/andaman7/ami-dicts/_amirefs.html parent=amiSet %}</td>
+            <td>{% include themes/andaman7/ami-dicts/_qualifiers.html parent=amiSet %}</td>
+            <td>{% include themes/andaman7/ami-dicts/_markers.html parent=amiSet %}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}

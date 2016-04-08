@@ -1,0 +1,50 @@
+{% assign amis = include.amis %}
+{% assign search = include.search %}
+{% assign version = include.version %}
+
+{% if amis != empty %}
+
+<h3 id="amis{% if version %}-v{{ version }}{% endif %}">AMIs & Qualifiers</h3>
+
+{% if search == "true" %}
+<div class="col-lg-3 col-md-5 col-sm-5 col-xs-7 form-group pull-right">
+    <input type="text" class="search-amis form-control" placeholder="What are you looking for ?">
+</div>
+<span class="pull-right" id="counter-amis"></span>
+{% endif %}
+
+<!-- Amis -->
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed" id="results-amis">
+        <thead>
+        <tr>
+            <th class="col-md-2">Ami key</th>
+            <th class="col-md-2">Description</th>
+            <th class="col-md-1">Version</th>
+            <th class="col-md-1">Type</th>
+            <th class="col-md-2">Formula</th>
+            <th class="col-md-1">Tags</th>
+            <th class="col-md-2">Qualifiers</th>
+            <th class="col-md-1">Markers</th>
+        </tr>
+        <tr class="warning" id="no-result-amis">
+            <td colspan="8"><i class="fa fa-warning"></i> No result</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ami in amis %}
+        <tr id="ami-v{{ dictionary['version'] }}-{{ ami['id'] | replace:'.', '_' }}">
+            <td><code>{{ ami['id'] }}</code></td>
+            <td><!-- TODO --></td>
+            <td>{{ ami['version'] }}</td>
+            <td><code>{{ ami['type'] }}</code></td>
+            <td>{% if ami['formula'] %}<code>{{ ami['formula'] }}</code>{% endif %}</td>
+            <td><code>{{ ami['tags'] }}</code></td>
+            <td>{% include themes/andaman7/ami-dicts/_qualifiers.html parent=ami %}</td>
+            <td>{% include themes/andaman7/ami-dicts/_markers.html parent=ami %}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}

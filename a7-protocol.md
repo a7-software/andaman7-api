@@ -9,14 +9,12 @@ title: A7 Protocol
 
 ## What is the A7 protocol ?
 ***
-
 The A7 protocol is an attempt to simplify the exchange of medical information while being as much compatible with the current standards as possible. 
 We don't want to reinvent the wheel, but the wheel must be easy to use !
 
 A7 defines both an exchange protocol and a very simple, basic, data structure. It is model dependent (medical domain), but also as generic as possible. 
-We believe that genericity bring simplicity. A7 is inspired by the works of *FHIR*, *HL7*, *GEHR*, *OpenEHR*...
+We believe that genericity bring simplicity. A7 is inspired by the works of [*FHIR*](https://www.hl7.org/fhir/){:target="_blank"}, [*HL7*](https://www.hl7.org/){:target="_blank"}, [*GEHR*](http://cordis.europa.eu/project/rcn/17093_en.html){:target="_blank"}, [*OpenEHR*](http://www.openehr.org/home){:target="_blank"}...
 and our own 25 years of experience in the medical sector (we developed prevention focused EHR and secure medical messaging systems).
-
 
 ## Why another protocol ?
 ***
@@ -47,8 +45,8 @@ It's licensed under the Creative Commons - Attribution 4.0 International (CC BY 
 
 We define concepts at 2 levels :
 
-* domain concepts (aka business concepts)
-* interface concepts (aka API concepts)
+* **domain** concepts (aka business concepts)
+* **interface** concepts (aka API concepts)
 
 ### Domain concepts
 
@@ -58,8 +56,10 @@ Our objective being to be very simple and efficient, we currently only have 3 ma
 * Qualifier
 * AMISet
 
-#### AMI
+Those concepts are grouped in [static dictionaries]({{ BASE_PATH }}/guide/medical-data/types.html) created by Andaman7.
+Of course they can evolve according to users needs.
 
+#### AMI
 An AMI - Atomic Medical Item is the most basic piece of information. 
 It's "atomic" meaning it can't be broken down to a simpler concept.
 
@@ -82,6 +82,14 @@ This is necessary if, after some time, one realises that the previously created 
 These constraints make AMIs very easy to manage in a distributed world.  They can be created anywhere, by anyone, with no risk of "data conflict" whatsoever.
 AMIs have a reference to their "parent", e.g. a given EHR.
 
+For example, in Andaman7, the weight is represented by an AMI with the `ami.weight` key. Its value is the number representing the actual weight.
+You may wondering "How do I know the unit of this value ?". Well, this is covered in the next concept, the qualifiers.
+
+The list of all defined AMIs is available at: [AMIs dictionary]({{ BASE_PATH }}/guide/medical-data/types.html#amis).  We can create new ones if needed;
+please contact us at [support@andaman7.com](mailto:support@andaman7.com).
+
+Some AMIs' values are restricted to a predefined list of values.  Those lists and values are listed in the [AMIs dictionary]({{ BASE_PATH }}/guide/medical-data/types.html#amis) page.
+
 #### Qualifier
 
 Life is not so simple, unfortunately. Very often, a piece of information needs to be "qualified" by secondary elements of information.
@@ -95,18 +103,31 @@ Examples are :
 For the sake of simplicity and genericity, qualifiers are also a combination of key, value, source and timestamp.
 Qualifiers have a reference to their "parent", e.g. an AMI.
 
+An example of qualifier is the unit of an AMI of type `ami.weight`. The unit is identified by the `qualifier.unit` key.
+
+In Andaman7, you can also manage documents. Those documents are represented by AMIs whose key starts with `ami.document`.
+When dealing with files, it is generally useful to indicate their MIME types. This can be done by adding a `qualifier.mimetype` qualifier to those document AMIs.
+
+Some qualifiers' values are restricted to a predefined list of values. Those lists and values are listed in the [AMIs and Qualifiers dictionary]({{ BASE_PATH }}/guide/medical-data/types.html#amis) page. We can create new ones if needed;
+please contact us at [support@andaman7.com](mailto:support@andaman7.com).
+
+
 #### AMISet
 
 AMIs usually need to be grouped together. For this we use the notion of AMISet, which is a set, or group of AMIs.
 
 Examples are:
 
-* an EHR is an AMISet - because it groups all AMIs of a given patient
+* an EHR is an AMISet identified by `amiSet.ehr` - because it groups all AMIs of a given patient
 * a consultation / visit is an AMISet - because it groups AMIs (weight, temperature, complaints...) created during the same event
 * a "lab result", done on a given date, by a specific lab for a specific blood sample and containing several results is also an AMISet (the individual results are AMIs)
 
 Like Qualifiers, AMISets are also a combination of key, value, source and timestamp.
 
+The list of all defined AMISets is available at: [AMISets dictionary]({{ BASE_PATH }}/guide/medical-data/types.html#ami-sets).  We can create new ones if needed;
+please contact us at [support@andaman7.com](mailto:support@andaman7.com).
+
+Voilà, that's all there is to it! Simple, no?  Now, how do we exchange those 3 simple domain concepts in our API?
 
 ### Interface concepts
 
@@ -117,7 +138,7 @@ We tried to be even more generic here, so we were a bit more extreme : all three
 
 We created an **A7 Item**, which is a "sourced, identified, dated key value pair". It contains:
 
-* a key
+* a key (an exhaustive list of AMIs, Qualifiers or AMISets keys can be found [here]({{ BASE_PATH }}/guide/medical-data/types.html))
 * a value
 * a source
 * a date (timestamp)
@@ -126,7 +147,7 @@ We created an **A7 Item**, which is a "sourced, identified, dated key value pair
 
 An example:
 
-* key = `weight`
+* key = `ami.weight`
 * value = `70`
 * source = `de305d54-75b4-431b-adb2-eb6b9e546014` (the UUID of the person or machine at the source of the information)
 * date = `2015-04-14T18:54:07Z`
@@ -139,10 +160,10 @@ Implementation concepts are left to you.
 You can implement the domain/interface concepts as you want, taking into account other objectives like performance, storage efficiency, etc.
 
 
-## What are some examples of calls to the API ?
+## How does it look like in practice ? A sample API call.
 
 First, we will send an AMI in order to update the weight of a user.
-It can be done by sending a `POST` request to  `{{ site.andaman7_endpoint_url }}/users/{userId}/a7-items`.
+It can be done by sending a `POST` HTTP request to  `{{ site.andaman7_endpoint_url }}/users/{userId}/a7-items`.
 The `{userId}` path parameter must be replaced by the identifier of the Andaman7 user to whom you want to send the A7 items.
 
 Here is the structure of the A7 item of the AMI :

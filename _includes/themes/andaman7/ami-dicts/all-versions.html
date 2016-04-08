@@ -2,7 +2,10 @@
 
 <div class="col-md-10">
     {% for dictionary in dictionaries reversed %}
-    <h2 id="ami-dict-v{{ dictionary['version'] }}">Version {{ dictionary['version'] }}</h2>
+    {% assign version = dictionary['version'] %}
+
+
+    <h2 id="ami-dict-v{{ dictionary['version'] }}">Version {{ version }}</h2>
     <br/>
     <form class="form-horizontal">
         <div class="form-group">
@@ -19,288 +22,22 @@
         </div>
     </form>
 
+    <!-- AMIs -->
     {% assign amis = dictionary['amis'] | sort: 'id' %}
-    {% if amis != empty %}
-    <br/>
+    {% include themes/andaman7/ami-dicts/_amis.html amis=amis search="false" version=version %}
 
-    <h3 id="amis-v{{ dictionary['version'] }}">Amis</h3>
-
-
-
-    <!-- Amis -->
-    <div class="table-responsive flip-scroll">
-        <table class="table table-bordered table-striped main-table">
-            <thead class="header cf">
-            <tr>
-                <th class="col-md-2">Ami ID</th>
-                <th class="col-md-3">Description</th>
-                <th class="col-md-1">Type</th>
-                <th class="col-md-2">Formula</th>
-                <th class="col-md-1">Tags</th>
-                <th class="col-md-2">Qualifiers</th>
-                <th class="col-md-1">Markers</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for ami in amis %}
-            <tr id="ami-v{{ dictionary['version'] }}-{{ ami['id'] | replace:'.', '_' }}">
-                <td><code>{{ ami['id'] }}</code></td>
-                <td><!-- TODO --></td>
-                <td><code>{{ ami['type'] }}</code></td>
-                <td>{% if ami['formula'] %}<code>{{ ami['formula'] }}</code>{% endif %}</td>
-                <td><code>{{ ami['tags'] }}</code></td>
-                <td>
-                    <!-- Qualifiers -->
-                    {% if ami['qualifiers'] and ami['qualifiers'] != empty %}
-                    {% assign qualifiers = ami['qualifiers'] | sort: 'id' %}
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th class="col-md-3">Qualifier ID</th>
-                                <th class="col-md-3">Description</th>
-                                <th class="col-md-3">Type</th>
-                                <th class="col-md-3">Selection list ID</th>
-                            </tr>
-                            {% for qualifier in qualifiers %}
-                            <tr>
-                                <td><code>{{ qualifier['id'] }}</code></td>
-                                <td><!-- TODO --></td>
-                                <td><code>{{ qualifier['type'] }}</code></td>
-                                <td>{% if qualifier['selectionListId'] %}<code><a href="#{{ qualifier['selectionListId'] | replace:'.', '_' }}" class="item-anchor">{{ qualifier['selectionListId'] }}</a></code>{% endif %}</td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                    {% endif %}
-                </td>
-                <td>
-                    <!-- Ami markers -->
-                    {% if ami['markers'] and ami['markers'] != empty %}
-                    {% assign markers = ami['markers'] | sort: 'id' %}
-                    <div class="table-responsive">
-                        <table class="table">
-                            {% for marker in markers %}
-                            <tr>
-                                <td><code>{{ marker['id'] }}</code></td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
-
-    {% assign selectionLists = dictionary['selectionLists'] | sort: 'id' %}
-    {% if selectionLists != empty %}
-    <br/>
-
-    <h3 id="selection-lists-v{{ dictionary['version'] }}">Selection lists</h3>
-    <!-- Selection lists -->
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped main-table">
-            <thead class="header">
-            <tr>
-                <th class="col-md-2">Selection list ID</th>
-                <th class="col-md-4">Description</th>
-                <th class="col-md-6">Values</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for selectionList in selectionLists %}
-            <tr id="{{ selectionList['id'] | replace:'.', '_' }}">
-                <td><code>{{ selectionList['id'] }}</code></td>
-                <td><!-- TODO --></td>
-                <td>
-                    <!-- Selection list items -->
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th class="col-md-3">Item ID</th>
-                                <th class="col-md-3">Description</th>
-                                <th class="col-md-2">System</th>
-                                <th class="col-md-2">Ratio</th>
-                                <th class="col-md-2">Is default value ?</th>
-                            </tr>
-                            {% assign selectionListItems = selectionList['items'] | sort: 'id' %}
-                            {% for item in selectionListItems %}
-                            <tr>
-                                <td><code>{{ item['id'] }}</code></td>
-                                <td><!-- TODO --></td>
-                                <td>{% if item['system'] %}<code>{{ item['system'] }}</code>{% endif %}</td>
-                                <td>{% if item['ratio'] %}<code>{{ item['ratio'] }}</code>{% endif %}</td>
-                                <td>{% if item['defaultValue'] %}<code>{{ item['defaultValue'] }}</code>{% endif %}</td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
-
+    <!-- AMISets -->
     {% assign amiSets = dictionary['amiSets'] | sort: 'id' %}
-    {% if amiSets != empty %}
-    <br/>
+    {% include themes/andaman7/ami-dicts/_amisets.html amiSets=amiSets search="false" version=version %}
 
-    <h3 id="ami-sets-v{{ dictionary['version'] }}">Ami sets</h3>
-    <!-- AmiSets -->
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped main-table">
-            <thead class="header">
-            <tr>
-                <th class="col-md-2">AmiSet ID</th>
-                <th class="col-md-2">Description</th>
-                <th class="col-md-1">Type</th>
-                <th class="col-md-3">AmiRefs</th>
-                <th class="col-md-3">Qualifiers</th>
-                <th class="col-md-1">Markers</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for amiSet in amiSets %}
-            <tr>
-                <td><code>{{ amiSet['id'] }}</code></td>
-                <td><!-- TODO --></td>
-                <td><code>{{ amiSet['type'] }}</code></td>
-                <td>
-                    <!-- AmiRefs -->
-                    {% if amiSet['amiRefs'] and amiSet['amiRefs'] != empty %}
-                    {% assign amiRefs = amiSet['amiRefs'] | sort: 'id' %}
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th class="col-md-2">AmiRef ID</th>
-                                <th class="col-md-2">Reference</th>
-                                <th class="col-md-3">Description</th>
-                                <th class="col-md-2">Cardinality</th>
-                                <th class="col-md-3">Markers</th>
-                            </tr>
-                            {% for amiRef in amiRefs %}
-                            <tr>
-                                <td><code>{{ amiRef['id'] }}</code></td>
-                                <td><code>{{ amiRef['refId'] }}</code></td>
-                                <td><!-- TODO --></td>
-                                <td>{% if amiRef['cardinality'] %}<code>{{ amiRef['cardinality'] }}</code>{% endif %}</td>
-                                <td>
-                                    <!-- AmiRef markers -->
-                                    {% if amiRef['markers'] and amiRef['markers'] != empty %}
-                                    {% assign markers = amiRef['markers'] | sort: 'id' %}
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            {% for marker in markers %}
-                                            <tr>
-                                                <td><code>{{ marker['id'] }}</code></td>
-                                            </tr>
-                                            {% endfor %}
-                                        </table>
-                                    </div>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                    {% endif %}
-                </td>
-                <!-- AmiSet qualifiers -->
-                <td>
-                    {% if amiSet['qualifiers'] and amiSet['qualifiers'] != empty %}
-                    {% assign qualifiers = amiSet['qualifiers'] | sort: 'id' %}
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th class="col-md-3">Qualifier ID</th>
-                                <th class="col-md-3">Description</th>
-                                <th class="col-md-3">Type</th>
-                                <th class="col-md-3">Selection list ID</th>
-                            </tr>
-                            {% for qualifier in qualifiers %}
-                            <tr>
-                                <td><code>{{ qualifier['id'] }}</code></td>
-                                <td><!-- TODO : description --></td>
-                                <td><code>{{ qualifier['type'] }}</code></td>
-                                <td>{% if qualifier['selectionListId'] %}<code><a href="#{{ qualifier['selectionListId'] | replace:'.', '_' }}">{{ qualifier['selectionListId'] }}</a></code>{% endif %}</td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                    {% endif %}
-                </td>
-                <!-- AmiSet markers -->
-                <td>
-                    {% if amiSet['markers'] and amiSet['markers'] != empty %}
-                    {% assign markers = amiSet['markers'] | sort: 'id' %}
-                    <div class="table-responsive">
-                        <table class="table">
-                            {% for marker in markers %}
-                            <tr>
-                                <td><code>{{ marker['id'] }}</code></td>
-                                <td><!-- TODO : description --></td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
+    <!-- Selection lists -->
+    {% assign selectionLists = dictionary['selectionLists'] | sort: 'id' %}
+    {% include themes/andaman7/ami-dicts/_selectionlists.html selectionLists=selectionLists search="false" version=version %}
 
-    {% if dictionary['defaultQualifiers'] != empty %}
-    <br/>
-
-    <h3 id="default-qualifiers-v{{ dictionary['version'] }}">Default qualifiers</h3>
     <!-- Default qualifiers -->
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped main-table">
-            <thead class="header">
-            <tr>
-                <th class="col-md-2">Default qualifier ID</th>
-                <th class="col-md-4">Description</th>
-                <th class="col-md-2">Type</th>
-                <th class="col-md-4">Markers</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% assign defaultQualifiers = dictionary['defaultQualifiers'] | sort: 'id' %}
-            {% for defaultQualifier in defaultQualifiers %}
-            <tr>
-                <td><code>{{ defaultQualifier['id'] }}</code></td>
-                <td><!-- TODO : description --></td>
-                <td><code>{{ defaultQualifier['type'] }}</code></td>
-                <td>
-                    <!-- Default qualifier markers -->
-                    {% if defaultQualifier['markers'] and defaultQualifier['markers'] != empty %}
-                    {% assign markers = defaultQualifier['markers'] | sort: 'id' %}
-                    <div class="table-responsive">
-                        <table class="table">
-                            {% for marker in markers %}
-                            <tr>
-                                <td><code>{{ marker['id'] }}</code></td>
-                                <td><!-- TODO : description --></td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
+    {% assign defaultQualifiers = dictionary['defaultQualifiers'] | sort: 'id' %}
+    {% include themes/andaman7/ami-dicts/_defaultqualifiers.html defaultQualifiers=defaultQualifiers search="false" version=version %}
+
     <br/>
     <hr/>
     {% endfor %}
@@ -317,7 +54,7 @@
                     {% if dictionary['amis'] and dictionary['amis'] != empty %}
                     {% assign amis = dictionary['amis'] | sort: 'id' %}
                     <li>
-                        <a href="#amis-v{{ dictionary['version'] }}" class="affix-link">AMIs</a>
+                        <a href="#amis-v{{ dictionary['version'] }}" class="affix-link">AMIs & Qualifiers</a>
                         <ul class="nav">
                             {% for ami in amis %}
                             <li><a href="#ami-v{{ dictionary['version'] }}-{{ ami['id'] | replace:'.', '_' }}" class="affix-link">{{ ami['id'] }}</a></li>
@@ -325,9 +62,10 @@
                         </ul>
                     </li>
                     {% endif %}
-                    {% if dictionary['selectionLists'] and dictionary['selectionLists'] != empty %}<li><a href="#selection-lists-v{{ dictionary['version'] }}" class="affix-link">Selection lists</a></li>{% endif %}
-                    {% if dictionary['amiSets'] and dictionary['amiSets'] != empty %}<li><a href="#ami-sets-v{{ dictionary['version'] }}" class="affix-link">AMI sets</a></li>{% endif %}
-                    {% if dictionary['defaultQualifiers'] and dictionary['defaultQualifiers'] != empty %}<li><a href="#default-qualifiers-v{{ dictionary['version'] }}" class="affix-link">Default qualifiers</a></li>{% endif %}
+                    {% if dictionary['amiSets'] and dictionary['amiSets'] != empty %}<li><a href="#ami-sets-v{{ dictionary['version'] }}" class="affix-link">AMISets</a></li>{% endif %}
+                    <li class="divider"></li>
+                    {% if dictionary['selectionLists'] and dictionary['selectionLists'] != empty %}<li><a href="#selection-lists-v{{ dictionary['version'] }}" class="affix-link">Selection Lists</a></li>{% endif %}
+                    {% if dictionary['defaultQualifiers'] and dictionary['defaultQualifiers'] != empty %}<li><a href="#default-qualifiers-v{{ dictionary['version'] }}" class="affix-link">Default Qualifiers</a></li>{% endif %}
                 </ul>
             </li>
             {% endfor %}

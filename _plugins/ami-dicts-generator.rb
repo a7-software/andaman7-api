@@ -27,7 +27,7 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'ami-dicts.html')
       self.data['dictionaries'] = dictionaries
       self.data['aggregatedDict'] = aggregatedDict
-      self.data['title'] = 'AMI dictionary'
+      self.data['title'] = 'AMIs, Qualifiers, AMISets dictionaries'
     end
   end
 

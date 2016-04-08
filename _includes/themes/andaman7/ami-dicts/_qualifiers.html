@@ -1,0 +1,23 @@
+{% assign parent = include.parent %}
+
+{% if parent['qualifiers'] and parent['qualifiers'] != empty %}
+{% assign qualifiers = parent['qualifiers'] | sort: 'id' %}
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <tr>
+            <th class="col-md-3">Qualifier key</th>
+            <th class="col-md-3">Description</th>
+            <th class="col-md-3">Type</th>
+            <th class="col-md-3">Selection list key</th>
+        </tr>
+        {% for qualifier in qualifiers %}
+        <tr>
+            <td><code>{{ qualifier['id'] }}</code></td>
+            <td><!-- TODO --></td>
+            <td><code>{{ qualifier['type'] }}</code></td>
+            <td>{% if qualifier['selectionListId'] %}<code><a href="#{{ qualifier['selectionListId'] | replace:'.', '_' }}_v{{ dictionary['version'] }}" class="item-anchor">{{ qualifier['selectionListId'] }}</a></code>{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endif %}

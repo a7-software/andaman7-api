@@ -1,0 +1,39 @@
+{% assign parent = include.parent %}
+
+{% if parent['amiRefs'] and parent['amiRefs'] != empty %}
+{% assign amiRefs = parent['amiRefs'] | sort: 'id' %}
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <tr>
+            <th class="col-md-2">AmiRef key</th>
+            <th class="col-md-2">Reference</th>
+            <th class="col-md-3">Description</th>
+            <th class="col-md-2">Cardinality</th>
+            <th class="col-md-3">Markers</th>
+        </tr>
+        {% for amiRef in amiRefs %}
+        <tr>
+            <td><code>{{ amiRef['id'] }}</code></td>
+            <td><code>{{ amiRef['refId'] }}</code></td>
+            <td><!-- TODO --></td>
+            <td>{% if amiRef['cardinality'] %}<code>{{ amiRef['cardinality'] }}</code>{% endif %}</td>
+            <td>
+                <!-- AmiRef markers -->
+                {% if amiRef['markers'] and amiRef['markers'] != empty %}
+                {% assign markers = amiRef['markers'] | sort: 'id' %}
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                        {% for marker in markers %}
+                        <tr>
+                            <td><code>{{ marker['id'] }}</code></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endif %}

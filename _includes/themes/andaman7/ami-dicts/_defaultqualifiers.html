@@ -1,0 +1,45 @@
+{% assign defaultQualifiers = include.defaultQualifiers %}
+{% assign search = include.search %}
+{% assign version = include.version %}
+
+{% if dictionary['defaultQualifiers'] != empty %}
+
+<h3 id="default-qualifiers{% if version %}-v{{ version }}{% endif %}">Default qualifiers</h3>
+
+{% if search == "true" %}
+<div class="col-lg-3 col-md-5 col-sm-5 col-xs-7 form-group pull-right">
+    <input type="text" class="search-default-qualifiers form-control" placeholder="What are you looking for ?">
+</div>
+<span class="pull-right" id="counter-default-qualifiers"></span>
+{% endif %}
+
+<!-- Default qualifiers -->
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed" id="results-default-qualifiers">
+        <thead class="header">
+        <tr>
+            <th class="col-md-2">Default qualifier key</th>
+            <th class="col-md-3">Description</th>
+            <th class="col-md-1">Version</th>
+            <th class="col-md-2">Type</th>
+            <th class="col-md-4">Markers</th>
+        </tr>
+        <tr class="warning" id="no-result-default-qualifiers">
+            <td colspan="8"><i class="fa fa-warning"></i> No result</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for defaultQualifier in defaultQualifiers %}
+        <tr>
+            <td><code>{{ defaultQualifier['id'] }}</code></td>
+            <td><!-- TODO : description --></td>
+            <td>{{ defaultQualifier['version'] }}</td>
+            <td><code>{{ defaultQualifier['type'] }}</code></td>
+            <td>{% include themes/andaman7/ami-dicts/_markers.html parent=defaultQualifier %}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}

@@ -1,0 +1,65 @@
+{% assign selectionLists = include.selectionLists %}
+{% assign search = include.search %}
+{% assign version = include.version %}
+
+{% if selectionLists != empty %}
+
+<h3 id="selection-lists{% if version %}-v{{ version }}{% endif %}">Selection lists</h3>
+
+{% if search == "true" %}
+<div class="col-lg-3 col-md-5 col-sm-5 col-xs-7 form-group pull-right">
+    <input type="text" class="search-selectionlists form-control" placeholder="What are you looking for ?">
+</div>
+<span class="pull-right" id="counter-selectionlists"></span>
+{% endif %}
+
+<!-- Selection lists -->
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed" id="results-selectionlists">
+        <thead>
+        <tr>
+            <th class="col-md-2">Selection list key</th>
+            <th class="col-md-3">Description</th>
+            <th class="col-md-1">Version</th>
+            <th class="col-md-6">Values</th>
+        </tr>
+        <tr class="warning" id="no-result-selectionlists">
+            <td colspan="8"><i class="fa fa-warning"></i> No result</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for selectionList in selectionLists %}
+        <tr id="{{ selectionList['id'] | replace:'.', '_' }}_v{{ dictionary['version'] }}">
+            <td><code>{{ selectionList['id'] }}</code></td>
+            <td><!-- TODO --></td>
+            <td>{{ selectionList['version'] }}</td>
+            <td>
+                <!-- Selection list items -->
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                        <tr>
+                            <th class="col-md-3">Item key</th>
+                            <th class="col-md-3">Description</th>
+                            <th class="col-md-2">System</th>
+                            <th class="col-md-2">Ratio</th>
+                            <th class="col-md-2">Is default value ?</th>
+                        </tr>
+                        {% assign selectionListItems = selectionList['items'] | sort: 'id' %}
+                        {% for item in selectionListItems %}
+                        <tr>
+                            <td><code>{{ item['id'] }}</code></td>
+                            <td><!-- TODO --></td>
+                            <td>{% if item['system'] %}<code>{{ item['system'] }}</code>{% endif %}</td>
+                            <td>{% if item['ratio'] %}<code>{{ item['ratio'] }}</code>{% endif %}</td>
+                            <td>{% if item['defaultValue'] %}<code>{{ item['defaultValue'] }}</code>{% endif %}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
