@@ -1,8 +1,6 @@
 {% assign endpoint = page.endpoint %}
 
 <script>
-    var template = jiko.loadFile("{{ ASSET_PATH }}andaman7/resources/swagger-bootstrap/swagger-like-template.html");
-    var test = [];
 
     function getRequest(url) {
         return $.ajax({
@@ -14,18 +12,27 @@
 
     $(document).ready(function () {
 
-        var api = JSON.parse('{{ endpoint.json }}');
-        var placeholder = $('<div />').css({'margin-bottom': '1em'}).appendTo($("#endpoint"));
-        _.extend(api, {"name": "{{ endpoint.name }}"})
-        test.push(api);
-        api.order = "{{ endpoint.name }}";
-        console.log(api);
-        placeholder.append(template.apiAccordion(api));
+        var fileName = "../assets/themes/andaman7/resources/swagger-bootstrap/swagger-like-template.html";
+        jiko.loadFile(fileName, function(responseText) {
 
-        var url = document.location.toString();
-        if ( url.match('#') ) {
-            $('#'+url.split('#')[1]).addClass('in');
-        }
+            var template = jiko.loadTemplate(responseText, {fileName: fileName});
+
+            var test = [];
+
+            var api = JSON.parse('{{ endpoint.json }}');
+            var placeholder = $('<div />').css({'margin-bottom': '1em'}).appendTo($("#endpoint"));
+            _.extend(api, {"name": "{{ endpoint.name }}"})
+            test.push(api);
+            api.order = "{{ endpoint.name }}";
+            console.log(api);
+            placeholder.append(template.apiAccordion(api));
+
+            var url = document.location.toString();
+            if ( url.match('#') ) {
+                $('#'+url.split('#')[1]).addClass('in');
+            }
+        });
+
     });
 
     function doActionOnPanels(action) {
