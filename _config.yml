@@ -13,7 +13,7 @@ highlighter: pygments
 markdown: KramdownPygments
 
 
-andaman7_endpoint_url : https://api.andaman7.com/public/v1
+andaman7_endpoint_url : https://sandbox.andaman7.com/public/v1
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.

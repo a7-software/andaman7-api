@@ -52,7 +52,7 @@ module Jekyll
           endpoint['page'] = api['page'] + '.html'
           endpoint['description'] = descriptions[api['uri']]
           endpoint['fa-icon'] = api['fa-icon']
-          endpoint['json'] = endpoint.to_json
+          endpoint['json'] = endpoint.to_json.gsub("'", %q(\\\'))
 
           site.pages << EndpointPage.new(site, site.source, dir, endpoint)
         end

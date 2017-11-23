@@ -19,9 +19,10 @@
         <thead>
         <tr>
             <th class="col-md-2">Ami key</th>
-            <th class="col-md-2">Description</th>
+            <!--<th class="col-md-2">Description</th>-->
             <th class="col-md-1">Version</th>
             <th class="col-md-1">Type</th>
+            <th class="col-md-2">Selection list ID</th>
             <th class="col-md-2">Formula</th>
             <th class="col-md-1">Tags</th>
             <th class="col-md-2">Qualifiers</th>
@@ -35,9 +36,10 @@
         {% for ami in amis %}
         <tr id="ami-v{{ dictionary['version'] }}-{{ ami['id'] | replace:'.', '_' }}">
             <td><code>{{ ami['id'] }}</code></td>
-            <td><!-- TODO --></td>
+            <!--td>TODO</td>-->
             <td>{{ ami['version'] }}</td>
             <td><code>{{ ami['type'] }}</code></td>
+            <td>{% if ami['selectionListId'] %}<code><a href="#{{ ami['selectionListId'] | replace:'.', '_' }}_v{{ dictionary['version'] }}" class="item-anchor">{{ ami['selectionListId'] }}</a></code>{% endif %}</td>
             <td>{% if ami['formula'] %}<code>{{ ami['formula'] }}</code>{% endif %}</td>
             <td><code>{{ ami['tags'] }}</code></td>
             <td>{% include themes/andaman7/ami-dicts/_qualifiers.html parent=ami %}</td>

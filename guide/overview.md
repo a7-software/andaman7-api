@@ -6,7 +6,7 @@ title: Overview
 
 In this section, you will find all the basic concepts related to the API and the messages format.
 
-The API is currently in version 1 and can be accessed over HTTPS using the following URL : `https://api.andaman7.com/public/v1/`.
+The API is currently in version 1 and can be accessed over HTTPS using the following URL : `{{ site.andaman7_endpoint_url }}`.
 
 It is a REST API and all messages are in JSON format.
 
@@ -66,7 +66,7 @@ Code     | Reason                | Description
 
 As said earlier, all the messages are in JSON format. By default, they only contain the raw asked data.
 But it is possible to specify the `_envelope` query parameter and set its value to `true` in order to get additional
-information about the request. Example : `https://api.andaman7.com/public/v1/users?_envelope=true`
+information about the request. Example : `{{ site.andaman7_endpoint_url }}/users?_envelope=true`
 
 The envelope, as we call it, contains 3 sections : the metadata, the raw data and the links.
 
@@ -288,34 +288,10 @@ Each response contains the following HTTP headers :
 * `X-Rate-Limit-Reset`: the remaining seconds before the rate limit resets
 
 
-## Postman collection
+## Postman
 
-If you plan to use [Postman](https://www.getpostman.com/) to test the API calls, you might want to download our
-collection of pre-created requests :
+If you plan to use [Postman](https://www.getpostman.com/) to test the API calls, please click on the following button : [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0b1a9570a32f395c8fa4)
 
-1. In Postman, click on ![Import]({{ ASSET_PATH }}/andaman7/images/postman/import.png)
-2. Select the "Download from link" tab
-3. Paste the following link in the field : [https://www.getpostman.com/collections/be181827fb0128d5ac63](https://www.getpostman.com/collections/be181827fb0128d5ac63)
-
-A new collection should have been created. The next step is to create an environment with some key-value pairs :
-<ol>
-    <li>
-        Click on "No environment" in the top-right corner<br/>
-        <img src="{{ ASSET_PATH }}/andaman7/images/postman/no_environment.png" alt="No environment" />
-    </li>
-    <li>
-        Click on "Manage environments"<br/>
-        <img src="{{ ASSET_PATH }}/andaman7/images/postman/manage_environments.png" alt="Manage environment" />
-    </li>
-    <li>
-        Click on the "Add" button<br/>
-        <img src="{{ ASSET_PATH }}/andaman7/images/postman/add_environment.png" alt="Add environment" />
-    </li>
-    <li>
-        Set a name for the environment and add the following key/values :<br/>
-        <img src="{{ ASSET_PATH }}/andaman7/images/postman/new_environment.png" alt="" />
-    </li>
-</ol>
 
 <script type="text/javascript">
 

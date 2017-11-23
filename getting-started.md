@@ -37,7 +37,7 @@ If you don't already have them, please make a request by hitting the button belo
                 <div class="modal-body">
                     <div class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        The form is not available yet. In the meantime, you can contact us by <a href="mailto:api@andaman7.com">email</a> to get your API key.
+                        The form is not available yet. In the meantime, you can contact us by <a href="mailto:api-request@andaman7.com">email</a> to get your API key.
                     </div>
                     <div class="form-group">
                         <label for="inputFirstName" class="col-sm-3 control-label">First name</label>
@@ -120,8 +120,8 @@ of the developer's guide.
 
 <div class="well code">
     curl {{ me_url }} \<br/>
-    <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span> \<br/>
-    <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>
+    <span class="tabulation"></span>-H 'api-key: <span class="apiKey"></span>' \<br/>
+    <span class="tabulation"></span>-H 'Authorization: Basic <span class="base64"></span>'
 </div>
 
 #### Example of HTTP response body
@@ -283,68 +283,118 @@ For more information on query filter parameters, see [this section]({{ BASE_PATH
 ### Send data
 
 Once you have found the ID of the recipient, you can send the medical data you want to share.
-Let's say that we want to send our height to John Doe, our general pratitioner, who has the id `77752fb0-669f-11e5-a837-0800200c9a66`.
+Let's say that we want to send our height to John Doe, our general practitioner, who has the id `77752fb0-669f-11e5-a837-0800200c9a66`.
 
 We need to perform a POST HTTP request on `{{ users_url }}/77752fb0-669f-11e5-a837-0800200c9a66/a7-items` with the following JSON body :
 
-<div class="highlight">
-<pre>
-<code class="language-json">
-<span class="p">{</span>  
-    <span class="nt">"sourceDeviceId"</span><span class="p">:</span> <span class="s2">"d5736213-9e26-4c9d-a1ea-8b0873aa1282"</span><span class="p">,</span>
-    <span class="nt">"a7Items"</span><span class="p">:</span> <span class="s2"><strong>"</strong>[
-        {  
-            "id": "ad625c90-66b0-11e5-a837-0800200c9a66",
-            "creationDate": "2015-09-29T14:06:48.206+0000",
-            "creatorDeviceId": "<span class="deviceId"></span>",
-            "creatorRegistrarId": "08ac1180-fd21-11e4-b939-0800200c9a66",
-            "type": "AmiSet",
-            "key": "<strong>amiSet.ehr</strong>",
-            "value": null,
-            "version": 8,
-            "uuidMulti": null,
-            "parentId": null
-        },
-        {  
-            "id": "8ef93cb2-d4f0-4067-8957-c0b2d72d62de",
-            "creationDate": "2015-09-29T14:06:48.206+0000",
-            "creatorDeviceId": "<span class="deviceId"></span>",
-            "creatorRegistrarId": "08ac1180-fd21-11e4-b939-0800200c9a66",
-            "type": "AMI",
-            "key": "<strong>ami.weight</strong>",
-            "value": "75",
-            "version": 8,
-            "uuidMulti": null,
-            "parentId": "ad625c90-66b0-11e5-a837-0800200c9a66""
-        },
-        {  
-            "id": "ecdb3500-66b9-11e5-a837-0800200c9a66",
-            "creationDate": "2015-09-29T14:06:48.206+0000",
-            "creatorDeviceId": "<span class="deviceId"></span>",
-            "creatorRegistrarId": "08ac1180-fd21-11e4-b939-0800200c9a66",
-            "type": "AMI",
-            "key": "<strong>ami.namespaceEntry</strong>",
-            "value": "be.ac.ulg.chu:ad625c90-66b0-11e5-a837-0800200c9a66",
-            "version": 8,
-            "uuidMulti": null,
-            "parentId": "ad625c90-66b0-11e5-a837-0800200c9a66"
-        },
-    ]<strong>"</strong></span>
-<span class="p">}</span>
-</code>
-</pre>
-</div>
 
-You can see that we need to specify the identifier of the sender device and the data itself.
+~~~json
+{
+    "sourceDeviceId": "<ID of device sender>",
+    "sourceDomain": "com.example",
+    "ehrId": "<ehr id in com.example system>",
+    "a7Items": "[\r\n
+                    {\r\n
+                        \"id\": \"<ehr id in com.example system>\",\r\n
+                        \"creatorId\": \"3eae82e2-defd-4b7d-b212-bb45305f0e0b\",\r\n
+                        \"creationDate\": \"2016-06-01T12:00:00Z\",\r\n
+                        \"type\": \"AMISET\",\r\n
+                        \"key\": \"amiSet.ehr\",\r\n
+                        \"version\": 8,\r\n
+                        \"value\": null,\r\n
+                        \"multiId\": null,\r\n
+                        \"parentId\": null\r\n
+                    },\r\n
+                    {\r\n
+                        \"id\": \"5d086a3f-4dce-45fb-9086-dc495e7c6e7f\",\r\n
+                        \"creatorId\": \"3eae82e2-defd-4b7d-b212-bb45305f0e0b\",\r\n
+                        \"creationDate\": \"2016-06-01T12:00:00Z\",\r\n
+                        \"type\": \"AMI\",\r\n
+                        \"key\": \"ami.firstName\",\r\n
+                        \"version\": 8,\r\n
+                        \"value\": \"John\",\r\n
+                        \"multiId\": null,\r\n
+                        \"parentId\": \"<ehr id in com.example system>\"\r\n
+                    },\r\n
+                    {\r\n
+                        \"id\": \"8499fc10-a5b0-11e6-9598-0800200c9a66\",\r\n
+                        \"creatorId\": \"3eae82e2-defd-4b7d-b212-bb45305f0e0b\",\r\n
+                        \"creationDate\": \"2016-06-01T12:00:00Z\",\r\n
+                        \"type\": \"AMI\",\r\n
+                        \"key\": \"ami.lastName\",\r\n
+                        \"version\": 8,\r\n
+                        \"value\": \"Doe\",\r\n
+                        \"multiId\": null,\r\n
+                        \"parentId\": \"<ehr id in com.example system>\"\r\n
+                    },\r\n
+                    {\r\n
+                        \"id\": \"4b6c9607-ba9a-4d7c-ac6a-23166350adf4\",\r\n
+                        \"creatorId\": \"3eae82e2-defd-4b7d-b212-bb45305f0e0b\",\r\n
+                        \"creationDate\": \"2016-06-01T12:00:00Z\",\r\n
+                        \"type\": \"AMI\",\r\n
+                        \"key\": \"ami.weight\",\r\n
+                        \"version\": 16,\r\n
+                        \"value\": \"50\",\r\n
+                        \"multiId\": null,\r\n
+                        \"parentId\": \"<ehr id in com.example system>\"\r\n
+                    },\r\n
+                    {\r\n
+                        \"id\": \"534f1dae-9b5a-4d97-90a8-34c64a85d27b\",\r\n
+                        \"creatorId\": \"3eae82e2-defd-4b7d-b212-bb45305f0e0b\",\r\n
+                        \"creationDate\": \"2016-06-01T12:00:00Z\",\r\n
+                        \"type\": \"QUALIFIER\",\r\n
+                        \"key\": \"qualifier.unit\",\r\n
+                        \"version\": 16,\r\n
+                        \"value\": \"li.kilogram\",\r\n
+                        \"multiId\": null,\r\n
+                        \"parentId\": \"4b6c9607-ba9a-4d7c-ac6a-23166350adf4\"\r\n
+                    },\r\n
+                    {\r\n
+                        \"id\": \"a90206aa-fc18-447e-9d37-cfc77624fd94\",\r\n
+                        \"creatorId\": \"3eae82e2-defd-4b7d-b212-bb45305f0e0b\",\r\n
+                        \"creationDate\": \"2016-06-01T12:00:00Z\",\r\n
+                        \"type\": \"AMI\",\r\n
+                        \"key\": \"ami.document.testResult\",\r\n
+                        \"version\": 16,\r\n
+                        \"value\": \"71af5f77-096a-4320-8fc1-50a9921e1346\",\r\n
+                        \"multiId\": a90206aa-fc18-447e-9d37-cfc77624fd94,\r\n
+                        \"parentId\": \"<ehr id in com.example system>\"\r\n
+                    },\r\n
+                    {\r\n
+                        \"id\": \"c48e58aa-dc48-4f91-88ba-a1653c676528\",\r\n
+                        \"creatorId\": \"3eae82e2-defd-4b7d-b212-bb45305f0e0b\",\r\n
+                        \"creationDate\": \"2016-06-01T12:00:00Z\",\r\n
+                        \"type\": \"QUALIFIER\",\r\n
+                        \"key\": \"qualifier.mimetype\",\r\n
+                        \"version\": 16,\r\n
+                        \"value\": \"test/plain\",\r\n
+                        \"multiId\": null,\r\n
+                        \"parentId\": \"a90206aa-fc18-447e-9d37-cfc77624fd94\"\r\n
+                    },\r\n
+                    {\r\n
+                        \"id\": \"1f610f28-c3bf-4088-902d-2368decfe436\",\r\n
+                        \"creatorId\": \"3eae82e2-defd-4b7d-b212-bb45305f0e0b\",\r\n
+                        \"creationDate\": \"2016-06-01T12:00:00Z\",\r\n
+                        \"type\": \"QUALIFIER\",\r\n
+                        \"key\": \"qualifier.filename\",\r\n
+                        \"version\": 16,\r\n
+                        \"value\": \"helloworld.txt\",\r\n
+                        \"multiId\": null,\r\n
+                        \"parentId\": \"a90206aa-fc18-447e-9d37-cfc77624fd94\"\r\n
+                    }\r\n
+                ]",
+    "document": {
+        "id": "71af5f77-096a-4320-8fc1-50a9921e1346",
+        "content": "SGVsbG8gd29ybGQgIQ=="
+    }
+}
+~~~
+
+In the request payload, in addition to the data, you need to provide the device id from which you send the data.
+You also have to provide your domain ID (e.g. com.example) as well as the EHR ID inside your system.
+
 Data is represented as a list of A7 items. They are generic JSON object that can be any object managed in Andaman7.
 Note that this JSON list is actually a string. That is because, in the secured version of the API, this string is encrypted.
-
-In the previous example, we can distinguish 2 kinds of A7 item : an AmiSet and two AMIs.
-The AmiSet is a container of AMIs, in this case, it represents the EHR in which the data will be added.
-The two AMIs are respectively for the weight and for a namespace entry. You may have noticed that both AMIs have the same parent ID which is the ID of the EHR.
-
-The namespace is a way to identify an EHR in a certain context. In that way, Andaman7 can bind multiple identifiers to the same EHR.
-A namespace entry is composed of two parts separated by a colon : `<context>:<identifier in that context>`. Typically, the context is your domain name.
 
 Here is the structure common to all A7 items :
 
@@ -352,10 +402,11 @@ Here is the structure common to all A7 items :
 * `creationDate`: the creation date of the A7 item in ISO 8601 format ;
 * `creatorDeviceId`: the identifier of the device from which the data is sent ;
 * `creatorRegistrarId`: the identifier of the user who is sending the data ;
-* `type`: the type of A7 item. It can be one of the following values : `AMI`, `Qualifier`, `AmiSet` or `AmiRef` ;
+* `type`: the type of A7 item. It can be one of the following values : `AMI`, `QUALIFIER`, `AMISET` or `AMIREF` ;
 * `key`: the key of the A7 item ;
-* `value`: the value of the A7 item ;
 * `version`: the version of A7 item ;
+* `value`: the value of the A7 item ;
+* `multiId`: an ID to group AMIs with the "multi" marker;
 * `parentId`: the ID of a parent A7 item. Ex: the A7 item of the EHR is the parent of the A7 item of the AMI describing the weight ;
 
 See [this page]({{ BASE_PATH }}/guide/medical-data/types.html) for the complete list of medical data with their keys, types and versions.

@@ -39,9 +39,9 @@ module Jekyll
         uri = URI(url)
 
         req = Net::HTTP::Get.new(uri)
-        // TODO : authenticate
+        req['api-key'] = '2C949434-20FF-4636-BA96-B7C0CAD42612'
 
-        res = Net::HTTP.start(uri.hostname, uri.port) {|http|
+        res = Net::HTTP.start(uri.hostname, uri.port, :read_timeout => 240) {|http|
           http.request(req)
         }
 
@@ -55,7 +55,7 @@ module Jekyll
 
     def generate(site)
       dir = 'guide/medical-data'
-      amiDictsUrl = 'http://localhost:8080/admin/v1/dictionaries/ami'
+      amiDictsUrl = 'http://localhost:8080/webapp/v1/dictionaries/ami'
       aggregatedAmiDictUrl = amiDictsUrl + '/aggregated'
 
       dictionaries = getUrlContent(amiDictsUrl)

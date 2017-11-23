@@ -21,12 +21,15 @@
     - text: Overview
       url: /guide/overview.html
       fa-icon: newspaper-o
-    - text: Users
-      url: /guide/users.html
-      fa-icon: user
-    - text: Devices
-      url: /guide/devices.html
-      fa-icon: tablet
+    - text: Basics
+      url: /guide/basics.html
+      fa-icon: puzzle-piece
+#    - text: Users
+#      url: /guide/users.html
+#      fa-icon: user
+#    - text: Devices
+#      url: /guide/devices.html
+#      fa-icon: tablet
     - text: Medical data
       fa-icon: stethoscope
       subitems:
@@ -36,15 +39,15 @@
         - text: Synchronization
           url: /guide/medical-data/synchronization.html
           fa-icon: refresh
-        - text: Security
-          url: /guide/medical-data/security.html
-          fa-icon: lock
-    - text: Circle of Trust
-      url: /guide/circle-of-trust.html
-      fa-icon: users
-    - text: Translations
-      url: /guide/translations.html
-      fa-icon: comment
+#        - text: Security
+#          url: /guide/medical-data/security.html
+#          fa-icon: lock
+#    - text: Circle of Trust
+#      url: /guide/circle-of-trust.html
+#      fa-icon: users
+#    - text: Translations
+#      url: /guide/translations.html
+#      fa-icon: comment
     - text: Errors
       url: /guide/errors.html
       fa-icon: exclamation-circle
@@ -52,7 +55,7 @@
   fa-icon: cubes
   subitems-page: _navbar_endpoints.html
 - text: Swagger console
-  url: https://my.andaman7.com/swagger/index.html
+  url: https://sandbox.andaman7.com/swagger/index.html
   fa-icon: flask
   external: true
 - text: Code samples

@@ -120,7 +120,6 @@ Examples are:
 
 * an EHR is an AMISet identified by `amiSet.ehr` - because it groups all AMIs of a given patient
 * a consultation / visit is an AMISet - because it groups AMIs (weight, temperature, complaints...) created during the same event
-* a "lab result", done on a given date, by a specific lab for a specific blood sample and containing several results is also an AMISet (the individual results are AMIs)
 
 Like Qualifiers, AMISets are also a combination of key, value, source and timestamp.
 

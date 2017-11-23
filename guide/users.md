@@ -6,7 +6,9 @@ title: Users
 
 <div id="toc"></div>
 
+Andaman7 users, also called "registrars", are patients or care providers that can manage one or more EHRs among their [devices]({{ BASE_PATH }}/guide/devices.html).
 
+Each user is bound to an email address and is uniquely identified by a UUID.
 
 <script type="text/javascript">
 
