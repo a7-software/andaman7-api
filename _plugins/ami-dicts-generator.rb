@@ -58,8 +58,8 @@ module Jekyll
       amiDictsUrl = 'http://localhost:8080/webapp/v1/dictionaries/ami'
       aggregatedAmiDictUrl = amiDictsUrl + '/aggregated'
 
-      dictionaries = getUrlContent(amiDictsUrl)
-      aggregatedDict = getUrlContent(aggregatedAmiDictUrl)
+      dictionaries = getUrlContent(amiDictsUrl + '?family=A7')
+      aggregatedDict = getUrlContent(aggregatedAmiDictUrl + '?family=A7')
 
       site.pages << AmiDictPage.new(site, site.source, dir, dictionaries, aggregatedDict)
     end
