@@ -63,7 +63,7 @@ Of course they can evolve according to users needs.
 An AMI - Atomic Medical Item is the most basic piece of information. 
 It's "atomic" meaning it can't be broken down to a simpler concept.
 
-Examples are the weight of a person, an allergy or a blood red cell count.  But we are a bit extreme too and like genericity. 
+Examples are the weight of a person, an allergy or a red blood cell count.  But we are a bit extreme too and like genericity. 
 So the last name is also an AMI, as well as the phone number, any image that is part of the medical file, an URL to medical information online.
 
 An AMI is basically a key-value pair augmented with :
