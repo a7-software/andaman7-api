@@ -51,9 +51,6 @@
     - text: Errors
       url: /guide/errors.html
       fa-icon: exclamation-circle
-- text: API Endpoints
-  fa-icon: cubes
-  subitems-page: _navbar_endpoints.html
 - text: Swagger console
   url: https://sandbox.andaman7.com/swagger/index.html
   fa-icon: flask

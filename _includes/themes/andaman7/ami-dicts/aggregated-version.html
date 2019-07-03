@@ -5,12 +5,8 @@
     <p>This dictionary holds the last version of each AMI, AMISet, selection list and default qualifier.</p>
 
     <!-- AMIs -->
-    {% assign amis = dictionary['amis'] | sort: 'id' %}
+    {% assign amis = dictionary['amis'] | concat: dictionary['amiSets'] | sort: 'id' %}
     {% include themes/andaman7/ami-dicts/_amis.html amis=amis search="true" %}
-
-    <!-- AMISets -->
-    {% assign amiSets = dictionary['amiSets'] | sort: 'id' %}
-    {% include themes/andaman7/ami-dicts/_amisets.html amiSets=amiSets search="true" %}
 
     <!-- Selection lists -->
     {% assign selectionLists = dictionary['selectionLists'] | sort: 'id' %}
@@ -25,8 +21,7 @@
 <div class="col-md-2" role="complementary">
     <nav class="hidden-xs hidden-sm affix-top amidicts-sidebar">
         <ul class="nav bs-docs-sidenav">
-            {% if dictionary['amis'] and dictionary['amis'] != empty %}<li><a href="#amis" class="affix-link">AMIs & Qualifiers</a></li>{% endif %}
-            {% if dictionary['amiSets'] and dictionary['amiSets'] != empty %}<li><a href="#ami-sets" class="affix-link">AMISets</a></li>{% endif %}
+            {% if (dictionary['amis'] and dictionary['amis'] != empty) or (dictionary['amiSets'] and dictionary['amiSets'] != empty) %}<li><a href="#amis" class="affix-link">AMIs & Qualifiers</a></li>{% endif %}
             <li class="divider"></li>
             {% if dictionary['selectionLists'] and dictionary['selectionLists'] != empty %}<li><a href="#selection-lists" class="affix-link">Selection Lists</a></li>{% endif %}
             {% if dictionary['defaultQualifiers'] and dictionary['defaultQualifiers'] != empty %}<li><a href="#default-qualifiers" class="affix-link">Default Qualifiers</a></li>{% endif %}
