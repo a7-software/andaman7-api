@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Andaman7 Developer Portal - Overview</title>
+    
+    <meta name="author" content="Pierre-Yves Derbaix">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/images/favicon.ico" type="image/vnd.microsoft.icon" />
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/fixedheader/3.1.0/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/1.1.3/metisMenu.min.css">
+    <link href="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/resources/sb-admin/css/sb-admin-2.css" rel="stylesheet">
+    <link href="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/css/style.css" rel="stylesheet">
+    <link href="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/css/syntax.css" rel="stylesheet">
+    <link href="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    
+
+    <!--[if lt IE 9]>
+    <script src="http://a7-software.github.io/andaman7-api/assets/themes//resources/respond/Respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.0.0/metisMenu.min.js"></script>
+    <script src="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/resources/sb-admin/js/sb-admin-2.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/1.3.1/jquery.floatThead-slim.min.js"></script>
+    <script src="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/resources/jiko/jiko.js" type="text/javascript"></script>
+    <script src="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/resources/jekyll-table-of-contents/toc.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.0/js/dataTables.fixedHeader.min.js"></script>
+    <script src="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/js/crypto-js/crypto-js.js"></script>
+    <script src="http://a7-software.github.io/andaman7-api/assets/themes/andaman7/js/utils.js"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"></a>
+    </div>
+    <!-- /.navbar-header -->
+
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            
+<ul class="nav" id="side-menu">
+    
+    <li>
+        <a href="http://a7-software.github.io/andaman7-api/a7-protocol.html" >
+            <i class="fa fa-cogs fa-fw"></i> 
+            A7 Protocol
+            
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="http://a7-software.github.io/andaman7-api/getting-started.html" >
+            <i class="fa fa-play-circle fa-fw"></i> 
+            Getting started
+            
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="#" >
+            <i class="fa fa-book fa-fw"></i> 
+            Developer's guide
+            
+            <span class="fa arrow"></span>
+            
+        </a>
+        
+        <ul class="nav nav-second-level collapse">
+            
+            
+<li>
+    <a href="http://a7-software.github.io/andaman7-api/guide/overview.html">
+        <i class="fa fa-newspaper-o fa-fw"></i> 
+        Overview
+        
+    </a>
+    
+</li>
+
+<li>
+    <a href="http://a7-software.github.io/andaman7-api/guide/basics.html">
+        <i class="fa fa-puzzle-piece fa-fw"></i> 
+        Basics
+        
+    </a>
+    
+</li>
+
+<li>
+    <a href="#">
+        <i class="fa fa-stethoscope fa-fw"></i> 
+        Medical data
+        
+        <span class="fa arrow"></span>
+        
+    </a>
+    
+    <ul class="nav nav-third-level collapse">
+        
+<li>
+    <a href="http://a7-software.github.io/andaman7-api/guide/medical-data/types.html">
+        <i class="fa fa-file-code-o fa-fw"></i> 
+        Types
+        
+    </a>
+    
+</li>
+
+<li>
+    <a href="http://a7-software.github.io/andaman7-api/guide/medical-data/synchronization.html">
+        <i class="fa fa-refresh fa-fw"></i> 
+        Synchronization
+        
+    </a>
+    
+</li>
+
+    </ul>
+    
+</li>
+
+<li>
+    <a href="http://a7-software.github.io/andaman7-api/guide/errors.html">
+        <i class="fa fa-exclamation-circle fa-fw"></i> 
+        Errors
+        
+    </a>
+    
+</li>
+
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a href="https://sandbox.andaman7.com/swagger/index.html" target="_blank">
+            <i class="fa fa-flask fa-fw"></i> 
+            Swagger console
+            
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="http://a7-software.github.io/andaman7-api/code-samples.html" >
+            <i class="fa fa-code fa-fw"></i> 
+            Code samples
+            
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="http://a7-software.github.io/andaman7-api/forum.html" >
+            <i class="fa fa-comment fa-fw"></i> 
+            Developer forum
+            
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="https://github.com/andaman7" target="_blank">
+            <i class="fa fa-github fa-fw"></i> 
+            GitHub
+            
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="https://twitter.com/andaman7" target="_blank">
+            <i class="fa fa-twitter fa-fw"></i> 
+            Twitter
+            
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="https://www.facebook.com/Andaman7App" target="_blank">
+            <i class="fa fa-facebook fa-fw"></i> 
+            Facebook
+            
+        </a>
+        
+    </li>
+    
+    <li>
+        <a href="https://www.linkedin.com/company/andaman7" target="_blank">
+            <i class="fa fa-linkedin fa-fw"></i> 
+            LinkedIn
+            
+        </a>
+        
+    </li>
+    
+</ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+</nav>
+
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Warning!</strong> Please note that this document is a first draft and is likely to change shortly.
+            </div>
+        
+<div class="page-header">
+    <h1>Overview </h1>
+</div>
+
+
+<p>In this section, you will find all the basic concepts related to the API and the messages format.</p>
+
+<p>The API is currently in version 1 and can be accessed over HTTPS using the following URL : <code>https://sandbox.andaman7.com/public/v1</code>.</p>
+
+<p>It is a REST API and all messages are in JSON format.</p>
+
+<div id="toc"></div>
+
+<h2 id="rest">REST</h2>
+
+<p>With <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>, data are resources and they are accessed using the HTTP protocol.</p>
+
+<p>For example, if you want to get a list of users, you make a <code>GET</code> HTTP request on the <code>users</code> collection.</p>
+
+<h3 id="http-verbs">HTTP verbs</h3>
+
+<p>Here are the CRUD operations, their corresponding HTTP verb and the action performed on the resources.</p>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>CRUD operation</th>
+      <th>HTTP verb</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create</td>
+      <td><code>POST</code></td>
+      <td>Creates a new resource.</td>
+    </tr>
+    <tr>
+      <td>Read</td>
+      <td><code>GET</code></td>
+      <td>Retrieves a single resource or a collection of resources.</td>
+    </tr>
+    <tr>
+      <td>Update</td>
+      <td><code>PUT</code></td>
+      <td>Updates an existing resource.</td>
+    </tr>
+    <tr>
+      <td>Delete</td>
+      <td><code>DELETE</code></td>
+      <td>Deletes a resource.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="api-key">API key</h2>
+
+<p>All the requests must include an API key. There is one API key per application that is using the API.<br />
+If you don’t have one, you have to request it before starting to use the API.</p>
+
+<p>To request an API key, see <a href="http://a7-software.github.io/andaman7-api/getting-started.html">this section</a>.</p>
+
+<p>Once you have an API key, you make requests to the API by adding an HTTP header : <code>api-key: &lt;YOUR API KEY&gt;</code>.</p>
+
+<h2 id="authentication">Authentication</h2>
+
+<p>Some API calls need the end user to be authenticated. This can be achieved using <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic HTTP Authentication</a>.</p>
+
+<p>Thus, your request must include an additional HTTP header : <code>Authorization: Basic &lt;CREDENTIALS&gt;</code>. <br />
+Where <code>&lt;CREDENTIALS&gt;</code> is the concatenation of the username, the <code>:</code> symbol and the password hashed using the SHA-256 algorithm.<br />
+Then, the whole string is encoded in base 64.</p>
+
+<p>In other words : <code>Base64(&lt;username&gt;:SHA256(&lt;password&gt;))</code>.</p>
+
+<h2 id="responses">Responses</h2>
+
+<h3 id="http-status-codes">HTTP status codes</h3>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Reason</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>200</strong></td>
+      <td>OK</td>
+      <td>The request was successfully executed.</td>
+    </tr>
+    <tr>
+      <td><strong>201</strong></td>
+      <td>Created</td>
+      <td>The resource has been successfully created.</td>
+    </tr>
+    <tr>
+      <td><strong>204</strong></td>
+      <td>No Content</td>
+      <td>The request was successfully executed but returned no content.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="format">Format</h3>
+
+<p>As said earlier, all the messages are in JSON format. By default, they only contain the raw asked data.<br />
+But it is possible to specify the <code>_envelope</code> query parameter and set its value to <code>true</code> in order to get additional<br />
+information about the request. Example : <code>https://sandbox.andaman7.com/public/v1/users?_envelope=true</code></p>
+
+<p>The envelope, as we call it, contains 3 sections : the metadata, the raw data and the links.</p>
+
+<div class="highlight"><pre><code class="language-json"><span class="p">{</span>
+    <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;&lt;data_name&gt;&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>The <strong>metadata</strong> are essentially used when a collection of data is returned, basically to give pagination information.</p>
+
+<p>The key used for the <strong>data</strong> section depends on the data that is being returned.<br />
+For example, if the server returns a single user, the key will be <code>user</code>. If a collection of users is returned, then the key is <code>users</code>.</p>
+
+<p>The <strong>links</strong> section will be explained in the <a href="#hypermedia">hypermedia</a> part.</p>
+
+<h3 id="errors">Errors</h3>
+
+<p>When an error occurs, the response has a specific format which looks like this :</p>
+
+<div class="highlight"><pre><code class="language-json"><span class="p">{</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;The specified resource does not exist.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;developerMessage&quot;</span><span class="p">:</span> <span class="s2">&quot;The specified resource does not exist.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;moreInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;http://developers.andaman7.com/guide/errors.html#404&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;support&quot;</span><span class="p">:</span> <span class="s2">&quot;api@andaman7.com&quot;</span>
+<span class="p">}</span></code></pre></div>
+
+<p>The <code>status</code> is the HTTP status code returned by the server. The <code>code</code> is either the same as the status code or a custom code.<br />
+Those codes can be found <a href="http://a7-software.github.io/andaman7-api/guide/errors.html">here</a>. The <code>message</code> is a description of the error that can be understood by end users.<br />
+However, the <code>developerMessage</code> is a description that is more oriented to the developers and which contains additional information.</p>
+
+<h2 id="hypermedia">Hypermedia</h2>
+
+<p>When the envelope is displayed, most responses include links to other resources that are related to the current one.<br />
+They give clues on the relationship between resources and may ease the first contact with the API.</p>
+
+<p>Those links are included in the <code>links</code> section of the envelope and it contains at least one item, which is the link to the current resource (<code>self</code>).</p>
+
+<h3 id="example">Example</h3>
+
+<p>Here is an example of envelope :</p>
+
+<div class="highlight"><pre><code class="language-json"><span class="p">{</span>
+    <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="err">...</span> <span class="p">},</span>
+    <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sandbox.andaman7.com/public/v1/users/me/devices/2c8d77d0-fed7-11e4-b939-0800200c9a66&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;devices&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sandbox.andaman7.com/public/v1/users/me/devices&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;owner&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sandbox.andaman7.com/public/v1/users/me&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span></code></pre></div>
+
+<h2 id="pagination">Pagination</h2>
+
+<p>The pagination is simply used to split a large collection of items into multiple pages. For example, this can be useful<br />
+for mobile apps to lazy load some search results.</p>
+
+<p>Pagination can be achieved by specifying 2 query parameters : <code>_page</code> and <code>_perPage</code>, respectively for the number of the<br />
+page an the number of items in a page.</p>
+
+<h3 id="example-1">Example</h3>
+
+<p>Here is the response after hitting <code>GET https://sandbox.andaman7.com/public/v1/users?<strong>_page=3&amp;_perPage=8</strong></code> to get<br />
+the third page of the users with 8 users per page.</p>
+
+<div class="highlight"><pre><code class="language-json"><span class="p">{</span>
+    <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;perPage&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="nt">&quot;totalPages&quot;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+        <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="nt">&quot;totalItems&quot;</span><span class="p">:</span> <span class="mi">146</span><span class="p">,</span>
+        <span class="nt">&quot;hasMore&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;users&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="err">...</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;first&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sandbox.andaman7.com/public/v1/users?_page=1&amp;_perPage=8&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;prev&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sandbox.andaman7.com/public/v1/users?_page=2&amp;_perPage=8&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;next&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sandbox.andaman7.com/public/v1/users?_page=4&amp;_perPage=8&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;last&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sandbox.andaman7.com/public/v1/users?_page=19&amp;_perPage=8&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span></code></pre></div>
+
+<p>You can notice that there are some additional information in the <code>meta</code> section and there are also links to navigate<br />
+through the pages in the <code>links</code> section.</p>
+
+<h2 id="filtering">Filtering</h2>
+
+<p>If you want only some fields to appear in the response or some you don’t, you can add the <code>_fields</code> query parameter.<br />
+The value is the coma-separated list of the fields you want to appear in the response. Nested fields must be separated from their parent by a <code>.</code>.<br />
+On the other side, if you want a field not to appear in the response, you have to prefix its name by a <code>!</code>.</p>
+
+<h3 id="example-2">Example</h3>
+
+<p>Try to hit this URL : <code>https://sandbox.andaman7.com/public/v1/users?<strong>_fields=type,administrative.firstName,administrative.lastName</strong></code></p>
+
+<p>You should get something like this :</p>
+
+<div class="highlight"><pre><code class="language-json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;administrative&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Doe&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;DOCTOR&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;administrative&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Gregory&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;House&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="err">...</span>
+<span class="p">]</span></code></pre></div>
+
+<h2 id="search">Search</h2>
+
+<p>Each resource can be searched according to their fields. To do so, queries must include a query parameter per search field.</p>
+
+<p>For string type fields, the given pattern is contained in the field. The search is case insensitive.<br />
+For other type fields like numbers or dates, we provide comparison operators :</p>
+
+<h3 id="supported-operators">Supported operators</h3>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Description</th>
+      <th>Parameter(s) type(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>eq(&lt;param&gt;)</code></td>
+      <td>Equal to &lt;param&gt;</td>
+      <td>String, number or date</td>
+    </tr>
+    <tr>
+      <td><code>lt(&lt;param&gt;)</code></td>
+      <td>Less than &lt;param&gt;</td>
+      <td>Number or date</td>
+    </tr>
+    <tr>
+      <td><code>le(&lt;param&gt;)</code></td>
+      <td>Less than or equal to &lt;param&gt;</td>
+      <td>Number or date</td>
+    </tr>
+    <tr>
+      <td><code>gt(&lt;param&gt;)</code></td>
+      <td>Greater than &lt;param&gt;</td>
+      <td>Number or date</td>
+    </tr>
+    <tr>
+      <td><code>ge(&lt;param&gt;)</code></td>
+      <td>Greater than or equal to &lt;param&gt;</td>
+      <td>Number or date</td>
+    </tr>
+    <tr>
+      <td><code>between(&lt;param1&gt;, &lt;param2&gt;)</code></td>
+      <td>Between &lt;param1&gt; and &lt;param2&gt;</td>
+      <td>Number or date</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The dates must be in ISO format (ex: 2015-08-27) and you can use the keyword <code>now</code> to refer to the current date.</p>
+
+<h3 id="example-3">Example</h3>
+
+<p>For example, to search the english translation entries containing “test” we call the following URL : <code>https://sandbox.andaman7.com/public/v1/translations?creationDate=<strong>between(2015-07-01, 2015-07-15)</strong>&amp;<strong>translationEntries.EN=date</strong></code>.</p>
+
+<p>Here is the returned JSON :</p>
+
+<div class="highlight"><pre><code class="language-json"><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;E3DE38C8-1E64-420F-9864-62F70E1F0E19&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8080/public/v1/translations/webapp.validation.date?_languages=*&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-02T21:26:49.650+0000&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;modificationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-02T21:26:49.650+0000&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;webapp.validation.date&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;translationEntries&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;EN&quot;</span><span class="p">:</span> <span class="s2">&quot;Validation date&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;FR&quot;</span><span class="p">:</span> <span class="s2">&quot;Date de validation&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;NL&quot;</span><span class="p">:</span> <span class="s2">&quot;Validatiedatum&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;AA75D62C-7FDD-454E-8EA2-0FFCA25EBDC4&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8080/public/v1/translations/webapp.monitoring.date?_languages=*&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-02T21:16:35.790+0000&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;modificationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-02T21:16:35.790+0000&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;webapp.monitoring.date&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;translationEntries&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;EN&quot;</span><span class="p">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;FR&quot;</span><span class="p">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;NL&quot;</span><span class="p">:</span> <span class="s2">&quot;Datum&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">]</span></code></pre></div>
+
+<h2 id="rate-limit">Rate limit</h2>
+
+<p>By default, each user of the API can send a maximum of 10 requests in a 20 seconds window.<br />
+If you exceed this limit, you will get a <a href="http://a7-software.github.io/andaman7-api/guide/errors.html#429">HTTP 429 “Too many requests”</a> response code.</p>
+
+<p>Each response contains the following HTTP headers :</p>
+
+<ul>
+  <li><code>X-Rate-Limit-Limit</code>: the limit of requests that can be sent in a single time window</li>
+  <li><code>X-Rate-Limit-Remaining</code>: the number of requests left for the 20 seconds window</li>
+  <li><code>X-Rate-Limit-Reset</code>: the remaining seconds before the rate limit resets</li>
+</ul>
+
+<h2 id="postman">Postman</h2>
+
+<p>If you plan to use <a href="https://www.getpostman.com/">Postman</a> to test the API calls, please click on the following button : <a href="https://app.getpostman.com/run-collection/0b1a9570a32f395c8fa4"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+    
+        $('#toc').toc({
+            title: '<h2>Contents</h2><hr/>',
+            listType: 'ul'
+        });
+    });
+    
+</script>
+
+
+<hr/>
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'andaman7-dev'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+        <p class="text-muted">&copy; <a href="http://www.a7-software.com/">A7-Software</a> 2015 - Powered by <a href="http://jekyllrb.com/">Jekyll</a></p>
+    </div>
+</footer>
+</div>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55631137-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+</body>
+</html>
+

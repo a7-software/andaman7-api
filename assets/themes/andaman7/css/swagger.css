@@ -1,0 +1,70 @@
+.swagger-operations {
+    padding-top: 30px;
+}
+
+.panel-info .panel-heading {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.panel-success .panel-heading {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.panel-warning .panel-heading {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.panel-danger .panel-heading {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.swagger-operations a {
+    color: inherit;
+}
+
+.swagger-operation .description {
+    float: right;
+}
+
+.panel-group .panel.swagger-operation {
+    margin-bottom: 15px;
+}
+
+.swagger-operation #myTabContent {
+    padding-top: 20px;
+}
+
+.label.verb {
+    padding: .4em .4em;
+    font-size: 8pt;
+}
+
+.swagger-operation a:hover {
+    text-decoration: none;
+}
+
+/* Syntax highlighting */
+
+.string {
+    color: green;
+}
+.number {
+    color: darkorange;
+}
+.boolean {
+    color: blue;
+}
+.null {
+    color: magenta;
+}
+.key {
+    color: red;
+}
